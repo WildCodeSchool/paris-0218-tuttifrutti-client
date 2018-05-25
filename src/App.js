@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SignUp from './components/SignUp.js'
+import axios from 'axios';
 
 class App extends Component {
   render() {
