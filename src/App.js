@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SignUp from './components/SignUp.js'
-// import axios from 'axios';
-import Login from './components/Login.js'
+import Home from './components/Home.js'
 
 class App extends Component {
   render() {
@@ -13,9 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-       <SignUp />
-       <br/>
-       <Login />
+       <Home />
       </div>
     )
   }
