@@ -4,7 +4,6 @@ import Button from './Button.js'
 import SignUp from './SignUp.js'
 import Login from './Login.js'
 
-
 const Home = (req) => (
 
 <Router>

@@ -1,5 +1,4 @@
 import React from 'react'
-// import axios from 'axios'
 
 class Login extends React.Component {
     state = {
@@ -19,28 +18,18 @@ class Login extends React.Component {
             email: this.state.email,
             password: this.state.password
         }
-        console.log(creds)
-
         fetch(`http://localhost:3030/login`, {
-          method: 'post',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include',
-          body: JSON.stringify({ creds })
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({creds})
         })
-        // axios
-        //     .post(`http://localhost:3030/login`, {creds})
-        //     .then(res => {
-        //         console.log(res)
-        //         console.log(res.data)
-        //     })
     }
 
     componentDidMount() {
-      fetch('http://localhost:3030/', {
-        credentials: 'include'
-      })
+        fetch('http://localhost:3030/', {credentials: 'include'})
     }
 
     render() {
