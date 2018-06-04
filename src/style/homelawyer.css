@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.home-lawyer-header {
+  width: 100vw;
+  height: 20vh;
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-lawyer-name h1 {
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.lawyer-account-parameters {
+  text-align: center;
+}
+
+.lawyer-account-parameters div a {
+  color: black;
+}
+
+.home-lawyer-newmission {
+  width: 100vw;
+  height: 38vh;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-lawyer-missions {
+  width: 100vw;
+  height: 38vh;
+  display: flex;
+}
+
+.home-lawyer-missions div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.home-lawyer-currentmissions {
+  background-color: rgb(161, 142, 142);
+}
+
+.home-lawyer-oldmissions {
+  background-color: rgb(97, 85, 85);
+}
+
+.lawyer-mission-title h2 {
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.lawyer-mission-title a {
+  text-decoration: none;
+} 
+
+.picto-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picto-add div {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picto-add a {
+  text-decoration: none;
+} 

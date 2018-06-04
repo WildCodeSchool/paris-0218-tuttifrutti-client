@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import Home from './components/Home.js'
+import HomeLawyer from './containers/HomeLawyer.js'
 
 class App extends Component {
   render () {
@@ -12,6 +13,7 @@ class App extends Component {
           <h1 className='App-title'>Welcome to React</h1>
         </header>
         <Home />
+        <HomeLawyer />
       </div>
     )
   }

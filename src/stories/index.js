@@ -7,6 +7,8 @@ import { linkTo } from '@storybook/addon-links'
 import { Button, Welcome } from '@storybook/react/demo'
 
 import SignUp from '../components/SignUp.js'
+import HomeLawyer from '../containers/HomeLawyer.js'
+
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
 
@@ -19,3 +21,5 @@ storiesOf('Button', module)
       </span>
     </Button>
   ))
+
+storiesOf('HomeLawyer', module).add('Home account lawyer', () => <HomeLawyer showApp={linkTo('Home Lawyer')} />)
