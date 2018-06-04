@@ -1,5 +1,9 @@
 import React from 'react'
-import axios from 'axios';
+import axios from 'axios'
+import Login from './Login.js'
+import Button from './Button.js'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import LawyerTitleSpace from './TitleSpace.js'
 
 class SignUp extends React.Component {
     state={
@@ -10,6 +14,7 @@ class SignUp extends React.Component {
     cabinet: '',
     phone: '',
     address: '',
+    city: '',
     zipCode: '',
     toque: '',
     field: '' 
@@ -27,8 +32,9 @@ class SignUp extends React.Component {
         firstName:      this.state.firstName ,
         lastName:       this.state.lastName ,
         cabinet:        this.state.cabinet ,
-        phone:      this.state.phone ,
+        phone:          this.state.phone ,
         address:        this.state.address ,
+        city :          this.state.city,
         zipCode:        this.state.zipCode ,
         toque:      this.state.toque ,
         field:      this.state.field ,
@@ -45,30 +51,35 @@ class SignUp extends React.Component {
     render() {
       return (
         <div>
+          <LawyerTitleSpace />
           <form  ClassName= 'form' onSubmit={this.HandleSubmit}>
-            <label htmlFor = "email"> Email </label>
-            <input type="email" name="email" id="email" onChange={this.UpdateField}/>
-            <label htmlFor = "password"> Password </label>
-            <input type ="password" name="password" id="password" onChange={this.UpdateField} />
-            {/* <label htmlFor = "passwordComfirm"> Comfirm Password </label>
-            <input type ="password" name="passwordComfirm" id="passwordComfirm" /> */}
-            <label htmlFor = "firstname"> Name </label>
+            <label htmlFor = "firstname"> Nom </label>
             <input type ="text" name="firstName" id="firstName" onChange={this.UpdateField} />
             <label htmlFor = "lastName"> Prenom </label>
             <input type ="text" name="lastName" id="lastName" onChange={this.UpdateField}/>
-            <label htmlFor = "cabinet"> Cabinet </label>
-            <input type ="text" name="cabinet" id="cabinet" onChange={this.UpdateField} />
+            <label htmlFor = "email"> Email </label>
+            <input type="email" name="email" id="email" onChange={this.UpdateField}/>
             <label htmlFor = "phone"> Telephone </label>
             <input type ="text" name="phone" id="phone" onChange={this.UpdateField} />
-            <label htmlFor = "address"> Address </label>
+            <label htmlFor = "cabinet">Nom du Cabinet </label>
+            <input type ="text" name="cabinet" id="cabinet" onChange={this.UpdateField} />
+            <label htmlFor = "toque"> Numéro de Toque </label>
+            <input type ="text" name="toque" id="toque" onChange={this.UpdateField} />        
+            <label htmlFor = "address"> Adresse </label>
             <input type ="text" name="address" id="address" onChange={this.UpdateField} />
             <label htmlFor = "zipCode"> Code Postal </label>
-            <input type ="text" name="zipCode" id="zipCode" onChange={this.UpdateField} />
-            <label htmlFor = "toque"> Numero de Toque </label>
-            <input type ="text" name="toque" id="toque" onChange={this.UpdateField} />
+            <input type ="text" name="city" id="city" onChange={this.UpdateField} />        
+            <label htmlFor = "city"> Ville </label>
+            <input type ="text" name="zipCode" id="zipCode" onChange={this.UpdateField} />     
             <label htmlFor = "field"> Domaine </label>
             <input type ="text" name="field" id="field" onChange={this.UpdateField} />
-            <button type ="submit">Valider</button>
+            <label htmlFor = "password"> Mot de passe </label>
+            <input type ="password" name="password" id="password" onChange={this.UpdateField} />
+            <label htmlFor = "passwordComfirm"> Confirmer le mot de passe </label>
+            <input type ="password" name="passwordComfirm" id="passwordComfirm" />
+            <button type ="submit">S'incrire</button>
+            <p> Déjà inscrit ? <Link to={`/login`}> <a href text='login' />Connectez-vous</Link></p>
+            <Route path='/login' component={Login} /> 
           </form>
         </div>
       )
