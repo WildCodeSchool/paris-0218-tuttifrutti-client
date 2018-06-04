@@ -4,10 +4,15 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "htmllint-cli": "0.0.7",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.1",
+    "stylelint": "^9.2.1",
+    "stylelint-config-recommended": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,7 +20,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:js": "standard | snazzy",
+    "lint:css": "stylelint 'src/style/*.css'",
+    "lint:html": "htmllint 'public/*.html'"
   },
   "devDependencies": {
     "@storybook/react": "^3.4.5",
