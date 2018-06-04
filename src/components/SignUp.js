@@ -12,7 +12,7 @@ class SignUp extends React.Component {
     address: '',
     zipCode: '',
     toque: '',
-    field: ''
+    field: '' 
     }
     
   UpdateField = event => {this.setState({[event.target.name] : event.target.value})}
@@ -42,14 +42,10 @@ class SignUp extends React.Component {
         })
     }
 
-       
-        
-       
-      
     render() {
       return (
         <div>
-          <form onSubmit={this.HandleSubmit}>
+          <form  ClassName= 'form' onSubmit={this.HandleSubmit}>
             <label htmlFor = "email"> Email </label>
             <input type="email" name="email" id="email" onChange={this.UpdateField}/>
             <label htmlFor = "password"> Password </label>
