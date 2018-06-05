@@ -1,4 +1,53 @@
-input {
-    width: 50em;
-    height: 3em;
+/* Stylise tous les liens de la page */
+a {
+	color: black;
+}
+
+/* Stylise la div qui contient le formulaire et qui permet de le centrer dans la page
+-> le display flex te permet de mettre le justify content qui va centrer horizontalement le <form> */
+.formSignUp {
+	display: flex;
+	justify-content: center;
+}
+
+/* Stylise le formulaire */
+.form {
+	width: 60vw; /* Détermine la largeur du formulaire -> vw = viewport width -> 60% de la largeur de la fenêtre */
+	color: white;
+}
+
+/* Stylise les divs qui contiennent les inputs
+-> le display flex te permet mettre les inputs à l'intérieur côte à côte */
+.form div {
+	display: flex;
+}
+
+/* Stylise les inputs
+-> le width 50% met la largeur de chaque input à 50% de la largeur du <form> */
+.form input {
+	width: 50%;
+	height: 0.4rem;
+	padding: 0.4rem;
+	margin: 0.2rem;
+}
+
+/* Stylise le select pour lui donner toute la largeur du <form> */
+.form select {
+	width: 100%;
+}
+
+/* Stylise certains inputs grâce à leur id */
+
+#address {
+	width: 100%;
+}
+
+#cabinet,
+#city {
+	width: 70%;
+}
+
+#toque,
+#zipCode {
+	width: 30%;
 }
