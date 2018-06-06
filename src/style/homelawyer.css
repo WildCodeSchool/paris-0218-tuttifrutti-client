@@ -15,6 +15,7 @@ body {
 
 .header-lawyer-name h1 {
   color: black;
+  font-size: 2rem;
   text-transform: uppercase;
   text-align: center;
 }
