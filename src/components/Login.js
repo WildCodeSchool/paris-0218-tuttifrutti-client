@@ -12,7 +12,7 @@ class Login extends React.Component {
         })
     }
 
-    HandleSubmit = (event, req) => {
+    HandleSubmit = (event, req, res) => {
         event.preventDefault()
         const creds = {
             email: this.state.email,
@@ -25,7 +25,14 @@ class Login extends React.Component {
             },
             credentials: 'include',
             body: JSON.stringify({creds})
+        }).then(response => {
+            response
+                .json()
+                .then(responseJson => {
+                    localStorage.setItem('token', responseJson.token)
+                })
         })
+
     }
 
     componentDidMount() {
