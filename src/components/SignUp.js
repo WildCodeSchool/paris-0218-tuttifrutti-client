@@ -1,9 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import Login from './Login.js'
+// import Login from './Login.js'
 import Button from './Button.js'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+// import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import LawyerTitleSpace from './TitleSpace.js'
+import LinkSignUpConnect from './LinkSignUpConnect.js'
 import '../style/SignUp.css'
 
 class SignUp extends React.Component {
@@ -51,48 +52,53 @@ class SignUp extends React.Component {
 
     render() {
       return (
-        <div>
-          <LawyerTitleSpace />
-          <div className="formSignUp">
-            <form className="form" onSubmit={this.HandleSubmit}>
-              <div>
-                <input type ="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} /> 
-                <input type ="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
-              </div>
-              <div>            
-                <input type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                <input type ="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
-              </div>
-              <div>
-                <input type ="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
-                <input type ="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />        
-              </div>
-              <div>
-                <input type ="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
-              </div>
-              <div>
-                <input type ="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
-                <input type ="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />        
-              </div>
-              <div>     
-                <select name="domaine" placeholder="Domaine" id="domaine" onChange={this.UpdateField} > 
-                <option value="" disabled selected>Domaine</option>
-                <option value="1">droit2</option>
-                <option value="2">droit3</option>
-                <option value="3">droit4</option>
-                <option value="5">droit5</option>
-              </select>
-              </div>
-              <div>
-                <input type ="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                <input type ="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
-              </div>
-              <button type ="submit">S'inscrire</button>
-            </form>
+        // <Router>
+        <div className='signup-content'>
+          <div>
+            <div className='title-component'>
+              <LawyerTitleSpace />
+            </div>
+            <div className="form-signup">
+              <form className="form" onSubmit={this.HandleSubmit}>
+                <div>
+                  <input type ="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} /> 
+                  <input type ="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
+                </div>
+                <div>            
+                  <input type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
+                  <input type ="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
+                </div>
+                <div>
+                  <input type ="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
+                  <input type ="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />        
+                </div>
+                <div>
+                  <input type ="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
+                </div>
+                <div>
+                  <input type ="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
+                  <input type ="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />        
+                </div>
+                <div>     
+                  <select name="domaine" placeholder="Domaine" id="domaine" onChange={this.UpdateField} > 
+                  <option value="" disabled selected>Domaine</option>
+                  <option value="1">droit2</option>
+                  <option value="2">droit3</option>
+                  <option value="3">droit4</option>
+                  <option value="5">droit5</option>
+                </select>
+                </div>
+                <div>
+                  <input type ="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
+                  <input type ="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
+                </div>
+               <Button text="S'inscrire"/>
+              </form>
+            </div>
+           <LinkSignUpConnect text1='Déjà inscrit ?' text2='Connectez-vous' linkRoute='/login'/>
           </div>
-              <p>Déjà inscrit ? <Link to={`/login`}>Connectez-vous</Link></p>
-              <Route path='/login' component={Login} />
         </div>
+        // </Router>
       )
     }
   }

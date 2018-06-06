@@ -1,19 +1,41 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+  }
+
 /* Stylise tous les liens de la page */
 a {
 	color: black;
 }
 
+.signup-content {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.title-component {
+	width: 100%;
+	height: 20vh;
+	background-color: gray;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 /* Stylise la div qui contient le formulaire et qui permet de le centrer dans la page
 -> le display flex te permet de mettre le justify content qui va centrer horizontalement le <form> */
-.formSignUp {
+.form-signup {
 	display: flex;
 	justify-content: center;
 }
 
 /* Stylise le formulaire */
 .form {
-	width: 60vw; /* Détermine la largeur du formulaire -> vw = viewport width -> 60% de la largeur de la fenêtre */
-	color: white;
+	width: 55vw; /* Détermine la largeur du formulaire -> vw = viewport width -> 60% de la largeur de la fenêtre */
+	color: black;
 }
 
 /* Stylise les divs qui contiennent les inputs
@@ -25,15 +47,54 @@ a {
 /* Stylise les inputs
 -> le width 50% met la largeur de chaque input à 50% de la largeur du <form> */
 .form input {
-	width: 50%;
-	height: 0.4rem;
-	padding: 0.4rem;
-	margin: 0.2rem;
+	width: 100%;
+	height: 0.6rem;
+	padding: 0.7rem;
+	margin: 0.5rem;
+	border: none;
+	border-bottom: solid 0.1rem black;
+	outline: none;	
+	font-size: 0.7rem;		
+}
+
+.form input:focus {
+	border: none;
+	border-bottom: solid 0.1rem green;
+	appearance: none;
+	-webkit-appearance: none;	
 }
 
 /* Stylise le select pour lui donner toute la largeur du <form> */
 .form select {
 	width: 100%;
+    height: 2.3rem;
+    padding: 0.7rem;
+    margin: 0.5rem;
+    border: none;
+    border-bottom: solid 0.1rem black;
+    border-radius: 0%;
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: transparent;
+	outline: none;
+}
+
+.form select:focus {
+	border-bottom: solid 0.1rem green;
+	
+}
+
+.form button {
+	width: 8rem;
+	height: 2rem;
+	margin: 0.8rem;
+	background-color: grey;
+	color: white;
+	border: none;
+	border-radius: 0%;
+	text-transform: uppercase;
+	outline: none;
+	box-shadow: none;
 }
 
 /* Stylise certains inputs grâce à leur id */
