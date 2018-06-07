@@ -1,7 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-const Button = ({text}, req) => (
-    <button>{text}</button>
+const Button = ({text}) => (
+  <button type="submit">{text}</button>
 )
-
-export default Button 
+export default Button
