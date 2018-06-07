@@ -13,8 +13,9 @@ a {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	align-items: center;
+	/* align-items: center; */
 	justify-content: center;
+	text-align: center;
 }
 
 .title-component {
@@ -25,17 +26,20 @@ a {
 	align-items: center;
 	justify-content: center;
 }
+
 /* Stylise la div qui contient le formulaire et qui permet de le centrer dans la page
 -> le display flex te permet de mettre le justify content qui va centrer horizontalement le <form> */
 .form-signup {
 	display: flex;
+	align-content: center;
 	justify-content: center;
+	width: 55vw; /* Détermine la largeur du formulaire -> vw = viewport width -> 60% de la largeur de la fenêtre */	
 }
 
 /* Stylise le formulaire */
 .form {
-	width: 55vw; /* Détermine la largeur du formulaire -> vw = viewport width -> 60% de la largeur de la fenêtre */
-	color: black;
+	width: 100%;
+	margin-top: 2rem;
 }
 
 /* Stylise les divs qui contiennent les inputs
@@ -54,7 +58,7 @@ a {
 	border: none;
 	border-bottom: solid 0.1rem black;
 	outline: none;	
-	font-size: 0.7rem;		
+	font-size: 0.8rem;		
 }
 
 .form input:focus {
@@ -67,16 +71,18 @@ a {
 /* Stylise le select pour lui donner toute la largeur du <form> */
 .form select {
 	width: 100%;
-    height: 2.3rem;
-    padding: 0.7rem;
-    margin: 0.5rem;
-    border: none;
-    border-bottom: solid 0.1rem black;
-    border-radius: 0%;
+	height: 2.3rem;
+	padding: 0.7rem;
+	margin: 0.5rem;
+	border: none;
+	border-bottom: solid 0.1rem black;
+	border-radius: 0%;
 	appearance: none;
 	-webkit-appearance: none;
 	background-color: transparent;
 	outline: none;
+	font-size: 0.8rem;		
+	
 }
 
 .form select:focus {
@@ -87,7 +93,7 @@ a {
 .form button {
 	width: 8rem;
 	height: 2rem;
-	margin: 0.8rem;
+	margin-top: 2rem;
 	background-color: grey;
 	color: white;
 	border: none;
@@ -95,6 +101,10 @@ a {
 	text-transform: uppercase;
 	outline: none;
 	box-shadow: none;
+}
+
+.link-signup-connect {
+	font-size: 0.9rem;
 }
 
 /* Stylise certains inputs grâce à leur id */

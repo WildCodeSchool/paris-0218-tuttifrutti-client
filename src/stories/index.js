@@ -7,7 +7,7 @@ import { linkTo } from '@storybook/addon-links'
 import { Button, Welcome } from '@storybook/react/demo'
 
 import SignUp from '../components/SignUp.js'
-import LawyerTitleSpace from '../components/TitleSpace.js'
+import LawyerTitle from '../components/LawyerTitle.js'
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)

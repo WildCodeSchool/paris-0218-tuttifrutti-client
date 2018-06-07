@@ -3,7 +3,7 @@ import axios from 'axios'
 // import Login from './Login.js'
 import Button from './Button.js'
 // import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
-import LawyerTitleSpace from './TitleSpace.js'
+import LawyerTitleSpace from './LawyerTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
 import '../style/SignUp.css'
 
@@ -56,9 +56,9 @@ class SignUp extends React.Component {
         <div className='signup-content'>
           <div>
             <div className='title-component'>
-              <LawyerTitleSpace />
+              <LawyerTitleSpace title='Inscription'/>
             </div>
-            <div className="form-signup">
+            <div className='form-signup'>
               <form className="form" onSubmit={this.HandleSubmit}>
                 <div>
                   <input type ="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} /> 
@@ -92,10 +92,11 @@ class SignUp extends React.Component {
                   <input type ="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
                   <input type ="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
                 </div>
-               <Button text="S'inscrire"/>
+                <Button text="S'inscrire"/>
               </form>
             </div>
-           <LinkSignUpConnect text1='Déjà inscrit ?' text2='Connectez-vous' linkRoute='/login'/>
+            <div className='link-signup-connect'>            <LinkSignUpConnect text1='Déjà inscrit ?' text2='Connectez-vous' linkRoute='/login'/>
+            </div>
           </div>
         </div>
         // </Router>
