@@ -14,10 +14,9 @@ class Login extends React.Component {
         else {
         fetch(`http://localhost:3030/secure`, {
             headers: {
-               'Content-Type': 'application/x-www-form-urlencoded',
                 Authorization: `Bearer ${token}`
             },
-            credentials: 'include',
+            // credentials: 'include',
         } 
     )}}
 

@@ -23,7 +23,7 @@ class Login extends React.Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include',
+            // credentials: 'include',
             body: JSON.stringify({creds})
         }).then(response => {
             response.json()
@@ -35,7 +35,7 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3030/', {credentials: 'include'})
+        fetch('http://localhost:3030/')
     }
 
     render() {
