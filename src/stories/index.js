@@ -24,6 +24,6 @@ storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo(
 
 storiesOf('SignUp', module).add('Global page', () => <SignUp showApp={linkTo('SignUp')} />)
 
-storiesOf('LawyerTitleSpace', module).add('Title Lawyer', () => <LawyerTitleSpace showApp={linkTo('LawyerTitleSpace')} />)
+storiesOf('LawyerTitle', module).add('Title Lawyer', () => <LawyerTitle showApp={linkTo('LawyerTitle')} />)
 
 
