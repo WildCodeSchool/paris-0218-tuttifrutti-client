@@ -26,8 +26,7 @@ class Login extends React.Component {
             credentials: 'include',
             body: JSON.stringify({creds})
         }).then(response => {
-            response
-                .json()
+            response.json()
                 .then(responseJson => {
                     localStorage.setItem('token', responseJson.token)
                 })
