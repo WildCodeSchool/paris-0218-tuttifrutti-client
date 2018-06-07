@@ -8,6 +8,7 @@ import { Button, Welcome } from '@storybook/react/demo'
 
 import SignUp from '../components/SignUp.js'
 import LawyerTitle from '../components/LawyerTitle.js'
+import Login from '../components/Login.js'
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
@@ -26,4 +27,4 @@ storiesOf('SignUp', module).add('Global page', () => <SignUp showApp={linkTo('Si
 
 storiesOf('LawyerTitle', module).add('Title Lawyer', () => <LawyerTitle showApp={linkTo('LawyerTitle')} />)
 
-
+storiesOf('Login', module).add('Global page', () => <Login showApp={linkTo('Login')} />)
