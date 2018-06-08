@@ -1,0 +1,26 @@
+.footer {
+  background: rgb(46, 46, 46);
+  color: white;
+  width: 100vw;
+  height: 4vh;
+  display: flex;
+}
+
+.footer div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.footer div:first-child {
+  justify-content: flex-start;
+  padding-left: 0.5rem;
+}
+
+.footer div:last-child {
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+  
+}
