@@ -80,7 +80,7 @@ class SignUp extends React.Component {
                   <input type ="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />        
                 </div>
                 <div>     
-                  <select name="domaine" placeholder="Domaine" id="domaine" onChange={this.UpdateField} > 
+                  <select name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} > 
                   <option value="" disabled selected>Domaine</option>
                   <option value="1">droit2</option>
                   <option value="2">droit3</option>
