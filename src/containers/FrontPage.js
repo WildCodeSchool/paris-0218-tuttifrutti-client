@@ -3,14 +3,13 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
 import Login from '../components/Login.js'
 import SignUp from '../components/SignUp.js'
-import HomeLawyer from '../containers/HomeLawyer.js'
 import Button from '../components/Button.js'
 
 const FrontPage = () => (
     <Router>
         <div>
-            <Link to={`/login`}><Button text='Se connecter'/></Link>
-            <Link to={`/reg`}><Button text="S'inscrire"/></Link>
+            <Link to={`/login`}><Button>Se connecter</Button></Link>
+            <Link to={`/reg`}><Button>S'inscrire</Button></Link>
             <Route path='/login' component={Login}/>
             <Route path='/reg' component={SignUp}/>
         </div>

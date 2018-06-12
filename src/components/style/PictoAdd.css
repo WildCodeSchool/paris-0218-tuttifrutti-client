@@ -1,0 +1,22 @@
+.picto-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picto-add div {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picto-add a {
+  text-decoration: none;
+} 

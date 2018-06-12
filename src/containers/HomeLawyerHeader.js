@@ -1,13 +1,14 @@
 import React from 'react'
-import HeaderLawyerName from '../components/HeaderLawyerName.js'
-import HeaderLawyerParameters from '../components/HeaderLawyerParameters.js'
+import HeaderName from '../components/HeaderName.js'
+import HeaderParameters from '../components/HeaderParameters.js'
+import './style/HomeLawyerHeader.css'
 
 
 const HomeLawyerHeader = () => (
   <div className='home-lawyer-header'>
     <div>
-      <HeaderLawyerName />
-      <HeaderLawyerParameters />
+      <HeaderName />
+      <HeaderParameters />
     </div>
   </div>
 )

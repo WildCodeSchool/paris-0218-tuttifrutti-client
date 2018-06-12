@@ -3,7 +3,7 @@ import HomeLawyerHeader from './HomeLawyerHeader.js'
 import HomeLawyerNewMission from './HomeLawyerNewMission.js'
 import HomeLawyerMissions from './HomeLawyerMissions.js'
 import Footer from './Footer.js'
-import '../style/homelawyer.css'
+import './style/HomeLawyer.css'
 
 
 class HomeLawyer extends Component {

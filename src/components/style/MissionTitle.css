@@ -1,0 +1,10 @@
+h2 {
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+} 
