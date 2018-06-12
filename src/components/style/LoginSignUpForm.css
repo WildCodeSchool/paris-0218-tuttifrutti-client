@@ -4,16 +4,15 @@ body {
 	font-family: sans-serif;
   }
 
-/* Stylise tous les liens de la page */
+
 a {
 	color: black;
 }
 
-.signup-content {
+.login-signup-content {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	/* align-items: center; */
 	justify-content: center;
 	text-align: center;
 }
@@ -27,29 +26,22 @@ a {
 	justify-content: center;
 }
 
-/* Stylise la div qui contient le formulaire et qui permet de le centrer dans la page
--> le display flex te permet de mettre le justify content qui va centrer horizontalement le <form> */
-.form-signup {
+.form-login-signup {
 	display: flex;
 	align-content: center;
 	justify-content: center;
-	width: 55vw; /* Détermine la largeur du formulaire -> vw = viewport width -> 60% de la largeur de la fenêtre */	
+	width: 55vw;
 }
 
-/* Stylise le formulaire */
 .form {
 	width: 100%;
 	margin-top: 2rem;
 }
 
-/* Stylise les divs qui contiennent les inputs
--> le display flex te permet mettre les inputs à l'intérieur côte à côte */
 .form div {
 	display: flex;
 }
 
-/* Stylise les inputs
--> le width 50% met la largeur de chaque input à 50% de la largeur du <form> */
 .form input {
 	width: 100%;
 	height: 0.6rem;
@@ -68,7 +60,6 @@ a {
 	-webkit-appearance: none;	
 }
 
-/* Stylise le select pour lui donner toute la largeur du <form> */
 .form select {
 	width: 100%;
 	height: 2.3rem;
@@ -90,24 +81,11 @@ a {
 	
 }
 
-.form button {
-	width: 8rem;
-	height: 2rem;
-	margin-top: 2rem;
-	background-color: grey;
-	color: white;
-	border: none;
-	border-radius: 0%;
-	text-transform: uppercase;
-	outline: none;
-	box-shadow: none;
-}
-
 .link-signup-connect {
 	font-size: 0.9rem;
 }
 
-/* Stylise certains inputs grâce à leur id */
+/* SIGNUP FORM */
 
 #address {
 	width: 100%;

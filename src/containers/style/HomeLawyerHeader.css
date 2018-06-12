@@ -1,0 +1,9 @@
+.home-lawyer-header {
+  width: 100vw;
+  height: 20vh;
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
