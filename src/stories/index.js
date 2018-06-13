@@ -13,7 +13,7 @@ import HomeLawyerMissions from '../containers/HomeLawyerMissions.js'
 import HomeLawyerHeader from '../containers/HomeLawyerHeader.js'
 import HomeLawyerNewMission from '../containers/HomeLawyerNewMission.js'
 import NewMission from '../components/NewMission.js'
-import Mission from '../containers/Mission.js'
+import MissionPage from '../containers/MissionPage.js'
 
 
 storiesOf('Inscription', module)
@@ -38,4 +38,4 @@ storiesOf('Créer une nouvelle mission', module)
   .add('Nouvelle mission', () => <NewMission />)
 
 storiesOf('Afficher une mission', module)
-  .add('Mission', () => <Mission />)
+  .add('Page mission', () => <MissionPage />)
