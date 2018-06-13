@@ -3,7 +3,6 @@ import MissionTitle from '../components/MissionTitle.js'
 import PictoAdd from '../components/PictoAdd.js'
 import './style/HomeLawyerNewMission.css'
 
-
 const HomeLawyerNewMission = () => (
   <div className='home-lawyer-newmission'>
     <div>

@@ -4,11 +4,11 @@ import FrontPage from './FrontPage.js'
 
 const Home = (req) => (
 
-    <Router>
-        <div>
-            <Route path='/home' component={FrontPage}/>
-        </div>
-    </Router>
+  <Router>
+    <div>
+      <Route path='/home' component={FrontPage}/>
+    </div>
+  </Router>
 )
 
 export default Home

@@ -1,9 +1,8 @@
 import React from 'react'
 
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
-
+// import { action } from '@storybook/addon-actions'
+// import { linkTo } from '@storybook/addon-links'
 
 import SignUp from '../components/SignUp.js'
 import Login from '../components/Login.js'
@@ -14,13 +13,12 @@ import HomeLawyerMissions from '../containers/HomeLawyerMissions.js'
 import HomeLawyerHeader from '../containers/HomeLawyerHeader.js'
 import HomeLawyerNewMission from '../containers/HomeLawyerNewMission.js'
 
-
 storiesOf('Inscription', module)
   .add('Page globale', () => <SignUp />)
 
 storiesOf('Connexion', module)
   .add('Page globale', () => <Login />)
-  
+
 storiesOf('Footer', module)
   .add('Footer', () => <Footer />)
 
@@ -32,6 +30,3 @@ storiesOf('Homepage avocats', module)
   .add('Header', () => <HomeLawyerHeader />)
   .add('Nouvelle mission', () => <HomeLawyerNewMission />)
   .add('Missions en cours', () => <HomeLawyerMissions />)
-  
-  
-

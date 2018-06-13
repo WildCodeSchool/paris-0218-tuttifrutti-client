@@ -2,7 +2,6 @@ import React from 'react'
 import MissionTitle from '../components/MissionTitle.js'
 import './style/HomeLawyerMissions.css'
 
-
 const HomeLawyerMissions = () => (
   <div className='home-lawyer-missions'>
     <div className='home-lawyer-currentmissions'>
