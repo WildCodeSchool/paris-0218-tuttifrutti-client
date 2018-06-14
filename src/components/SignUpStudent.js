@@ -7,14 +7,15 @@ import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 
 class SignUpStudent extends React.Component {
-    state={
+    state = {
       email: '',
       password: '',
       firstName: '',
       lastName: '',
       phone: '',
       levelStudy: '',
-      field: ''
+      field: '',
+      active: false
     }
 
   UpdateField = event => { this.setState({[event.target.name]: event.target.value}) }
