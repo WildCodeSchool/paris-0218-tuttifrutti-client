@@ -12,20 +12,20 @@ import './style/Mission.css'
 
 class Mission extends React.Component {
         state = {
-            id: '',            
+            id: '',
             name: '',
             field: '',
             deadline: '',
             price: '',
             description: ''
         }
-    
+
     componentDidMount() {
-        axios.get(`http://localhost:3030/mission/5b1fe8dfd9cdec2879abad2a`)
+        axios.get(`http://localhost:3030/missions/5b1fe8dfd9cdec2879abad2a`)
             .then(console.log('ok'))
             .then((res) => {
                 this.setState({
-                    id: res.data._id,                    
+                    id: res.data._id,
                     name: res.data.name,
                     field: res.data.field,
                     deadline: res.data.deadline,

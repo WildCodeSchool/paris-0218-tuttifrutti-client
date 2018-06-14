@@ -22,22 +22,10 @@ class NewMission extends React.Component {
     console.log('testest')
 
     const mission = this.state
-    //  const mission = {
-    //   name:  this.state.name ,
-    //   field:       this.state.field ,
-    //   deadline:      this.state.deadline ,
-    //   price:       this.state.price ,
-    //   cabinet:        this.state.cabinet ,
-    //   phone:          this.state.phone ,
-    //   address:        this.state.address ,
-    //   city :          this.state.city,
-    //   zipCode:        this.state.zipCode ,
-    //   toque:      this.state.toque ,
-    //   field:      this.state.field ,
-    // };
+
     console.log(mission)
 
-    axios.post(`http://localhost:3030/newmission`, { mission })
+    axios.post(`http://localhost:3030/missions`, { mission })
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -60,10 +48,10 @@ class NewMission extends React.Component {
                 <div>
                   <select name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
                     <option value="" disabled selected>Domaine</option>
-                    <option value="1">droit2</option>
-                    <option value="2">droit3</option>
-                    <option value="3">droit4</option>
-                    <option value="5">droit5</option>
+                    <option>droit2</option>
+                    <option>droit3</option>
+                    <option>droit4</option>
+                    <option>droit5</option>
                   </select>
                 </div>
                 <div>
