@@ -24,14 +24,18 @@ class AllMissions extends React.Component {
 
   render() {
 
+    const showDetailedMission = (id) => {
+      console.log('cliiiiiiiick', id)
+    }
+
     const eachMission = mission => {
       return (
         <div className='each-mission-container'>
           <MissionTitle text={mission.name} />
-          <MissionId text={mission.id} />
+          <MissionId text={mission._id} />
           <MissionField text={mission.field} />
           <MissionDeadline text={mission.deadline} />
-          <div className='button-mission-more'>
+          <div className='button-mission-more' onClick={() => showDetailedMission(mission._id)}>
             <Button>Voir le détail</Button>
           </div>
         </div>
