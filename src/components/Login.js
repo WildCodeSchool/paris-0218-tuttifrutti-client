@@ -46,7 +46,6 @@ class Login extends React.Component {
 
     render () {
       return (
-        <Router>
           <div>
             <div className='login-signup-content'>
               <div>
@@ -58,9 +57,7 @@ class Login extends React.Component {
                     <form className="form" onSubmit={this.HandleSubmit}>
                       <input type="email" name="email" placeholder="Email" onChange={this.UpdateField}/>
                       <input type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField}/>
-                      <Link to={`/profile`}>
                         <Button>Se connecter</Button>
-                      </Link>
                     </form>
                   </div>
                 </div>
@@ -68,11 +65,9 @@ class Login extends React.Component {
                   <LinkSignUpConnect text1='Pas encore inscrit ?' text2='Créez votre compte' linkRoute='/reg' />
                 </div>
               </div>
-              <Route path='/profile' component={HomeLawyer}/>
             </div>
             <Footer />
           </div>
-        </Router>
       )
     }
 }
