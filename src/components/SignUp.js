@@ -7,6 +7,7 @@ import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 
 class SignUp extends React.Component {
+
   state = {
     email: '',
     password: '',
