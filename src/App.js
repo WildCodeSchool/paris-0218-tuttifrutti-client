@@ -23,7 +23,7 @@ class App extends Component {
                             <Route exact path="/login" component={Login}/>
                             <Route exact path="/profile" component={HomeLawyer}/>
                             <Route exact path="/missions" component={AllMissionsPage} />
-                            <Route exact path="/missions/:missionId?" component={MissionPage} />        
+                            <Route exact path="/missions/:missionId" component={MissionPage} />        
                         </Switch>
                     </div>
                 </BrowserRouter>

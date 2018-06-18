@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
@@ -37,7 +38,7 @@ class AllMissions extends React.Component {
           <MissionField text={mission.field} />
           <MissionDeadline text={mission.deadline} />
           <div className='button-mission-more' onClick={() => showDetailedMission(mission._id)}>
-            <Button>Voir le détail</Button>
+            <Link to={`/missions/${mission._id}`}><Button>Voir le détail</Button></Link>
           </div>
         </div>
       )
