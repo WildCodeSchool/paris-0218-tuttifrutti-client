@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
@@ -10,7 +9,6 @@ import MissionPrice from '../components/MissionPrice.js'
 import MissionStudent from '../components/MissionStudent.js'
 import MissionDescription from '../components/MissionDescription.js'
 import './style/Mission.css'
-const queryString = require('query-string')
 
 class Mission extends React.Component {
         state = {
@@ -23,14 +21,14 @@ class Mission extends React.Component {
         }
 
     componentDidMount() {
-        const parsed = queryString.parse(window.location.search)
-        console.log(parsed)
+        //const parsed = queryString.parse(window.location.search)
+        console.log(window.location.pathname)
         /* const params = new URLSearchParams(window.location.search)
         console.log(params)
         const missionId = params.get('missionId')
         console.log(missionId) */
-        const missionId = `nejfiue`
-        axios.get(`http://localhost:3030/missions/${missionId}`)
+        const missionId = window.location.pathname
+        axios.get(`http://localhost:3030${missionId}`)
             .then(console.log('ok'))
             .then((res) => {
                 this.setState({
