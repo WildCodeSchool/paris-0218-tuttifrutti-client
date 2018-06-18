@@ -25,7 +25,8 @@ class AllMissions extends React.Component {
   render() {
 
     const showDetailedMission = (id) => {
-      console.log('cliiiiiiiick', id)
+      const missionId = id
+      console.log(missionId)
     }
 
     const eachMission = mission => {
