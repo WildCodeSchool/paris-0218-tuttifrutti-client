@@ -11,7 +11,7 @@ class AllMissionsPage extends React.Component {
         return (
             <div>
                 <HomeLawyerHeader />
-                <MissionPageHeader />
+                <MissionPageHeader to='/profile' text='< Retour au profil'/>
                 <AllMissions />
                 <Footer />
             </div>

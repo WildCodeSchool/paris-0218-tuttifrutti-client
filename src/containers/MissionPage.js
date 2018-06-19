@@ -9,7 +9,7 @@ class MissionPage extends React.Component {
 render() {
   return (
     <div>
-      <MissionPageHeader />
+      <MissionPageHeader to='/missions' text='< Retour à la liste des missions'/>
       <Mission />
       <Footer />
     </div>

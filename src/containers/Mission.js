@@ -21,12 +21,7 @@ class Mission extends React.Component {
         }
 
     componentDidMount() {
-        //const parsed = queryString.parse(window.location.search)
         console.log(window.location.pathname)
-        /* const params = new URLSearchParams(window.location.search)
-        console.log(params)
-        const missionId = params.get('missionId')
-        console.log(missionId) */
         const missionId = window.location.pathname
         axios.get(`http://localhost:3030${missionId}`)
             .then(console.log('ok'))

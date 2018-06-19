@@ -1,9 +1,7 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Button from './Button.js'
 import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
-import HomeLawyer from '../containers/HomeLawyer.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Login from './Login.js'
 
 const LinkSignUpConnect = ({text1, text2, linkRoute}) => {
   return (

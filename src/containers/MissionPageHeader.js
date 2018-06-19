@@ -7,9 +7,10 @@ import './style/MissionPageHeader.css'
 class MissionPageHeader extends React.Component {
 
 render() {
+
   return (
     <div>
-      <Link to={`/profile`}><GoBack text='< Retour à la liste des missions' /></Link>
+      <Link to={this.props.to}><GoBack text={this.props.text}/></Link>
       <MissionTitle text='Missions en cours'/>
     </div>
   )

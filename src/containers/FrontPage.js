@@ -1,7 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Login from '../components/Login.js'
-import SignUp from '../components/SignUp.js'
 import Button from '../components/Button.js'
 
 const FrontPage = () => (
