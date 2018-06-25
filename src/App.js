@@ -8,12 +8,15 @@ import Login from './components/Login.js'
 import HomeLawyer from './containers/HomeLawyer.js'
 import UserMap from './components/UserMap';
 // import Footer from './containers/Footer.js'
+import SignUpStudent from './components/SignUpStudent.js'
+
 
 class App extends Component {
   render () {
     return (
       <div className='App'>
-        {/* <BrowserRouter>
+
+        <BrowserRouter>
           <div>
             <Switch>
               <Route exact path="/" component={UserMap}/>
@@ -22,8 +25,7 @@ class App extends Component {
               <Route exact path="/profile" component={HomeLawyer}/>
             </Switch>
           </div>
-        </BrowserRouter> */}
-        <UserMap/>
+        </BrowserRouter>
       </div>
     )
   }
