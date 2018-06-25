@@ -13,7 +13,7 @@ const
 // setup e-mail data with unicode symbols
 var mailOptions = {
     from: 'Tutti Frutti ✔ <tuttifrutti@gmail.com>', // sender address
-    to: 'user@tuttifrutti.com, user2@tuttifrutti.com', // list of receivers
+    to: 'user@tuttifrutti.com, user2@tuttifrutti.com', // list of receivers always separated by ","
     subject: 'Hello ✔', // Subject line
     text: 'Hello world ✔', // plaintext body
     html: '<b>Hello world ✔</b>' // html body
