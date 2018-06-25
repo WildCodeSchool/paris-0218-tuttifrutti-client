@@ -1,10 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Button from '../components/Button.js'
-import MissionTitle from '../components/MissionTitle.js'
-import MissionId from '../components/MissionId.js'
-import MissionField from '../components/MissionField.js'
-import MissionDeadline from '../components/MissionDeadline.js'
+import ActivateButton from '../components/ActivateButton.js'
 import UserTitle from './UserTitle.js';
 import UserId from './UserId.js';
 // import './style/allUsers.css'
@@ -14,7 +10,7 @@ class UserMap extends React.Component {
     allUsers: []
   }
 
-  componentDidMount() {
+  componentDidMount () {
     axios.get(`http://localhost:3030/users`)
       .then((res) => {
         this.setState({ allUsers: res.data })
@@ -24,20 +20,37 @@ class UserMap extends React.Component {
       })
   }
 
+  ActivateUser = (event) => {
+
+  let user = event.email
+
+  axios.post('http://localhost:3030/usermap', user
+    )
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    // Model.findByIdAndUpdate(id, { name: 'jason bourne' }, options, callback)
+    // <li key={i} onClick={this.handleClick.bind(this, i)} style={s}>
+
+}
+
   render() {
 
-    const eachUser = students => {
+    const eachUser = (students, key) => {
       return (
-        <div className='each-mission-container'>
-          <UserTitle text={students.email} />
+        <div key={key} className='each-mission-container'>
+          <UserTitle ref={students._id} text={students.email} />
           <UserId text={students._id} />
-            <Button>Approuver</Button>
+        <button onClick={this.ActivateUser.bind(this, students)}>Approuver</button>
      
         </div>
       )
     }
 
-    const showEachUser = this.state.allUsers.map(students => eachUser(students))
+    const showEachUser = this.state.allUsers.map((students, key) => eachUser(students, key))
 
     return (
       <div className='all-missions-container'>

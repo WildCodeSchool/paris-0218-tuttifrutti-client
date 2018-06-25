@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Button from './Button.js'
-import PageTitle from './PageTitle.js'
+import StudentPageTitle from './StudentPageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
@@ -31,7 +31,8 @@ class SignUpStudent extends React.Component {
         lastName: this.state.lastName,
         phone: this.state.phone,
         levelStudy: this.state.levelStudy,
-        field: this.state.field
+        field: this.state.field,
+        active: false
       }
       console.log(user)
 
@@ -48,7 +49,7 @@ class SignUpStudent extends React.Component {
           <div className='login-signup-content'>
             <div>
               <div className='title-component'>
-                <PageTitle title='Inscription'/>
+                <StudentPageTitle title='Inscription'/>
               </div>
               <div className='form-login-signup'>
                 <form className="form" onSubmit={this.HandleSubmit}>
