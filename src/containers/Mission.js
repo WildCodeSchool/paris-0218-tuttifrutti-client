@@ -43,12 +43,10 @@ class Mission extends React.Component {
         }
 
         render () {
-          const changeStatus = async (event) => {
+          const changeStatus = (event) => {
             event.preventDefault()
             this.setState({...this.state, finished: true})
-            const status = this.state
-            console.log(status)
-            await axios.put(`http://localhost:3030${this.missionId}`, { status })
+            axios.put(`http://localhost:3030${this.missionId}`, { finished: true })
               .then(res => {
                 console.log(res)
                 console.log(res.data)
