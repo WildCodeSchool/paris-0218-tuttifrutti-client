@@ -20,11 +20,10 @@ class Mission extends React.Component {
           description: '',
           finished: ''
         }
-
+        missionId = window.location.pathname
         componentDidMount () {
           console.log(window.location.pathname)
-          const missionId = window.location.pathname
-          axios.get(`http://localhost:3030${missionId}`)
+          axios.get(`http://localhost:3030${this.missionId}`)
             .then(console.log('ok'))
             .then((res) => {
               this.setState({
@@ -44,8 +43,16 @@ class Mission extends React.Component {
         }
 
         render () {
-          const changeStatus = () => {
+          const changeStatus = async (event) => {
+            event.preventDefault()
             this.setState({...this.state, finished: true})
+            const status = this.state
+            console.log(status)
+            await axios.put(`http://localhost:3030${this.missionId}`, { status })
+              .then(res => {
+                console.log(res)
+                console.log(res.data)
+              })
           }
           return (
             <div>
