@@ -6,18 +6,16 @@ import Footer from '../containers/Footer.js'
 import './style/AllMissionsPage.css'
 
 class AllMissionsPage extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <HomeLawyerHeader />
-                <MissionPageHeader to='/profile' text='< Retour au profil'/>
-                <AllMissions />
-                <Footer />
-            </div>
-        )
-    }
-
+  render () {
+    return (
+      <div>
+        <HomeLawyerHeader />
+        <MissionPageHeader to='/profile' text='< Retour au profil'/>
+        <AllMissions />
+        <Footer />
+      </div>
+    )
+  }
 }
 
 export default AllMissionsPage

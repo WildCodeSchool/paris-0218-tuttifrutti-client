@@ -4,15 +4,15 @@ import GoBack from '../components/GoBack.js'
 import MissionTitle from '../components/MissionTitle.js'
 import './style/MissionPageHeader.css'
 
-class MissionPageHeader extends React.Component {
+class OldMissionPageHeader extends React.Component {
   render () {
     return (
       <div>
-        <Link to={this.props.to}><GoBack text={this.props.text}/></Link>
-        <MissionTitle text='Missions en cours'/>
+        <Link to={this.props.to}><GoBack text={this.props.text} /></Link>
+        <MissionTitle text='Missions terminées' />
       </div>
     )
   }
 }
 
-export default MissionPageHeader
+export default OldMissionPageHeader

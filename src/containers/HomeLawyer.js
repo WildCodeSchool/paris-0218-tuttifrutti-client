@@ -15,14 +15,13 @@ class HomeLawyer extends Component {
         }
       }
       ).then(response => {
-
         response.json().then(responseJson => {
-            console.log(responseJson)
-            if (responseJson === 'notlogged') {
-              console.log('blop')
-              window.location.replace('/login')
-            }
-          })
+          console.log(responseJson)
+          if (responseJson === 'notlogged') {
+            console.log('blop')
+            window.location.replace('/login')
+          }
+        })
       })
     }
   }

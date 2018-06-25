@@ -7,27 +7,28 @@ import Login from './components/Login.js'
 import HomeLawyer from './containers/HomeLawyer.js'
 import AllMissionsPage from './containers/AllMissionsPage.js'
 import MissionPage from './containers/MissionPage.js'
+import OldMissionsPage from './containers/OldMissionsPage.js'
 
 class App extends Component {
-    render() {
-        return (
-            <div className='App'>
-                <BrowserRouter>
-                    <div>
-                        <Switch>
-                            <Route exact path="/" component={FrontPage}/>
-                            <Route exact path="/reg" component={SignUp}/>
-                            <Route exact path="/login" component={Login}/>
-                            <Route exact path="/profile" component={HomeLawyer}/>
-                            <Route exact path="/missions" component={AllMissionsPage} />
-                            <Route exact path="/missions/:missionId" component={MissionPage} />
-                        </Switch>
-                    </div>
-                </BrowserRouter>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='App'>
+        <BrowserRouter>
+          <div>
+            <Switch>
+              <Route exact path="/" component={FrontPage}/>
+              <Route exact path="/reg" component={SignUp}/>
+              <Route exact path="/login" component={Login}/>
+              <Route exact path="/profile" component={HomeLawyer}/>
+              <Route exact path="/missions" component={AllMissionsPage} />
+              <Route exact path="/missions/:missionId" component={MissionPage} />
+              <Route exact path="/oldmissions" component={OldMissionsPage} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </div>
+    )
+  }
 }
 
 export default App
-

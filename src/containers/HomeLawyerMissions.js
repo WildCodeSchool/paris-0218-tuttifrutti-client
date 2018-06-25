@@ -9,7 +9,7 @@ const HomeLawyerMissions = () => (
       <Link to={`/missions`}><MissionTitle className='lawyer-mission-title' text='Missions en cours' /></Link>
     </div>
     <div className='home-lawyer-oldmissions'>
-      <MissionTitle className='lawyer-mission-title' text='Historique des missions' />
+      <Link to={`/oldmissions`}><MissionTitle className='lawyer-mission-title' text='Historique des missions' /></Link>
     </div>
   </div>
 )
