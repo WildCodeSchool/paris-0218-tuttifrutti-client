@@ -12,13 +12,14 @@ class NewMission extends React.Component {
     deadline: '',
     price: '',
     description: '',
-    author: 'test'
+    author: 'test',
+    finished: false
   }
 
   UpdateField = event => { this.setState({ [event.target.name]: event.target.value }) }
 
   HandleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
     console.log('testest')
 
     const mission = this.state
@@ -27,12 +28,12 @@ class NewMission extends React.Component {
 
     axios.post(`http://localhost:3030/missions`, { mission })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        console.log(res)
+        console.log(res.data)
       })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <div className='login-signup-content'>

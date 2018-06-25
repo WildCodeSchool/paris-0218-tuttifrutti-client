@@ -12,52 +12,60 @@ import './style/Mission.css'
 
 class Mission extends React.Component {
         state = {
-            id: '',
-            name: '',
-            field: '',
-            deadline: '',
-            price: '',
-            description: ''
+          id: '',
+          name: '',
+          field: '',
+          deadline: '',
+          price: '',
+          description: '',
+          finished: ''
         }
 
-    componentDidMount() {
-        console.log(window.location.pathname)
-        const missionId = window.location.pathname
-        axios.get(`http://localhost:3030${missionId}`)
+        componentDidMount () {
+          console.log(window.location.pathname)
+          const missionId = window.location.pathname
+          axios.get(`http://localhost:3030${missionId}`)
             .then(console.log('ok'))
             .then((res) => {
-                this.setState({
-                    id: res.data._id,
-                    name: res.data.name,
-                    field: res.data.field,
-                    deadline: res.data.deadline,
-                    price: res.data.price,
-                    description: res.data.description
-                })
-                console.log(this.state)
+              this.setState({
+                id: res.data._id,
+                name: res.data.name,
+                field: res.data.field,
+                deadline: res.data.deadline,
+                price: res.data.price,
+                description: res.data.description,
+                finished: res.data.finished
+              })
+              console.log(this.state)
             })
             .catch((error) => {
-                console.log(error);
+              console.log(error)
             })
-    }
+        }
 
-    render() {
-        return (
+        render () {
+          const changeStatus = () => {
+            this.setState({...this.state, finished: true})
+          }
+          return (
             <div>
-                <MissionTitle text={this.state.name} />
-                <MissionId text={this.state.id} />
-                <MissionField text={this.state.field} />
-                <MissionDeadline text={this.state.deadline} />
-                <MissionPrice text={this.state.price} />
-                <MissionStudent text='Non attribué' /> {/* {this.state.student} */}
-                <MissionDescription text={this.state.description} />
-                <div className='buttons-mission'>
-                    <Button>Ajouter un document</Button>
-                    <Button>Envoyer un message</Button>
-                </div>
+              <MissionTitle text={this.state.name} />
+              <MissionId text={this.state.id} />
+              <MissionField text={this.state.field} />
+              <MissionDeadline text={this.state.deadline} />
+              <MissionPrice text={this.state.price} />
+              <MissionStudent text='Non attribué' /> {/* {this.state.student} */}
+              <MissionDescription text={this.state.description} />
+              <div className='buttons-mission'>
+                <Button>Ajouter un document</Button>
+                <Button>Envoyer un message</Button>
+              </div>
+              <div onClick={changeStatus}>
+                <Button>Mission terminée</Button>
+              </div>
             </div>
-        )
-    }
+          )
+        }
 }
 
 export default Mission
