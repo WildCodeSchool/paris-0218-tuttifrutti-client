@@ -43,7 +43,7 @@ class SignUp extends React.Component {
     //   toque: this.state.toque,
     //   field: this.state.field,
     // };
-    
+
     console.log(user)
 
     axios.post(`http://localhost:3030/reg`, { user })
@@ -58,32 +58,32 @@ class SignUp extends React.Component {
       <div>
         <div className='login-signup-content'>
           <div>
-            <div className='title-component'>
+            <div className='title-login-signup'>
               <PageTitle title='Inscription' />
             </div>
-            <div className='form-login-signup'>
-              <form className="form" onSubmit={this.HandleSubmit}>
-                <div>
-                  <input type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
-                  <input type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
+            <div className='form-login-signup-container'>
+              <form className="form-login-signup" onSubmit={this.HandleSubmit}>
+                <div className='form-div'>
+                  <input className='form-input-login-signup' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
+                  <input className='form-input-login-signup' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
                 </div>
-                <div>
-                  <input type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                  <input type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
+                <div className='form-div'>
+                  <input className='form-input-login-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
+                  <input className='form-input-login-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
                 </div>
-                <div>
-                  <input type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
-                  <input type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
+                <div className='form-div'>
+                  <input className='form-input-login-signup' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
+                  <input className='form-input-login-signup' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
                 </div>
-                <div>
-                  <input type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
+                <div className='form-div'>
+                  <input className='form-input-login-signup' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
                 </div>
-                <div>
-                  <input type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
-                  <input type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
+                <div className='form-div'>
+                  <input className='form-input-login-signup' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
+                  <input className='form-input-login-signup' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
                 </div>
-                <div>
-                  <select name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                <div className='form-div'>
+                  <select className='form-select-login-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
                     <option value="" disabled selected>Domaine</option>
                     <option value="1">droit2</option>
                     <option value="2">droit3</option>
@@ -91,9 +91,9 @@ class SignUp extends React.Component {
                     <option value="5">droit5</option>
                   </select>
                 </div>
-                <div>
-                  <input type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                  <input type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
+                <div className='form-div'>
+                  <input className='form-input-login-signup'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
+                  <input className='form-input-login-signup' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
                 </div>
                 <Button>S'inscrire</Button>
               </form>

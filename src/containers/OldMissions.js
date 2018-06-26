@@ -7,6 +7,7 @@ import MissionId from '../components/MissionId.js'
 import MissionStudent from '../components/MissionStudent.js'
 import MissionDeadline from '../components/MissionDeadline.js'
 import MissionPrice from '../components/MissionPrice.js'
+import ReportProblem from '../components/ReportProblem.js'
 import './style/OldMissions.css'
 
 class OldMissions extends React.Component {
@@ -61,7 +62,7 @@ class OldMissions extends React.Component {
       <div className='old-missions-container'>
         {showEachMission}
         <Modal open={open} onClose={this.onCloseModal} center>
-            {/* <ReportProblem /> */}<p>Test</p>
+          <ReportProblem />
           </Modal>
       </div>
     )

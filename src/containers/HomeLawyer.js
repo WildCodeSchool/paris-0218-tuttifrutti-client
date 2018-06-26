@@ -49,7 +49,7 @@ class HomeLawyer extends Component {
     return (
       <div className='home-lawyer'>
         <div><HomeLawyerHeader /></div>
-        <div onClick={this.onOpenModal}><HomeLawyerNewMission /></div>
+        <div className='create-new-mission' onClick={this.onOpenModal}><HomeLawyerNewMission /></div>
         <div><HomeLawyerMissions /></div>
         <div><Footer /></div>
 

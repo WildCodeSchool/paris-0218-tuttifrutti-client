@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './style/App.css'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import FrontPage from './containers/FrontPage.js'
 import SignUp from './components//SignUp.js'

@@ -47,14 +47,14 @@ class Login extends React.Component {
           <div>
             <div className='login-signup-content'>
               <div>
-                <div className='title-component'>
+                <div className='title-login-signup'>
                   <PageTitle title='Connexion' />
                 </div>
                 <div>
-                  <div className='form-login-signup'>
-                    <form className="form" onSubmit={this.HandleSubmit}>
-                      <input type="email" name="email" placeholder="Email" onChange={this.UpdateField}/>
-                      <input type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField}/>
+                  <div className='form-login-signup-cotainer'>
+                    <form className="form-login-signup" onSubmit={this.HandleSubmit}>
+                      <input  className='form-input-login-signup' type="email" name="email" placeholder="Email" onChange={this.UpdateField}/>
+                      <input className='form-input-login-signup' type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField}/>
                         <Button>Se connecter</Button>
                     </form>
                   </div>

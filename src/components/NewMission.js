@@ -38,26 +38,26 @@ class NewMission extends React.Component {
         <div className='new-mission-content'>
           <div>
               <h1 className="title-new-mission">Créer une nouvelle mission</h1>
-            <div className='form-login-signup'>
-              <form className="form" onSubmit={this.HandleSubmit}>
-                <div>
-                  <input type="text" name="name" placeholder="Intitulé de la mission" id="name" onChange={this.UpdateField} />
+            <div className='form-new-mission-container'>
+              <form className="form-new-mission" onSubmit={this.HandleSubmit}>
+                <div className='form-div'>
+                  <input className='form-input-new-mission' type="text" name="name" placeholder="Intitulé de la mission" id="name" onChange={this.UpdateField} />
                 </div>
-                <div>
-                  <select name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
-                    <option value="" disabled selected>Sélectionez votre domaine</option>
+                <div className='form-div'>
+                  <select className='form-select-new-mission ' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                    <option value="" disabled selected>Sélectionnez votre domaine</option>
                     <option>droit2</option>
                     <option>droit3</option>
                     <option>droit4</option>
                     <option>droit5</option>
                   </select>
                 </div>
-                <div>
-                  <input type="text" name="deadline" placeholder="Deadline" id="deadline" onChange={this.UpdateField} />
-                  <input type="text" name="price" placeholder="Rémunération" id="price" onChange={this.UpdateField} />
+                <div className='form-div'>
+                  <input className='form-input-new-mission' type="text" name="deadline" placeholder="Deadline" id="deadline" onChange={this.UpdateField} />
+                  <input className='form-input-new-mission' type="text" name="price" placeholder="Rémunération" id="price" onChange={this.UpdateField} />
                 </div>
-                <div>
-                  <textarea name="description" placeholder="Description de la mission" id="description" onChange={this.UpdateField} />
+                <div className='form-div'>
+                  <textarea className='form-textarea-new-mission' name="description" placeholder="Description de la mission" id="description" onChange={this.UpdateField} />
                 </div>
                 <Button>Valider</Button>
               </form>

@@ -1,0 +1,60 @@
+.report-problem-content {
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.title-report-problem {
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.form-report-problem-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem 0 0.8rem 0;
+}
+
+.form-report-problem {
+  width: 70%;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+
+.form-div {
+  display: flex;
+}
+
+.form-radio-button-report-problem {
+  margin: 0.3rem 0.6rem 0.3rem 0;
+  outline: none;
+}
+
+.form-radio-button-report-problem:focus {
+  margin: 0.3rem 0.6rem 0.3rem 0;
+  outline: none;
+}
+
+.form-textarea-report-problem {
+  width: 96%;
+  height: 20vh;
+  padding: 0.7rem;
+  margin: 1.2rem 0 0 0;
+  border: solid 0.07rem black;
+  outline: none;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  appearance: none;
+  -webkit-appearance: none;
+  resize: none;
+  overflow: auto;
+}
+
+.form-button-report-problem {
+  text-align: center;
+}
