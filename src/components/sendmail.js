@@ -3,7 +3,6 @@ Const nodemailer = require("nodemailer");
 Const app=express();
 /*
     Here we are configuring our SMTP Server details.
-    STMP is mail server which is responsible for sending and recieving email.
 */
 Const smtpTransport = nodemailer.createTransport({
     service: "Gmail",
