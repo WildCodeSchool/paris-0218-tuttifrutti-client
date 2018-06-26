@@ -1,9 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Button from './Button.js'
-import PageTitle from './PageTitle.js'
-import Footer from '../containers/Footer.js'
-import './style/LoginSignUpForm.css'
+import './style/NewMission.css'
 
 class NewMission extends React.Component {
   state = {
@@ -16,7 +14,8 @@ class NewMission extends React.Component {
     finished: false
   }
 
-  UpdateField = event => { this.setState({ [event.target.name]: event.target.value }) }
+  UpdateField = event => {
+    this.setState({ [event.target.name]: event.target.value }) }
 
   HandleSubmit = event => {
     event.preventDefault()
@@ -36,11 +35,9 @@ class NewMission extends React.Component {
   render () {
     return (
       <div>
-        <div className='login-signup-content'>
+        <div className='new-mission-content'>
           <div>
-            <div className='title-component'>
-              <PageTitle title='Créer une nouvelle mission' />
-            </div>
+              <h1 className="title-new-mission">Créer une nouvelle mission</h1>
             <div className='form-login-signup'>
               <form className="form" onSubmit={this.HandleSubmit}>
                 <div>
@@ -48,7 +45,7 @@ class NewMission extends React.Component {
                 </div>
                 <div>
                   <select name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
-                    <option value="" disabled selected>Domaine</option>
+                    <option value="" disabled selected>Sélectionez votre domaine</option>
                     <option>droit2</option>
                     <option>droit3</option>
                     <option>droit4</option>
@@ -60,14 +57,13 @@ class NewMission extends React.Component {
                   <input type="text" name="price" placeholder="Rémunération" id="price" onChange={this.UpdateField} />
                 </div>
                 <div>
-                  <input type="text" name="description" placeholder="Description de la mission" id="description" onChange={this.UpdateField} />
+                  <textarea name="description" placeholder="Description de la mission" id="description" onChange={this.UpdateField} />
                 </div>
                 <Button>Valider</Button>
               </form>
             </div>
           </div>
         </div>
-        <Footer />
       </div >
     )
   }
