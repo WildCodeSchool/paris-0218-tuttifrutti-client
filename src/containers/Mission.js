@@ -20,7 +20,7 @@ class Mission extends React.Component {
     price: '',
     description: '',
     finished: '',
-    open: false,
+    open: false
   }
 
   onOpenModal = (event) => {
@@ -88,7 +88,7 @@ class Mission extends React.Component {
         </div>
 
         <Modal open={open} onClose={this.onCloseModal} center>
-          {/* <ReportProblem /> */}<p>Test</p>
+          {/* <SendMessage /> */}<p>Test</p>
         </Modal>
       </div>
     )
