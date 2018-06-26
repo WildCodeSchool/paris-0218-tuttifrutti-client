@@ -1,0 +1,21 @@
+.home-lawyer-missions {
+  width: 100vw;
+  height: 38vh;
+  display: flex;
+}
+
+.home-lawyer-missions div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-lawyer-currentmissions {
+  background-color: rgb(161, 142, 142);
+}
+
+.home-lawyer-oldmissions {
+  background-color: rgb(97, 85, 85);
+}

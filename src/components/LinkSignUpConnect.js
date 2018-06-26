@@ -1,17 +1,13 @@
 import React from 'react'
-import SignUp from './SignUp.js'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Login from './Login.js'
 
-
-const LinkSignUpConnect = ({text1, text2, linkRoute}) =>{ return ( 
-    <Router>
-    <div>
-    <p>{text1} <Link to={{linkRoute}}>{text2}</Link></p>
-    <Route path={linkRoute} component={Login} /> 
-    </div>
-    </Router>
-)
+const LinkSignUpConnect = ({text1, text2, linkRoute}) => {
+  return (
+      <div>
+        <p>{text1} <Link to={{linkRoute}}>{text2}</Link></p>
+      </div>
+  )
 }
 
 export default LinkSignUpConnect

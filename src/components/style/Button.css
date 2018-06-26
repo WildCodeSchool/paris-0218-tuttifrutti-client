@@ -1,0 +1,12 @@
+button {
+  width: 8rem;
+  height: 2rem;
+  margin-top: 2rem;
+  background-color: grey;
+  color: white;
+  border: none;
+  border-radius: 0%;
+  text-transform: uppercase;
+  outline: none;
+  box-shadow: none;
+}
