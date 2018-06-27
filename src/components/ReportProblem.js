@@ -1,14 +1,22 @@
 import React from 'react'
+import { userInfo } from '../User.js'
+// import jwt_decode from 'jwt-decode'
 // import axios from 'axios'
 import Button from './Button.js'
 import './style/ReportProblem.css'
 
 class ReportProblem extends React.Component {
+
   state = {
     problem: '',
     autre: '',
-    author: 'test',
+    author: '',
     display: 'none'
+  }
+
+  componentDidMount () {
+    userInfo().then(res =>
+      this.setState({author: res.cabinet}))
   }
 
   UpdateField = event => {
