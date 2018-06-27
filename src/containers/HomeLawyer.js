@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Modal from 'react-responsive-modal'
 import HomeLawyerHeader from './HomeLawyerHeader.js'
 import HomeLawyerNewMission from './HomeLawyerNewMission.js'
@@ -10,19 +10,19 @@ import './style/HomeLawyer.css'
 class HomeLawyer extends Component {
 
   state = {
-    open: false,
+    open: false
   }
 
   onOpenModal = (event) => {
     event.preventDefault()
-    this.setState({open : true})
+    this.setState({ open: true })
   }
 
   onCloseModal = () => {
-    this.setState({open : false})
+    this.setState({ open: false })
   }
 
-  componentWillMount () {
+  componentWillMount() {
     const token = localStorage.getItem('token')
     if (token === null) { window.location.replace('/login') } else {
       fetch(`http://localhost:3030/secure`, {
@@ -42,7 +42,7 @@ class HomeLawyer extends Component {
     }
   }
 
-  render () {
+  render() {
 
     const { open } = this.state
 
@@ -53,7 +53,7 @@ class HomeLawyer extends Component {
         <div><HomeLawyerMissions /></div>
         <div><Footer /></div>
 
-      {/* Modal */}
+        {/* Modal */}
 
         <Modal open={open} onClose={this.onCloseModal} center>
           <NewMission />

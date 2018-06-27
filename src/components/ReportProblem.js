@@ -1,7 +1,5 @@
 import React from 'react'
 import { userInfo } from '../User.js'
-// import jwt_decode from 'jwt-decode'
-// import axios from 'axios'
 import Button from './Button.js'
 import './style/ReportProblem.css'
 
