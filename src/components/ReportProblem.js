@@ -7,7 +7,8 @@ class ReportProblem extends React.Component {
   state = {
     problem: '',
     autre: '',
-    author: 'test'
+    author: 'test',
+    display: 'none'
   }
 
   UpdateField = event => {
@@ -18,18 +19,28 @@ class ReportProblem extends React.Component {
     event.preventDefault()
     console.log('testest')
 
-  //   const mission = this.state
+    //   const mission = this.state
 
-  //   console.log(mission)
+    //   console.log(mission)
 
-  //   axios.post(`http://localhost:3030/missions`, { mission })
-  //     .then(res => {
-  //       console.log(res)
-  //       console.log(res.data)
-  //     })
-  }
+    //   axios.post(`http://localhost:3030/missions`, { mission })
+    //     .then(res => {
+      //       console.log(res)
+      //       console.log(res.data)
+      //     })
+    }
+
+    componentDidUpdate () {
+      if (this.state.display !== 'block' && this.state.problem === 'Autre') {
+        this.setState({display: 'block'})
+      }
+      else if (this.state.display === 'block' && this.state.problem !== 'Autre') {
+        this.setState({display: 'none'})
+      }
+    }
 
   render () {
+
     return (
       <div>
         <div className='report-problem-content'>
@@ -60,7 +71,7 @@ class ReportProblem extends React.Component {
                   Autre
                 </label>
               </div>
-              <div>
+              <div style={{display: this.state.display}}>
                 <textarea className='form-textarea-report-problem' name="autre" placeholder="Si autre, précisez le problème." id="autre" onChange={this.UpdateField} />
               </div>
               <div className='form-button-report-problem'>
