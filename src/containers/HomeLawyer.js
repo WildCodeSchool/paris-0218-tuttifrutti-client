@@ -47,19 +47,19 @@ class HomeLawyer extends Component {
     const { open } = this.state
 
     return (
-      <div className='home-lawyer'>
-        <div><HomeLawyerHeader /></div>
-        <div className='create-new-mission' onClick={this.onOpenModal}><HomeLawyerNewMission /></div>
-        <div><HomeLawyerMissions /></div>
-        <div><Footer /></div>
+        <div className='home-lawyer'>
+          <div><HomeLawyerHeader /></div>
+          <div className='create-new-mission' onClick={this.onOpenModal}><HomeLawyerNewMission /></div>
+          <div><HomeLawyerMissions /></div>
+          <div><Footer /></div>
 
-        {/* Modal */}
+          {/* Modal */}
 
-        <Modal open={open} onClose={this.onCloseModal} center>
-          <NewMission />
-        </Modal>
+          <Modal open={open} onClose={this.onCloseModal} center>
+            <NewMission />
+          </Modal>
 
-      </div>
+        </div>
     )
   }
 }

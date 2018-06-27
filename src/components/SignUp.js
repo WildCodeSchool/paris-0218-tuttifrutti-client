@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import HeaderSite from '../containers/HeaderSite.js'
 import Button from './Button.js'
 import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
@@ -56,6 +57,7 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
+        <HeaderSite redirect='/'/>
         <div className='login-signup-content'>
           <div>
             <div className='title-login-signup'>
