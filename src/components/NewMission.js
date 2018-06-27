@@ -37,7 +37,7 @@ class NewMission extends React.Component {
       <div>
         <div className='new-mission-content'>
           <div>
-              <h1 className="title-new-mission">Créer une nouvelle mission</h1>
+            <h1 className="title-new-mission">Créer une nouvelle mission</h1>
             <div className='form-new-mission-container'>
               <form className="form-new-mission" onSubmit={this.HandleSubmit}>
                 <div className='form-div'>

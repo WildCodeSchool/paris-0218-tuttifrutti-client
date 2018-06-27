@@ -9,6 +9,7 @@ import MissionDeadline from '../components/MissionDeadline.js'
 import MissionPrice from '../components/MissionPrice.js'
 import MissionStudent from '../components/MissionStudent.js'
 import MissionDescription from '../components/MissionDescription.js'
+import SendMessage from '../components/SendMessage.js'
 import './style/Mission.css'
 
 class Mission extends React.Component {
@@ -34,7 +35,7 @@ class Mission extends React.Component {
 
   missionId = window.location.pathname
 
-  componentDidMount() {
+  componentDidMount () {
     console.log(window.location.pathname)
     axios.get(`http://localhost:3030${this.missionId}`)
       .then(console.log('ok'))
@@ -55,8 +56,7 @@ class Mission extends React.Component {
       })
   }
 
-  render() {
-
+  render () {
     const changeStatus = (event) => {
       event.preventDefault()
       this.setState({ ...this.state, finished: true })
@@ -68,7 +68,6 @@ class Mission extends React.Component {
     }
 
     const { open } = this.state
-
 
     return (
       <div>
@@ -88,7 +87,7 @@ class Mission extends React.Component {
         </div>
 
         <Modal open={open} onClose={this.onCloseModal} center>
-          {/* <SendMessage /> */}<p>Test</p>
+          <SendMessage />
         </Modal>
       </div>
     )
