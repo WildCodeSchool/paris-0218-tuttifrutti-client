@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import GoBack from '../components/GoBack.js'
 import MissionTitle from '../components/MissionTitle.js'
-import './style/MissionPageHeader.css'
 
 class OldMissionPageHeader extends React.Component {
   render () {

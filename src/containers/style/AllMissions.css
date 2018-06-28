@@ -18,6 +18,6 @@
   justify-content: center;
 }
 
-.button-mission-more :first-child {
+.button-mission-more:first-child {
   margin: 8px;
 }

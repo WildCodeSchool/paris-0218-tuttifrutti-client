@@ -1,4 +1,5 @@
 import React from 'react'
+import HeaderSite from '../containers/HeaderSite.js'
 import Button from './Button.js'
 import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
@@ -6,17 +7,20 @@ import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 
 class Login extends React.Component {
+
     state = {
       email: '',
       password: '',
       hasError: false
     }
 
-    UpdateField = event => {
-      this.setState({
-        [event.target.name]: event.target.value
-      })
-    }
+
+  UpdateField = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
 
     HandleSubmit = (event, req, res) => {
       event.preventDefault()
@@ -39,7 +43,9 @@ class Login extends React.Component {
             else {window.location.replace('/profile')}     
           })
       })
-    }
+
+
+
 
     render () {
       let notValid = ''
@@ -61,16 +67,16 @@ class Login extends React.Component {
                     <Button>Se connecter</Button>
                   </form>
                 </div>
-              </div>
-              <div className='link-signup-connect'>
-                <LinkSignUpConnect text1='Pas encore inscrit ?' text2='Créez votre compte' linkRoute='/reg' />
-              </div>
+
+            <div className='link-signup-connect'>
+              <LinkSignUpConnect text1='Pas encore inscrit ?' text2='Créez votre compte' linkRoute='/reg' />
             </div>
           </div>
-          <Footer />
         </div>
-      )
-    }
+        <Footer />
+      </div>
+    )
+  }
 }
 
 export default Login

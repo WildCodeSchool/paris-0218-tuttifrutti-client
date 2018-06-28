@@ -3,7 +3,6 @@ import HomeLawyerHeader from './HomeLawyerHeader.js'
 import OldMissions from '../containers/OldMissions.js'
 import OldMissionPageHeader from '../containers/OldMissionPageHeader.js'
 import Footer from '../containers/Footer.js'
-import './style/OldMissionsPage.css'
 
 class OldMissionsPage extends React.Component {
   render () {

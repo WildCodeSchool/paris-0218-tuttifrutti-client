@@ -8,7 +8,6 @@ import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 
 class SignUp extends React.Component {
-
   state = {
     email: '',
     password: '',
@@ -26,7 +25,7 @@ class SignUp extends React.Component {
   UpdateField = event => { this.setState({ [event.target.name]: event.target.value }) }
 
   HandleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
     console.log('testest')
 
     const user = this.state
@@ -49,12 +48,12 @@ class SignUp extends React.Component {
 
     axios.post(`http://localhost:3030/reg`, { user })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        console.log(res)
+        console.log(res.data)
       })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <HeaderSite redirect='/'/>

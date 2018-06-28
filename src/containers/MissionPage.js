@@ -3,7 +3,6 @@ import HomeLawyerHeader from './HomeLawyerHeader.js'
 import Mission from '../containers/Mission.js'
 import MissionPageHeader from '../containers/MissionPageHeader.js'
 import Footer from '../containers/Footer.js'
-import './style/MissionPage.css'
 
 class MissionPage extends React.Component {
   render () {
