@@ -15,8 +15,9 @@ class Parameters extends React.Component {
     userInfo().then(res =>
       this.setState({
         lawyer: {
+          id: res._id,
           email: res.email,
-          password: res.password,
+          password: '',
           firstName: res.firstName,
           lastName: res.lastName,
           cabinet: res.cabinet,
@@ -30,11 +31,10 @@ class Parameters extends React.Component {
       }))
   }
 
-  UpdateField = event => { this.setState({ lawyer: {[event.target.name]: event.target.value} }) }
+  UpdateField = event => { this.setState({ lawyer: {...this.state.lawyer, [event.target.name]: event.target.value} }) }
 
   HandleSubmit = event => {
     event.preventDefault()
-    console.log('testest')
 
     const user = this.state.lawyer
 
@@ -42,8 +42,7 @@ class Parameters extends React.Component {
 
     axios.put(`http://localhost:3030/infolawyer`, { user })
       .then(res => {
-        console.log(res)
-        console.log(res.data)
+        console.log('ok')
       })
   }
 
@@ -69,7 +68,7 @@ class Parameters extends React.Component {
               <div>
                 <h2>Identifiants</h2>
                 <p className="parameters-p">Email&nbsp;: {this.state.lawyer.email}</p>
-                <p className="parameters-p">Mot de passe&nbsp;: {this.state.lawyer.password}</p>
+                <p className="parameters-p">Mot de passe&nbsp;: ******</p>
               </div>
               <div>
                 <h2>Informations personnelles</h2>
@@ -119,8 +118,8 @@ class Parameters extends React.Component {
                     </select>
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-parameters' type="password" name="password" value={this.state.lawyer.password} placeholder={this.state.lawyer.password} id="password" onChange={this.UpdateField} />
-                    <input className='form-input-parameters' type="password" name="password" value={this.state.lawyer.password} placeholder={this.state.lawyer.password} id="passwordComfirm" />
+                    <input className='form-input-parameters' type="password" name="password" placeholder='Nouveau mot de passe' id="password" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="password" name="password" placeholder="Confirmez le nouveau mot de passe" id="passwordComfirm" />
                   </div>
                   <div>
                     <Button>Enregistrer</Button>
