@@ -17,6 +17,8 @@ class Parameters extends React.Component {
     // zipCode: '',
     // toque: '',
     // field: ''
+    displayInfo: 'block',
+    displayForm: 'none'
   }
 
   componentDidMount () {
@@ -53,6 +55,16 @@ class Parameters extends React.Component {
     //   })
   }
 
+  showUpdateForm = () => {
+    this.setState({ displayInfo: 'none', displayForm: 'block' })
+    console.log('youhou!!')
+  }
+
+  hideUpdateForm = () => {
+    this.setState({ displayInfo: 'block', displayForm: 'none' })
+    console.log('youhouououo!!!!')
+  }
+
   render () {
     return (
       <div>
@@ -61,59 +73,72 @@ class Parameters extends React.Component {
             <div>
               <h1 className='title-parameters'>Paramètres du compte</h1>
             </div>
-            <div>
-              <p>Email&nbsp;: {this.state.email}</p>
-              <p>Mot de passe&nbsp;: {this.state.password}</p>
+            <div className="parameters-profile" style={{ display: this.state.displayInfo }}>
+              <div>
+                <h2>Identifiants</h2>
+                <p className="parameters-p">Email&nbsp;: {this.state.email}</p>
+                <p className="parameters-p">Mot de passe&nbsp;: {this.state.password}</p>
+              </div>
+              <div>
+                <h2>Informations personnelles</h2>
+                <p className="parameters-p">Prénom&nbsp;: {this.state.firstName}</p>
+                <p className="parameters-p">Nom&nbsp;: {this.state.lastName}</p>
+                <p className="parameters-p">Cabinet&nbsp;: {this.state.cabinet}</p>
+                <p className="parameters-p">Numéro de téléphone&nbsp;: {this.state.phone}</p>
+                <p className="parameters-p">Adresse&nbsp;: {this.state.address}</p>
+                <p className="parameters-p">Ville&nbsp;: {this.state.city}</p>
+                <p className="parameters-p">Code Postal&nbsp;: {this.state.zipCode}</p>
+                <p className="parameters-p">Numéro de toque&nbsp;: {this.state.toque}</p>
+                <p className="parameters-p">Spécialité en droit&nbsp;: {this.state.field}</p>
+              </div>
+              <div onClick={this.showUpdateForm}>
+                <Button>Modifier</Button>
+              </div>
             </div>
-            <div>
-              <p>Prénom&nbsp;: {this.state.firstName}</p>
-              <p>Nom&nbsp;: {this.state.lastName}</p>
-              <p>Cabinet&nbsp;: {this.state.cabinet}</p>
-              <p>Numéro de téléphone&nbsp;: {this.state.phone}</p>
-              <p>Adresse&nbsp;: {this.state.address}</p>
-              <p>Ville&nbsp;: {this.state.city}</p>
-              <p>Code Postal&nbsp;: {this.state.zipCode}</p>
-              <p>Numéro de toque&nbsp;: {this.state.toque}</p>
-              <p>Spécialité en droit&nbsp;: {this.state.field}</p>
+            <div style={{ display: this.state.displayForm }}>
+              <div className='form-parameters-container'>
+                <form className="form-parameters" onSubmit={this.HandleSubmit}>
+                  <div className='form-div'>
+                    <input className='form-input-parameters' type="text" name="firstName" placeholder={this.state.firstName} id="firstName" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="lastName" placeholder={this.state.lastName} id="lastName" onChange={this.UpdateField} />
+                  </div>
+                  <div className='form-div'>
+                    <input className='form-input-parameters' type="email" name="email" placeholder={this.state.email} id="email" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="phone" placeholder={this.state.phone} id="phone" onChange={this.UpdateField} />
+                  </div>
+                  <div className='form-div'>
+                    <input className='form-input-parameters' type="text" name="cabinet" placeholder={this.state.cabinet} id="cabinet" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="toque" placeholder={this.state.toque} id="toque" onChange={this.UpdateField} />
+                  </div>
+                  <div className='form-div'>
+                    <input className='form-input-parameters' type="text" name="address" placeholder={this.state.address} id="address" onChange={this.UpdateField} />
+                  </div>
+                  <div className='form-div'>
+                    <input className='form-input-parameters' type="text" name="zipCode" placeholder={this.state.zipCode} id="zipCode" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="city" placeholder={this.state.city} id="city" onChange={this.UpdateField} />
+                  </div>
+                  <div className='form-div'>
+                    <select className='form-select-parameters' name="field" placeholder={this.state.field} id="field" onChange={this.UpdateField} >
+                      <option value="" disabled selected>{this.state.field}</option>
+                      <option value="1">droit2</option>
+                      <option value="2">droit3</option>
+                      <option value="3">droit4</option>
+                      <option value="5">droit5</option>
+                    </select>
+                  </div>
+                  <div className='form-div'>
+                    <input className='form-input-parameters' type="password" name="password" placeholder={this.state.password} id="password" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="password" name="password" placeholder={this.state.password} id="passwordComfirm" />
+                  </div>
+                  <div>
+                    <Button>Enregistrer</Button>
+                  </div>
+                </form>
+              </div>
+              <div onClick={this.hideUpdateForm}>
+                <Button>Annuler</Button>
+              </div>
             </div>
-            {/* <div className='form-parameters-container'>
-              <form className="form-parameters" onSubmit={this.HandleSubmit}>
-                <div className='form-div'>
-                  <input className='form-input-parameters' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
-                  <input className='form-input-parameters' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
-                </div>
-                <div className='form-div'>
-                  <input className='form-input-parameters' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                  <input className='form-input-parameters' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
-                </div>
-                <div className='form-div'>
-                  <input className='form-input-parameters' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
-                  <input className='form-input-parameters' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
-                </div>
-                <div className='form-div'>
-                  <input className='form-input-parameters' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
-                </div>
-                <div className='form-div'>
-                  <input className='form-input-parameters' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
-                  <input className='form-input-parameters' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
-                </div>
-                <div className='form-div'>
-                  <select className='form-select-parameters' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
-                    <option value="" disabled selected>Domaine</option>
-                    <option value="1">droit2</option>
-                    <option value="2">droit3</option>
-                    <option value="3">droit4</option>
-                    <option value="5">droit5</option>
-                  </select>
-                </div>
-                <div className='form-div'>
-                  <input className='form-input-parameters'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                  <input className='form-input-parameters' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
-                </div>
-                <Button>S'inscrire</Button>
-              </form>
-            </div> */}
-            <Button>Modifier</Button>
           </div>
         </div>
       </div>

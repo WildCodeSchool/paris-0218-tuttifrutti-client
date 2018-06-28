@@ -12,6 +12,18 @@
   font-weight: bold;
 }
 
+.parameters-p {
+    font-size: 0.8rem;
+}
+
+.parameters-profile h2 {
+   color: black;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold; 
+}
+
 .form-parameters-container {
   display: flex;
   align-content: center;
