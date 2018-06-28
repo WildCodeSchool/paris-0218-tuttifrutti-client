@@ -8,7 +8,6 @@ import Footer from './Footer.js'
 import './style/HomeLawyer.css'
 
 class HomeLawyer extends Component {
-
   state = {
     open: false
   }
@@ -22,7 +21,7 @@ class HomeLawyer extends Component {
     this.setState({ open: false })
   }
 
-  componentWillMount() {
+  componentWillMount () {
     const token = localStorage.getItem('token')
     if (token === null) { window.location.replace('/login') } else {
       fetch(`http://localhost:3030/secure`, {
@@ -42,24 +41,23 @@ class HomeLawyer extends Component {
     }
   }
 
-  render() {
-
+  render () {
     const { open } = this.state
 
     return (
-        <div className='home-lawyer'>
-          <div><HomeLawyerHeader /></div>
-          <div className='create-new-mission' onClick={this.onOpenModal}><HomeLawyerNewMission /></div>
-          <div><HomeLawyerMissions /></div>
-          <div><Footer /></div>
+      <div className='home-lawyer'>
+        <div><HomeLawyerHeader /></div>
+        <div className='create-new-mission' onClick={this.onOpenModal}><HomeLawyerNewMission /></div>
+        <div><HomeLawyerMissions /></div>
+        <div><Footer /></div>
 
-          {/* Modal */}
+        {/* Modal */}
 
-          <Modal open={open} onClose={this.onCloseModal} center>
-            <NewMission />
-          </Modal>
+        <Modal open={open} onClose={this.onCloseModal} center>
+          <NewMission />
+        </Modal>
 
-        </div>
+      </div>
     )
   }
 }
