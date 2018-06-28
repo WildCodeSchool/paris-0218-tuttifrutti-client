@@ -1,4 +1,5 @@
 import React from 'react'
+import { userInfo } from '../User.js'
 import axios from 'axios'
 import Button from './Button.js'
 import './style/NewMission.css'
@@ -10,12 +11,18 @@ class NewMission extends React.Component {
     deadline: '',
     price: '',
     description: '',
-    author: 'test',
+    author: '',
     finished: false
   }
 
+  componentDidMount () {
+    userInfo().then(res =>
+      this.setState({ author: res._id }))
+  }
+
   UpdateField = event => {
-    this.setState({ [event.target.name]: event.target.value }) }
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
   HandleSubmit = event => {
     event.preventDefault()
