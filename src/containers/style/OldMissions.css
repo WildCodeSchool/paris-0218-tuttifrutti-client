@@ -1,0 +1,28 @@
+.old-missions-container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.each-mission-container {
+  width: 20%;
+  margin: 0.1rem;
+  padding: 2rem;
+  background-color: darkgray;
+  color: black;
+  flex-grow: 1;
+}
+
+.old-missions-button {
+  display: flex;
+  justify-content: center;
+  margin: 0.4rem;
+}
+
+.old-missions-button :first-child {
+  margin: 0 0.4rem;
+}
+
+.old-missions-button :last-child {
+  margin: 0 0.4rem;
+}

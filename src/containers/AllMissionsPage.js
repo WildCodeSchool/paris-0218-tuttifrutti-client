@@ -1,21 +1,21 @@
 import React from 'react'
 import HomeLawyerHeader from './HomeLawyerHeader.js'
-import Mission from '../containers/Mission.js'
+import AllMissions from '../containers/AllMissions.js'
 import MissionPageHeader from '../containers/MissionPageHeader.js'
 import Footer from '../containers/Footer.js'
-import './style/MissionPage.css'
+import './style/AllMissionsPage.css'
 
-class MissionPage extends React.Component {
+class AllMissionsPage extends React.Component {
   render () {
     return (
       <div>
         <HomeLawyerHeader />
-        <MissionPageHeader to='/missions' text='< Retour à la liste des missions'/>
-        <Mission />
+        <MissionPageHeader to='/profile' text='< Retour au profil'/>
+        <AllMissions />
         <Footer />
       </div>
     )
   }
 }
 
-export default MissionPage
+export default AllMissionsPage

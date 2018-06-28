@@ -21,7 +21,9 @@ class Mission extends React.Component {
         }
 
     componentDidMount() {
-        axios.get(`http://localhost:3030/missions/5b1fe8dfd9cdec2879abad2a`)
+        console.log(window.location.pathname)
+        const missionId = window.location.pathname
+        axios.get(`http://localhost:3030${missionId}`)
             .then(console.log('ok'))
             .then((res) => {
                 this.setState({
