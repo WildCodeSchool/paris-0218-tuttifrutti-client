@@ -1,7 +1,7 @@
-button {
+.button {
   width: 8rem;
   height: 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: grey;
   color: white;
   border: none;

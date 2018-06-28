@@ -1,0 +1,12 @@
+.buttons-mission {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-mission :first-child {
+  margin: 8px;
+}
+
+.buttons-mission :last-child {
+  margin: 8px;
+}
