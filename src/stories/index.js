@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
+// import { action } from '@storybook/addon-actions'
+// import { linkTo } from '@storybook/addon-links'
 import SignUp from '../components/SignUp.js'
 import Login from '../components/Login.js'
 import Footer from '../containers/Footer.js'
@@ -13,6 +13,7 @@ import HomeLawyerNewMission from '../containers/HomeLawyerNewMission.js'
 import NewMission from '../components/NewMission.js'
 import AllMissions from '../containers/AllMissions.js'
 import MissionPage from '../containers/MissionPage.js'
+import Parameters from '../components/Parameters.js'
 
 storiesOf('Inscription', module)
   .add('Page globale', () => <SignUp />)
@@ -40,3 +41,6 @@ storiesOf('Afficher une mission', module)
 
 storiesOf('Afficher les missions en cours', module)
   .add('AllMissions', () => <AllMissions />)
+
+storiesOf('Modifier les paramètres', module)
+  .add('Parameters', () => <Parameters />)

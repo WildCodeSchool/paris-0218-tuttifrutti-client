@@ -1,13 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import HeaderSite from '../containers/HeaderSite.js'
-import Button from './Button.js'
+// import Button from './Button.js'
 import PageTitle from './PageTitle.js'
-import LinkSignUpConnect from './LinkSignUpConnect.js'
-import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 
-class SignUp extends React.Component {
+class Parameters extends React.Component {
   state = {
     email: '',
     password: '',
@@ -56,35 +53,49 @@ class SignUp extends React.Component {
   render () {
     return (
       <div>
-        <HeaderSite redirect='/'/>
-        <div className='login-signup-content'>
+        <div className='login-parameters-content'>
           <div>
-            <div className='title-login-signup'>
+            <div className='title-login-parameters'>
               <PageTitle title='Inscription' />
             </div>
-            <div className='form-login-signup-container'>
-              <form className="form-login-signup" onSubmit={this.HandleSubmit}>
+            <div>
+              <p>{this.state.email}</p>
+              <p>{this.state.password}</p>
+            </div>
+            <div>
+              <p>{this.state.firstName}</p>
+              <p>{this.state.lastName}</p>
+              <p>{this.state.cabinet}</p>
+              <p>{this.state.phone}</p>
+              <p>{this.state.address}</p>
+              <p>{this.state.city}</p>
+              <p>{this.state.zipCode}</p>
+              <p>{this.state.toque}</p>
+              <p>{this.state.field}</p>
+            </div>
+            {/* <div className='form-login-parameters-container'>
+              <form className="form-login-parameters" onSubmit={this.HandleSubmit}>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <select className='form-select-login-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                  <select className='form-select-login-parameters' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
                     <option value="" disabled selected>Domaine</option>
                     <option value="1">droit2</option>
                     <option value="2">droit3</option>
@@ -93,20 +104,17 @@ class SignUp extends React.Component {
                   </select>
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
+                  <input className='form-input-login-parameters'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
+                  <input className='form-input-login-parameters' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
                 </div>
                 <Button>S'inscrire</Button>
               </form>
-            </div>
-            <div className='link-signup-connect'><LinkSignUpConnect text1='Déjà inscrit ?' text2='Connectez-vous' linkRoute='/login' />
-            </div>
+            </div> */}
           </div>
         </div>
-        <Footer />
       </div>
     )
   }
 }
 
-export default SignUp
+export default Parameters

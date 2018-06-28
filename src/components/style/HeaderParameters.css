@@ -2,6 +2,8 @@
   text-align: center;
 }
 
-.account-parameters div a {
+.account-parameters p {
   color: black;
+  cursor: pointer;
+  text-decoration: underline;
 }
