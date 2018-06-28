@@ -1,22 +1,39 @@
 import React from 'react'
-import axios from 'axios'
-// import Button from './Button.js'
-import PageTitle from './PageTitle.js'
-import './style/LoginSignUpForm.css'
+import { userInfo } from '../User.js'
+// import axios from 'axios'
+import Button from './Button.js'
+import './style/Parameters.css'
 
 class Parameters extends React.Component {
   state = {
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    cabinet: '',
-    phone: '',
-    address: '',
-    city: '',
-    zipCode: '',
-    toque: '',
-    field: ''
+    // email: '',
+    // password: '',
+    // firstName: '',
+    // lastName: '',
+    // cabinet: '',
+    // phone: '',
+    // address: '',
+    // city: '',
+    // zipCode: '',
+    // toque: '',
+    // field: ''
+  }
+
+  componentDidMount () {
+    userInfo().then(res =>
+      this.setState({
+        email: res.email,
+        password: res.password,
+        firstName: res.firstName,
+        lastName: res.lastName,
+        cabinet: res.cabinet,
+        phone: res.phone,
+        address: res.address,
+        city: res.city,
+        zipCode: res.zipCode,
+        toque: res.toque,
+        field: res.field
+      }))
   }
 
   UpdateField = event => { this.setState({ [event.target.name]: event.target.value }) }
@@ -25,77 +42,63 @@ class Parameters extends React.Component {
     event.preventDefault()
     console.log('testest')
 
-    const user = this.state
+    // const user = this.state
 
-    // const user = {
-    //   email: this.state.email,
-    //   password: this.state.password,
-    //   firstName: this.state.firstName,
-    //   lastName: this.state.lastName,
-    //   cabinet: this.state.cabinet,
-    //   phone: this.state.phone,
-    //   address: this.state.address,
-    //   city: this.state.city,
-    //   zipCode: this.state.zipCode,
-    //   toque: this.state.toque,
-    //   field: this.state.field,
-    // };
+    // console.log(user)
 
-    console.log(user)
-
-    axios.post(`http://localhost:3030/reg`, { user })
-      .then(res => {
-        console.log(res)
-        console.log(res.data)
-      })
+    // axios.post(`http://localhost:3030/infolawyer`)
+    //   .then(res => {
+    //     console.log(res)
+    //     console.log(res.data)
+    //   })
   }
 
   render () {
     return (
       <div>
-        <div className='login-parameters-content'>
+        <div className='parameters-content'>
           <div>
-            <div className='title-login-parameters'>
-              <PageTitle title='Inscription' />
+            <div>
+              <h1 className='title-parameters'>Paramètres du compte</h1>
             </div>
             <div>
-              <p>{this.state.email}</p>
-              <p>{this.state.password}</p>
+              <p>Email&nbsp;: {this.state.email}</p>
+              <p>Mot de passe&nbsp;: {this.state.password}</p>
             </div>
             <div>
-              <p>{this.state.firstName}</p>
-              <p>{this.state.lastName}</p>
-              <p>{this.state.cabinet}</p>
-              <p>{this.state.phone}</p>
-              <p>{this.state.address}</p>
-              <p>{this.state.city}</p>
-              <p>{this.state.zipCode}</p>
-              <p>{this.state.toque}</p>
-              <p>{this.state.field}</p>
+              <p>Prénom&nbsp;: {this.state.firstName}</p>
+              <p>Nom&nbsp;: {this.state.lastName}</p>
+              <p>Cabinet&nbsp;: {this.state.cabinet}</p>
+              <p>Numéro de téléphone&nbsp;: {this.state.phone}</p>
+              <p>Adresse&nbsp;: {this.state.address}</p>
+              <p>Ville&nbsp;: {this.state.city}</p>
+              <p>Code Postal&nbsp;: {this.state.zipCode}</p>
+              <p>Numéro de toque&nbsp;: {this.state.toque}</p>
+              <p>Spécialité en droit&nbsp;: {this.state.field}</p>
             </div>
-            {/* <div className='form-login-parameters-container'>
-              <form className="form-login-parameters" onSubmit={this.HandleSubmit}>
+            {/* <div className='form-parameters-container'>
+              <form className="form-parameters" onSubmit={this.HandleSubmit}>
                 <div className='form-div'>
-                  <input className='form-input-login-parameters' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
-                  <input className='form-input-login-parameters' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-parameters' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                  <input className='form-input-login-parameters' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-parameters' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
-                  <input className='form-input-login-parameters' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-parameters' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-parameters' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
-                  <input className='form-input-login-parameters' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <select className='form-select-login-parameters' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                  <select className='form-select-parameters' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
                     <option value="" disabled selected>Domaine</option>
                     <option value="1">droit2</option>
                     <option value="2">droit3</option>
@@ -104,12 +107,13 @@ class Parameters extends React.Component {
                   </select>
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-parameters'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                  <input className='form-input-login-parameters' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
+                  <input className='form-input-parameters'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
+                  <input className='form-input-parameters' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
                 </div>
                 <Button>S'inscrire</Button>
               </form>
             </div> */}
+            <Button>Modifier</Button>
           </div>
         </div>
       </div>
