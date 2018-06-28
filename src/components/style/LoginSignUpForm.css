@@ -72,6 +72,13 @@
   font-size: 0.9rem;
 }
 
+.valid {
+  color: red;
+  font-size: 1rem;
+  justify-content: center;
+  padding-top: 1vh;
+}
+
 /* SIGNUP FORM */
 
 #address {

@@ -7,10 +7,13 @@ import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 
 class Login extends React.Component {
-  state = {
-    email: '',
-    password: ''
-  }
+
+    state = {
+      email: '',
+      password: '',
+      hasError: false
+    }
+
 
   UpdateField = event => {
     this.setState({
@@ -18,49 +21,53 @@ class Login extends React.Component {
     })
   }
 
-  HandleSubmit = (event, req, res) => {
-    event.preventDefault()
-    const creds = {
-      email: this.state.email,
-      password: this.state.password
-    }
-    fetch(`http://localhost:3030/login`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      // credentials: 'include',
-      body: JSON.stringify({ creds })
-    }).then(response => {
-      response.json()
-        .then(responseJson => {
-          localStorage.setItem('token', responseJson.token)
-        })
-    })
-  }
 
-  componentDidMount() {
-    fetch('http://localhost:3030/')
-  }
+    HandleSubmit = (event, req, res) => {
+      event.preventDefault()
+      const creds = {
+        email: this.state.email,
+        password: this.state.password
+      }
+      fetch(`http://localhost:3030/login`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({creds})
+      }).then(response => {
+        response.json()
+          .then(responseJson => {
+            localStorage.setItem('token', responseJson.token)
+          }).then(redirect => {
+            if (localStorage.getItem('token') === 'undefined') {this.setState({hasError: true})} 
+            else {window.location.replace('/profile')}     
+          })
+      })
 
-  render() {
-    return (
-      <div>
-        <HeaderSite redirect='/' />
-        <div className='login-signup-content'>
-          <div>
-            <div className='title-login-signup'>
-              <PageTitle title='Connexion' />
-            </div>
+
+
+
+    render () {
+      let notValid = ''
+      if (this.state.hasError === true) { notValid = `Votre identifiant est inconnu ou votre mot de passe est faux. Veuillez réessayer en corrigeant votre saisie.` } else {notValid = ''}
+  
+      return (
+        <div>
+          <div className='login-signup-content'>
             <div>
-              <div className='form-login-signup-cotainer'>
-                <form className="form-login-signup" onSubmit={this.HandleSubmit}>
-                  <input className='form-input-login-signup' type="email" name="email" placeholder="Email" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField} />
-                  <Button>Se connecter</Button>
-                </form>
+              <div className='title-component'>
+                <PageTitle title='Connexion' />
               </div>
-            </div>
+              <div>
+                <div className='form-login-signup'>
+                  <form className="form" onSubmit={this.HandleSubmit}>
+                    <input type="email" name="email" placeholder="Email" onChange={this.UpdateField}/>
+                    <input type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField}/>
+                    <div className='valid'> {notValid} </div>
+                    <Button>Se connecter</Button>
+                  </form>
+                </div>
+
             <div className='link-signup-connect'>
               <LinkSignUpConnect text1='Pas encore inscrit ?' text2='Créez votre compte' linkRoute='/reg' />
             </div>
