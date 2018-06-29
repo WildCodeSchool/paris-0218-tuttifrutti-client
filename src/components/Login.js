@@ -63,7 +63,7 @@ class Login extends React.Component {
               <PageTitle title='Connexion' />
             </div>
             <div>
-              <div className='form-login-signup-cotainer'>
+              <div className='form-login-signup-container'>
                 <form className="form-login-signup" onSubmit={this.HandleSubmit}>
                   <input className='form-input-login-signup' type="email" name="email" placeholder="Email" onChange={this.UpdateField} />
                   <input className='form-input-login-signup' type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField} />

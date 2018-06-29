@@ -33,18 +33,6 @@ class Parameters extends React.Component {
 
   UpdateField = event => { this.setState({ lawyer: {...this.state.lawyer, [event.target.name]: event.target.value} }) }
 
-  HandleSubmit = event => {
-    event.preventDefault()
-
-    const user = this.state.lawyer
-
-    console.log(user)
-
-    axios.put(`http://localhost:3030/infolawyer`, { user })
-      .then(res => {
-        console.log('ok')
-      })
-  }
 
   showUpdateForm = () => {
     this.setState({ displayInfo: 'none', displayForm: 'block' })
@@ -56,6 +44,20 @@ class Parameters extends React.Component {
     console.log('youhouououo!!!!')
   }
 
+  HandleSubmit = event => {
+    event.preventDefault()
+
+    const user = this.state.lawyer
+
+    console.log(user)
+
+    axios.put(`http://localhost:3030/infolawyer`, { user })
+      .then(res => {
+        console.log('ok')
+      })
+
+    this.hideUpdateForm()
+  }
   render () {
     return (
       <div>

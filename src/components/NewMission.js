@@ -37,6 +37,8 @@ class NewMission extends React.Component {
         console.log(res)
         console.log(res.data)
       })
+
+    {this.close}
   }
 
   render () {
