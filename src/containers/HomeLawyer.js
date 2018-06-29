@@ -2,27 +2,37 @@ import React, { Component } from 'react'
 import Modal from 'react-responsive-modal'
 import HomeLawyerHeader from './HomeLawyerHeader.js'
 import HomeLawyerNewMission from './HomeLawyerNewMission.js'
+import Parameters from '../components/Parameters.js'
 import NewMission from '../components/NewMission.js'
 import HomeLawyerMissions from './HomeLawyerMissions.js'
 import Footer from './Footer.js'
 import './style/HomeLawyer.css'
 
 class HomeLawyer extends Component {
-
   state = {
-    open: false
+    openFirstModal: false,
+    openSecondModal: false
   }
 
-  onOpenModal = (event) => {
-    event.preventDefault()
-    this.setState({ open: true })
+  onOpenFirstModal = (e) => {
+    e.preventDefault()
+    this.setState({ openFirstModal: true })
   }
 
-  onCloseModal = () => {
-    this.setState({ open: false })
+  onCloseFirstModal = () => {
+    this.setState({ openFirstModal: false })
   }
 
-  componentWillMount() {
+  onOpenSecondModal = (e) => {
+    e.preventDefault()
+    this.setState({ openSecondModal: true })
+  }
+
+  onCloseSecondModal = () => {
+    this.setState({ openSecondModal: false })
+  }
+
+  componentWillMount () {
     const token = localStorage.getItem('token')
     if (token === null) { window.location.replace('/login') } else {
       fetch(`http://localhost:3030/secure`, {
@@ -42,24 +52,26 @@ class HomeLawyer extends Component {
     }
   }
 
-  render() {
-
-    const { open } = this.state
+  render () {
+    const { openFirstModal, openSecondModal } = this.state
 
     return (
-        <div className='home-lawyer'>
-          <div><HomeLawyerHeader /></div>
-          <div className='create-new-mission' onClick={this.onOpenModal}><HomeLawyerNewMission /></div>
-          <div><HomeLawyerMissions /></div>
-          <div><Footer /></div>
+      <div className='home-lawyer'>
+        <div><HomeLawyerHeader click={this.onOpenFirstModal}/></div>
+        <div className='create-new-mission' onClick={this.onOpenSecondModal}><HomeLawyerNewMission /></div>
+        <div><HomeLawyerMissions /></div>
+        <div><Footer /></div>
 
-          {/* Modal */}
+        {/* Modal */}
 
-          <Modal open={open} onClose={this.onCloseModal} center>
-            <NewMission />
-          </Modal>
+        <Modal open={openFirstModal} onClose={this.onCloseFirstModal} center>
+          <Parameters />
+        </Modal>
+        <Modal open={openSecondModal} onClose={this.onCloseSecondModal} center>
+          <NewMission />
+        </Modal>
 
-        </div>
+      </div>
     )
   }
 }

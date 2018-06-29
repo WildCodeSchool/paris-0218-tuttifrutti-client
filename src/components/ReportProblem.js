@@ -4,17 +4,17 @@ import Button from './Button.js'
 import './style/ReportProblem.css'
 
 class ReportProblem extends React.Component {
-
   state = {
     problem: '',
     autre: '',
     author: '',
+    authorId: '',
     display: 'none'
   }
 
   componentDidMount () {
     userInfo().then(res =>
-      this.setState({author: res.cabinet}))
+      this.setState({ author: res.cabinet, authorId: res._id }))
   }
 
   UpdateField = event => {
@@ -31,22 +31,20 @@ class ReportProblem extends React.Component {
 
     //   axios.post(`http://localhost:3030/missions`, { mission })
     //     .then(res => {
-      //       console.log(res)
-      //       console.log(res.data)
-      //     })
-    }
+    //       console.log(res)
+    //       console.log(res.data)
+    //     })
+  }
 
-    componentDidUpdate () {
-      if (this.state.display !== 'block' && this.state.problem === 'Autre') {
-        this.setState({display: 'block'})
-      }
-      else if (this.state.display === 'block' && this.state.problem !== 'Autre') {
-        this.setState({display: 'none'})
-      }
+  componentDidUpdate () {
+    if (this.state.display !== 'block' && this.state.problem === 'Autre') {
+      this.setState({display: 'block'})
+    } else if (this.state.display === 'block' && this.state.problem !== 'Autre') {
+      this.setState({display: 'none'})
     }
+  }
 
   render () {
-
     return (
       <div>
         <div className='report-problem-content'>

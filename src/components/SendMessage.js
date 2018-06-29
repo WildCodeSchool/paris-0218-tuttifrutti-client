@@ -1,4 +1,5 @@
 import React from 'react'
+import { userInfo } from '../User.js'
 /* import axios from 'axios' */
 import Button from './Button.js'
 import './style/SendMessage.css'
@@ -7,7 +8,12 @@ class SendMessage extends React.Component {
   state = {
     objet: '',
     message: '',
-    author: 'test'
+    authorId: ''
+  }
+
+  componentDidMount () {
+    userInfo().then(res =>
+      this.setState({ authorId: res._id }))
   }
 
   UpdateField = event => {
