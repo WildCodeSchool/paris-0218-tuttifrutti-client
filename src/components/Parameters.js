@@ -17,7 +17,7 @@ class Parameters extends React.Component {
         lawyer: {
           id: res._id,
           email: res.email,
-          password: '',
+          password: res.password,
           firstName: res.firstName,
           lastName: res.lastName,
           cabinet: res.cabinet,
