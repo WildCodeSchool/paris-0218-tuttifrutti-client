@@ -9,7 +9,8 @@ import './style/LoginSignUpForm.css'
 class Login extends React.Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    hasError: false
   }
 
   UpdateField = event => {
@@ -31,11 +32,16 @@ class Login extends React.Component {
       },
       // credentials: 'include',
       body: JSON.stringify({ creds })
-    }).then(response => {
+    })
+    .then(response => {
       response.json()
-        .then(responseJson => {
-          localStorage.setItem('token', responseJson.token)
-        })
+    .then(responseJson => {
+      localStorage.setItem('token', responseJson.token)
+    })
+    .then(redirect => {
+      if (localStorage.getItem('token') === 'undefined') {this.setState({hasError: true})}
+      else {window.location.replace('/profile')}
+    })
     })
   }
 
@@ -44,6 +50,10 @@ class Login extends React.Component {
   }
 
   render() {
+
+    let notValid = ''
+    if (this.state.hasError === true) { notValid = `Votre identifiant est inconnu ou votre mot de passe est faux. Veuillez réessayer en corrigeant votre saisie.` } else {notValid = ''}
+
     return (
       <div>
         <HeaderSite redirect='/' />
@@ -57,6 +67,7 @@ class Login extends React.Component {
                 <form className="form-login-signup" onSubmit={this.HandleSubmit}>
                   <input className='form-input-login-signup' type="email" name="email" placeholder="Email" onChange={this.UpdateField} />
                   <input className='form-input-login-signup' type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField} />
+                  <div className='valid'><p>{notValid}</p></div>
                   <Button>Se connecter</Button>
                 </form>
               </div>
