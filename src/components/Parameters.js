@@ -17,7 +17,7 @@ class Parameters extends React.Component {
         lawyer: {
           id: res._id,
           email: res.email,
-          password: res.password,
+          // password: res.password,
           firstName: res.firstName,
           lastName: res.lastName,
           cabinet: res.cabinet,
@@ -33,7 +33,6 @@ class Parameters extends React.Component {
 
   UpdateField = event => { this.setState({ lawyer: {...this.state.lawyer, [event.target.name]: event.target.value} }) }
 
-
   showUpdateForm = () => {
     this.setState({ displayInfo: 'none', displayForm: 'block' })
     console.log('youhou!!')
@@ -48,8 +47,6 @@ class Parameters extends React.Component {
     event.preventDefault()
 
     const user = this.state.lawyer
-
-    console.log(user)
 
     axios.put(`http://localhost:3030/infolawyer`, { user })
       .then(res => {

@@ -15,6 +15,7 @@ class ReportProblem extends React.Component {
   componentDidMount () {
     userInfo().then(res =>
       this.setState({ author: res.cabinet, authorId: res._id }))
+      .then(res => console.log(res))
   }
 
   UpdateField = event => {
