@@ -1,12 +1,13 @@
 .all-missions-container {
-  width: 100vw;
+  /*width: 100vw;*/
   display: flex;
   flex-wrap: wrap;
+  padding: 0.8rem;
 }
 
 .each-mission-container {
-  width: 20%;
-  margin: 0.1rem;
+  /*width: 20%;*/
+  margin: 0.4rem;
   padding: 2rem;
   background-color: #d1f2eb;
   color: black;
