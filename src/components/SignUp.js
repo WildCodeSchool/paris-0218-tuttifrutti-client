@@ -36,8 +36,8 @@ class SignUp extends React.Component {
 
     console.log(user)
 
-    const password = document.getElementById("password").value;
-    const passwordConfirm = document.getElementById("passwordConfirm").value;
+    const password = document.getElementById("password").value
+    const passwordConfirm = document.getElementById("passwordConfirm").value
 
     if(password === passwordConfirm)
     {
@@ -68,7 +68,7 @@ class SignUp extends React.Component {
         <div className='signup-content'>
           <div>
             <div className='title-signup'>
-              <PageTitle title='Inscription' />
+              <PageTitle espace='Espace avocat' title='Inscription' />
             </div>
             <div className='form-signup-container'>
               <form className="form-signup" onSubmit={this.HandleSubmit}>

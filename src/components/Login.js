@@ -66,7 +66,7 @@ class Login extends React.Component {
         <div className='login-content'>
           <div>
             <div className='title-login'>
-              <PageTitle title='Connexion' />
+              <PageTitle espace='Espace avocat' title='Connexion' />
             </div>
             <div>
               <div className='form-login-container'>

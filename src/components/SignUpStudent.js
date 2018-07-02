@@ -1,13 +1,15 @@
 import React from 'react'
 import axios from 'axios'
 import Button from './Button.js'
+import HeaderSite from '../containers/HeaderSite.js'
 import PageTitle from './PageTitle.js'
-import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
+import Fields from '../fields/fields.json'
 
 class SignUpStudent extends React.Component {
-    state = {
+  state = {
+    student: {
       email: '',
       password: '',
       firstName: '',
@@ -16,83 +18,91 @@ class SignUpStudent extends React.Component {
       levelStudy: '',
       field: '',
       active: false
-    }
+    },
+    fields: Fields.mainFields,
+  }
 
-  UpdateField = event => { this.setState({[event.target.name]: event.target.value}) }
+  UpdateField = event => { this.setState({ student: { ...this.state.student, [event.target.name]: event.target.value } }) }
 
-    HandleSubmit = event => {
-      event.preventDefault()
-      console.log('testest')
+  HandleSubmit = event => {
+    event.preventDefault()
+    console.log('testest')
 
-      const user = {
-        email: this.state.email,
-        password: this.state.password,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        phone: this.state.phone,
-        levelStudy: this.state.levelStudy,
-        field: this.state.field
-      }
-      console.log(user)
+    const user = this.state.student
 
+    console.log(user)
+
+    const password = document.getElementById("password").value
+    const passwordConfirm = document.getElementById("passwordConfirm").value
+
+    if (password === passwordConfirm) {
       axios.post(`http://localhost:3030/regstudent`, { user })
         .then(res => {
           console.log(res)
           console.log(res.data)
         })
+    } else {
+      console.log('Les mots de passe ne sont pas identiques.')
     }
+  }
 
-    render () {
+  render() {
+
+    const eachField = field => {
       return (
-        <div>
-          <div className='login-signup-content'>
-            <div>
-              <div className='title-component'>
-                <PageTitle title='Inscription'/>
-              </div>
-              <div className='form-login-signup'>
-                <form className="form" onSubmit={this.HandleSubmit}>
-                  <div>
-                    <input type ="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
-                    <input type ="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
-                  </div>
-                  <div>
-                    <input type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                    <input type ="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
-                  </div>
-                  <div>
-                    <select name="levelStudy" placeholder="Niveau d'études" id="levelStudy" onChange={this.UpdateField} >
-                      <option value="" disabled selected>Niveau d'études</option>
-                      <option value="1">Master1</option>
-                      <option value="2">Master2</option>
-                      <option value="3">Ms/LLM</option>
-                      <option value="5">Elève avocat</option>
-                    </select>
-                  </div>
-                  <div>
-                    <select name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
-                      <option value="" disabled selected>Domaine</option>
-                      <option value="1">droit2</option>
-                      <option value="2">droit3</option>
-                      <option value="3">droit4</option>
-                      <option value="5">droit5</option>
-                    </select>
-                  </div>
-                  <div>
-                    <input type ="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                    <input type ="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
-                  </div>
-                  <Button>S'inscrire</Button>
-                </form>
-              </div>
-              <div className='link-signup-connect'><LinkSignUpConnect text1='Déjà inscrit ?' text2='Connectez-vous' linkRoute='/login'/>
-              </div>
-            </div>
-          </div>
-          <Footer />
-        </div>
+      <option value={field}>{field}</option>
       )
     }
+
+    const showEachField =
+    this.state.fields.map(field => eachField(field))
+
+    return (
+      <div>
+        <HeaderSite redirect='/signupstudent'/>
+        <div className='signup-content'>
+          <div>
+            <div className='title-signup'>
+              <PageTitle espace='Espace étudiant' title='Inscription' />
+            </div>
+            <div className='form-signup-container'>
+              <form className="form-signup" onSubmit={this.HandleSubmit}>
+                <div className='form-div'>
+                  <input className='form-input-signup' type="text" name="firstName" placeholder="Prénom" id="firstName" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="lastName" placeholder="Nom" id="lastName" onChange={this.UpdateField} />
+                </div>
+                <div className='form-div'>
+                  <input className='form-input-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
+                </div>
+                <div className='form-div'>
+                  <select className='form-select-signup' name="levelStudy" placeholder="Niveau d'études" id="levelStudy" onChange={this.UpdateField} >
+                    <option value="" disabled selected>Sélectionnez votre niveau d'études</option>
+                    <option value="Master1">Master1</option>
+                    <option value="Master2">Master2</option>
+                    <option value="Ms/LLM">Ms/LLM</option>
+                    <option value="Elève avocat">Elève avocat</option>
+                  </select>
+                </div>
+                <div  className='form-div'>
+                  <select className='form-select-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                  <option value="" disabled selected>Sélectionnez votre domaine</option>
+                    {showEachField}
+                  </select>
+                </div>
+                <div className='form-div'>
+                  <input className='form-input-signup' type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="password" name="passwordConfirm" placeholder="Confimer le mot de passe" id="passwordConfirm" />
+                </div>
+                <Button>S'inscrire</Button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 }
 
 export default SignUpStudent

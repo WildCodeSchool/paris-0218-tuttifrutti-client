@@ -7,6 +7,7 @@ import HomeLawyer from './containers/HomeLawyer.js'
 import AllMissionsPage from './containers/AllMissionsPage.js'
 import MissionPage from './containers/MissionPage.js'
 import OldMissionsPage from './containers/OldMissionsPage.js'
+import SignUpStudent from './components/SignUpStudent.js';
 
 class App extends Component {
   render () {
@@ -22,6 +23,7 @@ class App extends Component {
               <Route exact path="/missions" component={AllMissionsPage} />
               <Route exact path="/missions/:missionId" component={MissionPage} />
               <Route exact path="/oldmissions" component={OldMissionsPage} />
+              <Route exact path="/signupstudent" component={SignUpStudent} />
             </Switch>
           </div>
         </BrowserRouter>

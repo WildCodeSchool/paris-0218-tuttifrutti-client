@@ -32,7 +32,7 @@ class HomeLawyerHeader extends Component {
 
     return (
       <div>
-        <HeaderSite redirect='/profile' />
+        <HeaderSite logout='Déconnexion' redirect='/profile' />
         <div className='home-lawyer-header'>
           <div>
             <HeaderName text={this.state.author} />

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import './style/HeaderSite.css'
 import Logo from '../img/logo.png'
 
-const HeaderSite = ({redirect}) => (
+const HeaderSite = ({redirect, logout}) => (
   <div className='header'>
     <div className='header-site-logo'>
       <div>
@@ -14,7 +14,7 @@ const HeaderSite = ({redirect}) => (
     </div>
     <div className='header-site-logout'>
       <div className='logout'>
-        <p>Déconnexion</p>
+        <p>{logout}</p>
       </div>
     </div>
   </div>

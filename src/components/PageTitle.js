@@ -1,9 +1,9 @@
 import React from 'react'
 
-const PageTitle = ({title}) => {
+const PageTitle = ({espace, title}) => {
   return (
     <div>
-      <h1>Espace avocat</h1>
+      <h1>{espace}</h1>
       <h2>{title}</h2>
     </div>
   )

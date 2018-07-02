@@ -7,7 +7,7 @@ import Footer from './Footer.js'
 const FrontPage = () => (
 
     <div>
-      <HeaderSite redirect='/'/>
+      <HeaderSite logout='' redirect='/'/>
       <Link to={`/login`}><Button>Se connecter</Button></Link>
       <Link to={`/reg`}><Button>S'inscrire</Button></Link>
       <Footer />
