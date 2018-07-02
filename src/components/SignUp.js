@@ -19,7 +19,8 @@ class SignUp extends React.Component {
     city: '',
     zipCode: '',
     toque: '',
-    field: ''
+    field: '',
+    activated: false
   }
 
   UpdateField = event => { this.setState({ [event.target.name]: event.target.value }) }
