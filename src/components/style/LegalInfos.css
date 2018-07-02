@@ -1,0 +1,12 @@
+.legal-infos p {
+  text-align: justify;
+  padding: 0 1.2rem;
+}
+
+.legal-infos h1 {
+  color: #1fa792;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
