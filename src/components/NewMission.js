@@ -3,16 +3,20 @@ import { userInfo } from '../User.js'
 import axios from 'axios'
 import Button from './Button.js'
 import './style/NewMission.css'
+import Fields from '../fields/fields.json'
 
 class NewMission extends React.Component {
   state = {
-    name: '',
-    field: '',
-    deadline: '',
-    price: '',
-    description: '',
-    author: '',
-    finished: false
+    newmission: {
+      name: '',
+      field: '',
+      deadline: '',
+      price: '',
+      description: '',
+      author: '',
+      finished: false,
+    },
+    fields: Fields.mainFields
   }
 
   componentDidMount () {
@@ -21,14 +25,14 @@ class NewMission extends React.Component {
   }
 
   UpdateField = event => {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({newmission: {...this.state.newmission,[event.target.name]: event.target.value }})
   }
 
   HandleSubmit = event => {
     event.preventDefault()
     console.log('testest')
 
-    const mission = this.state
+    const mission = this.state.newmission
 
     console.log(mission)
 
@@ -40,6 +44,16 @@ class NewMission extends React.Component {
   }
 
   render () {
+
+    const eachField = field => {
+      return (
+      <option value={field}>{field}</option>
+      )
+    }
+
+    const showEachField =
+    this.state.fields.map(field => eachField(field))
+
     return (
       <div>
         <div className='new-mission-content'>
@@ -53,10 +67,7 @@ class NewMission extends React.Component {
                 <div className='form-div'>
                   <select className='form-select-new-mission ' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
                     <option value="" disabled selected>Sélectionnez votre domaine</option>
-                    <option>droit2</option>
-                    <option>droit3</option>
-                    <option>droit4</option>
-                    <option>droit5</option>
+                    {showEachField}
                   </select>
                 </div>
                 <div className='form-div'>

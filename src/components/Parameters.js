@@ -3,21 +3,23 @@ import { userInfo } from '../User.js'
 import axios from 'axios'
 import Button from './Button.js'
 import './style/Parameters.css'
+import Fields from '../fields/fields.json'
 
 class Parameters extends React.Component {
   state = {
     lawyer: {},
+    fields: Fields.mainFields,
     displayInfo: 'block',
     displayForm: 'none'
   }
 
   componentDidMount () {
+    console.log(this.state.fields)
     userInfo().then(res =>
       this.setState({
         lawyer: {
           id: res._id,
           email: res.email,
-          // password: res.password,
           firstName: res.firstName,
           lastName: res.lastName,
           cabinet: res.cabinet,
@@ -66,7 +68,18 @@ class Parameters extends React.Component {
     }
   }
 
+
   render () {
+
+    const eachField = field => {
+      return (
+      <option value={field}>{field}</option>
+      )
+    }
+
+    const showEachField =
+    this.state.fields.map(field => eachField(field))
+
     return (
       <div>
         <div className='parameters-content'>
@@ -121,10 +134,7 @@ class Parameters extends React.Component {
                   <div className='form-div'>
                     <select className='form-select-parameters' name="field" value={this.state.lawyer.field} placeholder={this.state.lawyer.field} id="field" onChange={this.UpdateField} >
                       <option value="" disabled selected>{this.state.lawyer.field}</option>
-                      <option value="1">droit2</option>
-                      <option value="2">droit3</option>
-                      <option value="3">droit4</option>
-                      <option value="5">droit5</option>
+                      {showEachField}
                     </select>
                   </div>
                   <div className='form-div'>

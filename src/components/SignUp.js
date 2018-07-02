@@ -6,43 +6,33 @@ import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
+import Fields from '../fields/fields.json'
 
 class SignUp extends React.Component {
   state = {
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    cabinet: '',
-    phone: '',
-    address: '',
-    city: '',
-    zipCode: '',
-    toque: '',
-    field: ''
+    lawyer: {
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      cabinet: '',
+      phone: '',
+      address: '',
+      city: '',
+      zipCode: '',
+      toque: '',
+      field: ''
+    },
+    fields: Fields.mainFields,
   }
 
-  UpdateField = event => { this.setState({ [event.target.name]: event.target.value }) }
+  UpdateField = event => { this.setState({ lawyer: {...this.state.lawyer, [event.target.name]: event.target.value} }) }
 
   HandleSubmit = event => {
     event.preventDefault()
     console.log('testest')
 
-    const user = this.state
-
-    // const user = {
-    //   email: this.state.email,
-    //   password: this.state.password,
-    //   firstName: this.state.firstName,
-    //   lastName: this.state.lastName,
-    //   cabinet: this.state.cabinet,
-    //   phone: this.state.phone,
-    //   address: this.state.address,
-    //   city: this.state.city,
-    //   zipCode: this.state.zipCode,
-    //   toque: this.state.toque,
-    //   field: this.state.field,
-    // };
+    const user = this.state.lawyer
 
     console.log(user)
 
@@ -62,6 +52,16 @@ class SignUp extends React.Component {
   }
 
   render () {
+
+    const eachField = field => {
+      return (
+      <option value={field}>{field}</option>
+      )
+    }
+
+    const showEachField =
+    this.state.fields.map(field => eachField(field))
+
     return (
       <div>
         <HeaderSite redirect='/'/>
@@ -73,8 +73,8 @@ class SignUp extends React.Component {
             <div className='form-signup-container'>
               <form className="form-signup" onSubmit={this.HandleSubmit}>
                 <div className='form-div'>
-                  <input className='form-input-signup' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
-                  <input className='form-input-signup' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="firstName" placeholder="Prénom" id="firstName" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="lastName" placeholder="Nom" id="lastName" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
                   <input className='form-input-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
@@ -93,11 +93,8 @@ class SignUp extends React.Component {
                 </div>
                 <div className='form-div'>
                   <select className='form-select-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
-                    <option value="" disabled selected>Domaine</option>
-                    <option value="1">droit2</option>
-                    <option value="2">droit3</option>
-                    <option value="3">droit4</option>
-                    <option value="5">droit5</option>
+                    <option value="" disabled selected>Sélectionnez votre domaine</option>
+                    {showEachField}
                   </select>
                 </div>
                 <div className='form-div'>
