@@ -1,8 +1,8 @@
 import React from 'react'
 import './style/HeaderParameters.css'
 
-const HeaderParameters = ({openParameters}) => (
-  <div className='account-parameters' onClick={openParameters}>
+const HeaderParameters = ({click}) => (
+  <div className='account-parameters' onClick={click}>
     <p>Paramètres du compte</p>
   </div>
 )
