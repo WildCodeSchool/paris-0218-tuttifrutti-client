@@ -46,11 +46,19 @@ class SignUp extends React.Component {
 
     console.log(user)
 
-    axios.post(`http://localhost:3030/reg`, { user })
-      .then(res => {
-        console.log(res)
-        console.log(res.data)
-      })
+    const password = document.getElementById("password").value;
+    const passwordConfirm = document.getElementById("passwordConfirm").value;
+
+    if(password === passwordConfirm)
+    {
+      axios.post(`http://localhost:3030/reg`, { user })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
+    } else {
+      console.log('Les mots de passe ne sont pas identiques.')
+    }
   }
 
   render () {
@@ -94,7 +102,7 @@ class SignUp extends React.Component {
                 </div>
                 <div className='form-div'>
                   <input className='form-input-signup'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                  <input className='form-input-signup' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
+                  <input className='form-input-signup' type="password" name="passwordConfirm" placeholder="Confimer le mot de passe" id="passwordConfirm" />
                 </div>
                 <Button>S'inscrire</Button>
               </form>
