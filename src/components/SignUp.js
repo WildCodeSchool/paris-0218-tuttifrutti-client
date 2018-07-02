@@ -8,7 +8,6 @@ import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 
 class SignUp extends React.Component {
-
   state = {
     email: '',
     password: '',
@@ -26,7 +25,7 @@ class SignUp extends React.Component {
   UpdateField = event => { this.setState({ [event.target.name]: event.target.value }) }
 
   HandleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
     console.log('testest')
 
     const user = this.state
@@ -47,45 +46,53 @@ class SignUp extends React.Component {
 
     console.log(user)
 
-    axios.post(`http://localhost:3030/reg`, { user })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
+    const password = document.getElementById("password").value;
+    const passwordConfirm = document.getElementById("passwordConfirm").value;
+
+    if(password === passwordConfirm)
+    {
+      axios.post(`http://localhost:3030/reg`, { user })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
+    } else {
+      console.log('Les mots de passe ne sont pas identiques.')
+    }
   }
 
-  render() {
+  render () {
     return (
       <div>
         <HeaderSite redirect='/'/>
-        <div className='login-signup-content'>
+        <div className='signup-content'>
           <div>
-            <div className='title-login-signup'>
+            <div className='title-signup'>
               <PageTitle title='Inscription' />
             </div>
-            <div className='form-login-signup-container'>
-              <form className="form-login-signup" onSubmit={this.HandleSubmit}>
+            <div className='form-signup-container'>
+              <form className="form-signup" onSubmit={this.HandleSubmit}>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="firstName" placeholder="Nom" id="firstName" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="lastName" placeholder="Prénom" id="lastName" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <select className='form-select-login-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                  <select className='form-select-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
                     <option value="" disabled selected>Domaine</option>
                     <option value="1">droit2</option>
                     <option value="2">droit3</option>
@@ -94,8 +101,8 @@ class SignUp extends React.Component {
                   </select>
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-login-signup'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="password" name="passwordComfirm" placeholder="Confimer le mot de passe" id="passwordComfirm" />
+                  <input className='form-input-signup'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
+                  <input className='form-input-signup' type="password" name="passwordConfirm" placeholder="Confimer le mot de passe" id="passwordConfirm" />
                 </div>
                 <Button>S'inscrire</Button>
               </form>

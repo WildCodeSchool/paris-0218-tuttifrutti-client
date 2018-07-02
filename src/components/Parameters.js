@@ -17,7 +17,7 @@ class Parameters extends React.Component {
         lawyer: {
           id: res._id,
           email: res.email,
-          password: '',
+          // password: res.password,
           firstName: res.firstName,
           lastName: res.lastName,
           cabinet: res.cabinet,
@@ -33,19 +33,6 @@ class Parameters extends React.Component {
 
   UpdateField = event => { this.setState({ lawyer: {...this.state.lawyer, [event.target.name]: event.target.value} }) }
 
-  HandleSubmit = event => {
-    event.preventDefault()
-
-    const user = this.state.lawyer
-
-    console.log(user)
-
-    axios.put(`http://localhost:3030/infolawyer`, { user })
-      .then(res => {
-        console.log('ok')
-      })
-  }
-
   showUpdateForm = () => {
     this.setState({ displayInfo: 'none', displayForm: 'block' })
     console.log('youhou!!')
@@ -54,6 +41,29 @@ class Parameters extends React.Component {
   hideUpdateForm = () => {
     this.setState({ displayInfo: 'block', displayForm: 'none' })
     console.log('youhouououo!!!!')
+  }
+
+  HandleSubmit = event => {
+    event.preventDefault()
+
+    const user = this.state.lawyer
+
+    console.log(user)
+
+    const password = document.getElementById("password").value;
+    const passwordConfirm = document.getElementById("passwordConfirm").value;
+
+    if(password === passwordConfirm)
+    {
+      axios.put(`http://localhost:3030/infolawyer`, { user })
+      .then(res => {
+        console.log('ok')
+      })
+
+      this.hideUpdateForm()
+    } else {
+      console.log('Les mots de passe ne sont pas identiques.')
+    }
   }
 
   render () {
@@ -119,7 +129,7 @@ class Parameters extends React.Component {
                   </div>
                   <div className='form-div'>
                     <input className='form-input-parameters' type="password" name="password" placeholder='Nouveau mot de passe' id="password" onChange={this.UpdateField} />
-                    <input className='form-input-parameters' type="password" name="password" placeholder="Confirmez le nouveau mot de passe" id="passwordComfirm" />
+                    <input className='form-input-parameters' type="password" name="passwordConfirm" placeholder="Confirmez le nouveau mot de passe" id="passwordConfirm" />
                   </div>
                   <div>
                     <Button>Enregistrer</Button>
