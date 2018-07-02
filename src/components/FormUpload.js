@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Button from './Button.js'
+import './style/FormUpload.css'
 
 class FormUpload extends Component {
   constructor () {
     super()
     this.state = {
       description: '',
-      selectedFile: ''
+      selectedFile: '',
+      fileUploaded: false
     }
   }
-
   onChange = (e) => {
     switch (e.target.name) {
       case 'selectedFile':
@@ -24,6 +26,7 @@ class FormUpload extends Component {
     e.preventDefault()
     const { description, selectedFile } = this.state
     let formData = new FormData()
+    this.setState({ fileUploaded: true })
 
     formData.append('description', description)
     formData.append('selectedFile', selectedFile)
@@ -35,21 +38,26 @@ class FormUpload extends Component {
   }
 
   render () {
-    const { description, selectedFile } = this.state
+    console.log('yolo', this.state.selectedFile)
+
+    const uploadFile = this.state.selectedFile === ''
+      ? <label for='file' className='formupload-label-file'>Choisir un fichier</label>
+      : this.state.selectedFile.name
+
+    const sendFile = (this.state.fileUploaded === false
+      ? <Button>Envoyer le document</Button>
+      : <span>Fichier Envoyé</span>
+    )
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={this.onChange}
-        />
-        <input
+        {uploadFile}
+
+        <input id='file' className='formupload-input-file'
           type="file"
           name="selectedFile"
           onChange={this.onChange}
         />
-        <button type="submit">Submit</button>
+        {sendFile}
       </form>
     )
   }

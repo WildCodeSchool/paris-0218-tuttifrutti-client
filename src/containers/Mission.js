@@ -80,9 +80,8 @@ class Mission extends React.Component {
         <MissionStudent text='Non attribué' /> {/* {this.state.student} */}
         <MissionDescription text={this.state.description} />
         <div className='buttons-mission'>
-       {/*ici il faut ajouter un Formupload */}
-       <FormUpload />
-           <Button> Ajouter un document</Button>
+
+          <FormUpload />
           <div onClick={this.onOpenModal}><Button>Envoyer un message</Button></div>
         </div>
         <div onClick={changeStatus}>

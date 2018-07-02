@@ -1,0 +1,13 @@
+.formupload-label-file {
+    cursor: pointer;
+    color: #7accbc;
+}
+
+.label-file:hover {
+    color: #1fa792;
+    font-weight: 600;
+}
+
+.formupload-input-file {
+    display: none;
+}
