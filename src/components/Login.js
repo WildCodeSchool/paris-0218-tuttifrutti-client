@@ -4,7 +4,7 @@ import Button from './Button.js'
 import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
-import './style/LoginSignUpForm.css'
+import './style/LoginForm.css'
 
 class Login extends React.Component {
   state = {
@@ -33,40 +33,46 @@ class Login extends React.Component {
       // credentials: 'include',
       body: JSON.stringify({ creds })
     })
-    .then(response => {
-      response.json()
-    .then(responseJson => {
-      localStorage.setItem('token', responseJson.token)
-    })
-    .then(redirect => {
-      if (localStorage.getItem('token') === 'undefined') {this.setState({hasError: true})}
-      else {window.location.replace('/profile')}
-    })
-    })
+      .then(response => {
+        response.json()
+          .then(responseJson => {
+            localStorage.setItem('token', responseJson.token)
+          })
+          .then(redirect => {
+            if (localStorage.getItem('token') === 'undefined') {
+              this.setState({hasError: true})
+            } else {
+              window.location.replace('/profile')
+            }
+          })
+      })
   }
 
-  componentDidMount() {
+  componentDidMount () {
     fetch('http://localhost:3030/')
   }
 
-  render() {
-
+  render () {
     let notValid = ''
-    if (this.state.hasError === true) { notValid = `Votre identifiant est inconnu ou votre mot de passe est faux. Veuillez réessayer en corrigeant votre saisie.` } else {notValid = ''}
+    if (this.state.hasError === true) {
+      notValid = `Votre identifiant est inconnu ou votre mot de passe est faux. Veuillez réessayer en corrigeant votre saisie.`
+    } else {
+      notValid = ''
+    }
 
     return (
       <div>
         <HeaderSite redirect='/' />
-        <div className='login-signup-content'>
+        <div className='login-content'>
           <div>
-            <div className='title-login-signup'>
+            <div className='title-login'>
               <PageTitle title='Connexion' />
             </div>
             <div>
-              <div className='form-login-signup-container'>
-                <form className="form-login-signup" onSubmit={this.HandleSubmit}>
-                  <input className='form-input-login-signup' type="email" name="email" placeholder="Email" onChange={this.UpdateField} />
-                  <input className='form-input-login-signup' type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField} />
+              <div className='form-login-container'>
+                <form className="form-login" onSubmit={this.HandleSubmit}>
+                  <input className='form-input-login' type="email" name="email" placeholder="Email" onChange={this.UpdateField} />
+                  <input className='form-input-login' type="password" name="password" placeholder="Mot de passe" onChange={this.UpdateField} />
                   <div className='valid'><p>{notValid}</p></div>
                   <Button>Se connecter</Button>
                 </form>
