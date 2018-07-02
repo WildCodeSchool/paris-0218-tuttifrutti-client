@@ -31,6 +31,8 @@ class FormUpload extends Component {
     formData.append('description', description)
     formData.append('selectedFile', selectedFile)
 
+    console.log(formData)
+
     axios.post('http://localhost:3030/upload', formData)
       .then((result) => {
       // access results...
@@ -42,7 +44,7 @@ class FormUpload extends Component {
 
     const uploadFile = this.state.selectedFile === ''
       ? <label for='file' className='formupload-label-file'>Choisir un fichier</label>
-      : this.state.selectedFile.name
+      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block'}}>{this.state.selectedFile.name}</span>
 
     const sendFile = (this.state.fileUploaded === false
       ? <Button>Envoyer le document</Button>
@@ -57,7 +59,7 @@ class FormUpload extends Component {
           name="selectedFile"
           onChange={this.onChange}
         />
-        {sendFile}
+        <div style={{display: this.state.selectedFile !== '' ? 'block' : 'none'}}>{sendFile}</div>
       </form>
     )
   }
