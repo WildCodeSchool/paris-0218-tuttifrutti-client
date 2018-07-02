@@ -2,6 +2,8 @@
   text-align: center;
 }
 
-.account-parameters div a {
-  color: black;
+.account-parameters p {
+  color: #1fa792;
+  cursor: pointer;
+  text-decoration: underline;
 }

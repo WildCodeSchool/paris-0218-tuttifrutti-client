@@ -1,10 +1,7 @@
-h2 {
-  color: black;
+.mission-title {
+  color: #1fa792;
   text-transform: uppercase;
   text-align: center;
   font-size: 1.2rem;
-}
-
-a {
-  text-decoration: none;
+  font-weight: bold;
 }

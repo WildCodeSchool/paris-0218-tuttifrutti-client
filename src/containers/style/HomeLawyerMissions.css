@@ -2,9 +2,10 @@
   width: 100vw;
   height: 38vh;
   display: flex;
+  cursor: pointer;
 }
 
-.home-lawyer-missions div {
+.home-lawyer-missions-linkto {
   width: 50%;
   height: 100%;
   display: flex;
@@ -12,10 +13,26 @@
   align-items: center;
 }
 
+.home-lawyer-missions div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .home-lawyer-currentmissions {
-  background-color: rgb(161, 142, 142);
+  background-color: #a1e5d8;
+}
+
+.home-lawyer-currentmissions p {
+  color: #fff;
 }
 
 .home-lawyer-oldmissions {
-  background-color: rgb(97, 85, 85);
+  background-color: #8eddce;
+}
+
+.home-lawyer-oldmissions p {
+  color: #fff;
 }

@@ -3,7 +3,7 @@ import './style/MissionTitle.css'
 
 const MissionTitle = ({text}) => (
   <div>
-    <a href=''><h2>{text}</h2></a>
+    <p className='mission-title'>{text}</p>
   </div>
 )
 

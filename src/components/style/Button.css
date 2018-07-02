@@ -1,12 +1,18 @@
-button {
+.button {
   width: 8rem;
   height: 2rem;
-  margin-top: 2rem;
-  background-color: grey;
+  margin-top: 1rem;
+  background-color: #7accbc;
   color: white;
   border: none;
   border-radius: 0%;
   text-transform: uppercase;
   outline: none;
   box-shadow: none;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #1fa792;
+  font-weight: 600;
 }

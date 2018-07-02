@@ -6,7 +6,7 @@ import './style/HomeLawyerNewMission.css'
 const HomeLawyerNewMission = () => (
   <div className='home-lawyer-newmission'>
     <div>
-      <MissionTitle text='Créer une nouvelle mission'/>
+      <MissionTitle text='Créer une nouvelle mission' />
       <PictoAdd />
     </div>
   </div>
