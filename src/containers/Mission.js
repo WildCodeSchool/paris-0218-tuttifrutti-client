@@ -11,7 +11,7 @@ import MissionStudent from '../components/MissionStudent.js'
 import MissionDescription from '../components/MissionDescription.js'
 import SendMessage from '../components/SendMessage.js'
 import './style/Mission.css'
-import FormUpload from '../components/FormUpload.js';
+import FormUpload from '../components/FormUpload.js'
 
 class Mission extends React.Component {
   state = {
@@ -81,6 +81,7 @@ class Mission extends React.Component {
         <MissionDescription text={this.state.description} />
         <div className='buttons-mission'>
        {/*ici il faut ajouter un Formupload */}
+       <FormUpload />
            <Button> Ajouter un document</Button>
           <div onClick={this.onOpenModal}><Button>Envoyer un message</Button></div>
         </div>

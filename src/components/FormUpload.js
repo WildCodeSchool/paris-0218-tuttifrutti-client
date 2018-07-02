@@ -28,7 +28,7 @@ class FormUpload extends Component {
     formData.append('description', description)
     formData.append('selectedFile', selectedFile)
 
-    axios.post('/', formData)
+    axios.post('http://localhost:3030/upload', formData)
       .then((result) => {
       // access results...
       })
