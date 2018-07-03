@@ -35,8 +35,11 @@ class FormUpload extends Component {
 
     axios.post('http://localhost:3030/upload', formData)
       .then((result) => {
+
       // access results...
       })
+      //.catch(err)
+
   }
 
   render () {
