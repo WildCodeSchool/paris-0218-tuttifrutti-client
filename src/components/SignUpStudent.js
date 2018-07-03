@@ -78,10 +78,10 @@ class SignUpStudent extends React.Component {
                 <div className='form-div'>
                   <select className='form-select-signup' name="levelStudy" placeholder="Niveau d'études" id="levelStudy" onChange={this.UpdateField} >
                     <option value="" disabled selected>Sélectionnez votre niveau d'études</option>
-                    <option value="Master1">Master1</option>
-                    <option value="Master2">Master2</option>
-                    <option value="Ms/LLM">Ms/LLM</option>
-                    <option value="Elève avocat">Elève avocat</option>
+                    <option>Master 1</option>
+                    <option>Master 2</option>
+                    <option>Ms/LLM</option>
+                    <option>Elève avocat</option>
                   </select>
                 </div>
                 <div  className='form-div'>
