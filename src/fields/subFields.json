@@ -1,0 +1,60 @@
+{
+    "Droit civil": [
+      "Droit de la famille",
+      "Droit des étrangers",
+      "Droit des contrats",
+      "Droit de la responsabilité civile",
+      "Propriété intellectuelle",
+      "Droit des biens",
+      "Droit immobilier",
+      "Procédure civile"
+    ],
+    "Droit public": [
+      "Droit administratif",
+      "Droit de la concurrence",
+      "Droit de l'environnement",
+      "Droit de la santé",
+      "Procédure administrative"
+    ],
+    "Droit des affaires": [
+      "M&A",
+      "Droit bancaire",
+      "Financement",
+      "Droit des marchés financiers",
+      "Contentieux commercial"
+    ],
+    "Réglement alternatif des différents": [
+      "Arbitrage",
+      "Modes de réglement amiable des différents"
+    ],
+    "Droit pénal": [
+      "Droit pénal",
+      "Droit pénal des affaires",
+      "Procédure pénale"
+    ],
+    "Droit fiscal": [
+      "Fiscalité patrimoniale",
+      "Fiscalité des sociétés",
+      "Fiscalité internationale",
+      "TVA",
+      "Procédure fiscale contentieuse"
+    ],
+    "Droit international": [
+      "Arbitrage international",
+      "Droit international privé",
+      "Droit international public"
+    ],
+    "Droit social": [
+      "Droit du travail",
+      "Droit de la protection sociale",
+      "Contentieux prudhommales",
+      "Contentieux de la protection sociale"
+    ],
+    "Divers": [
+      "Droit de la consommation",
+      "Droit des assurances",
+      "Droit du sport",
+      "Droit de l'énergie"
+    ]
+}
+

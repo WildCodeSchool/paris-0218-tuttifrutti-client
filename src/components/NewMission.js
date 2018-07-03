@@ -4,28 +4,32 @@ import axios from 'axios'
 import Button from './Button.js'
 import './style/NewMission.css'
 import Fields from '../fields/fields.json'
+import subFields from '../fields/subFields.json'
 
 class NewMission extends React.Component {
   state = {
     newmission: {
       name: '',
       field: '',
+      subField: '',
       deadline: '',
       price: '',
       description: '',
       finished: false,
       author: ''
     },
-    fields: Fields.mainFields
+    fields: Fields.mainFields,
+    subFields: subFields
   }
 
-  componentDidMount () {
+  componentDidMount() {
+    console.log(this.state.subFields)
     userInfo().then(res =>
-      this.setState({ newmission: {...this.state.newmission, author: res._id }}))
+      this.setState({ newmission: { ...this.state.newmission, author: res._id } }))
   }
 
   UpdateField = event => {
-    this.setState({newmission: {...this.state.newmission, [event.target.name]: event.target.value }})
+    this.setState({ newmission: { ...this.state.newmission, [event.target.name]: event.target.value } })
   }
 
   HandleSubmit = event => {
@@ -43,16 +47,23 @@ class NewMission extends React.Component {
       })
   }
 
-  render () {
+  render() {
 
-    const eachField = field => {
-      return (
-      <option value={field}>{field}</option>
-      )
-    }
+    // Fill select fields
 
     const showEachField =
-    this.state.fields.map(field => eachField(field))
+      this.state.fields.map(field => <option value={field}>{field}</option>)
+
+    // Fill select subfiels
+
+    const choosenField = this.state.newmission.field
+    const subField = this.state.subFields[choosenField]
+    let showEachSubField = []
+
+    if (subField) {
+      showEachSubField =
+        subField.map(subfield => <option value={subfield}>{subfield}</option>)
+    }
 
     return (
       <div>
@@ -68,6 +79,12 @@ class NewMission extends React.Component {
                   <select className='form-select-new-mission ' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
                     <option value="" disabled selected>Sélectionnez votre domaine</option>
                     {showEachField}
+                  </select>
+                </div>
+                <div className='form-div'>
+                  <select style={{display: this.state.newmission.field !== '' ? 'block' : 'none'}} className='form-select-new-mission ' name="subField" placeholder="Sous-domaine" id="subField" onChange={this.UpdateField} >
+                    <option value="" disabled selected>Sélectionnez votre sous-domaine</option>
+                    {showEachSubField}
                   </select>
                 </div>
                 <div className='form-div'>
