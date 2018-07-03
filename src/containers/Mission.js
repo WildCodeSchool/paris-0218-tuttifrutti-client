@@ -18,6 +18,7 @@ class Mission extends React.Component {
     id: '',
     name: '',
     field: '',
+    subField: '',
     deadline: '',
     price: '',
     description: '',
@@ -45,6 +46,7 @@ class Mission extends React.Component {
           id: res.data._id,
           name: res.data.name,
           field: res.data.field,
+          subField: res.data.subField,
           deadline: res.data.deadline,
           price: res.data.price,
           description: res.data.description,
@@ -74,7 +76,7 @@ class Mission extends React.Component {
       <div>
         <MissionTitle text={this.state.name} />
         <MissionId text={this.state.id} />
-        <MissionField text={this.state.field} />
+        <MissionField field={this.state.field} subfield={this.state.subField}/>
         <MissionDeadline text={this.state.deadline} />
         <MissionPrice text={this.state.price} />
         <MissionStudent text='Non attribué' /> {/* {this.state.student} */}

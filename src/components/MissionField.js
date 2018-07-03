@@ -1,9 +1,10 @@
 import React from 'react'
 import './style/MissionField.css'
 
-const MissionField = ({text}) => (
+const MissionField = ({field, subfield}) => (
   <div>
-    <p className='mission-field'>{text}</p>
+    <p className='mission-field'>{field}</p>
+    <p className='mission-subfield'>{subfield}</p>
   </div>
 )
 export default MissionField
