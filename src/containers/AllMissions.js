@@ -48,7 +48,7 @@ class AllMissions extends React.Component {
 
     const eachMission = mission => {
       return (
-        <div className='each-mission-container'>
+        <div key={mission._id} className='each-mission-container'>
           <MissionTitle text={mission.name} />
           <MissionId text={mission._id} />
           <MissionField text={mission.field} />
@@ -60,7 +60,7 @@ class AllMissions extends React.Component {
       )
     }
 
-    const showEachMission = this.state.allMissions.map(mission => eachMission(mission))
+    const showEachMission = this.state.allMissions.map(eachMission)
 
     return (
       <div className='all-missions-container'>

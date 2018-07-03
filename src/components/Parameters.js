@@ -113,27 +113,27 @@ class Parameters extends React.Component {
               <div className='form-parameters-container'>
                 <form className="form-parameters" onSubmit={this.HandleSubmit}>
                   <div className='form-div'>
-                    <input className='form-input-parameters' type="text" name="firstName" value={this.state.lawyer.firstName} placeholder={this.state.lawyer.firstName} id="firstName" onChange={this.UpdateField} />
-                    <input className='form-input-parameters' type="text" name="lastName" value={this.state.lawyer.lastName} placeholder={this.state.lawyer.lastName} id="lastName" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="firstName" value={this.state.lawyer.firstName || ''} placeholder={this.state.lawyer.firstName} id="firstName" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="lastName" value={this.state.lawyer.lastName || ''} placeholder={this.state.lawyer.lastName} id="lastName" onChange={this.UpdateField} />
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-parameters' type="email" name="email" value={this.state.lawyer.email} placeholder={this.state.lawyer.email} id="email" onChange={this.UpdateField} />
-                    <input className='form-input-parameters' type="text" name="phone" value={this.state.lawyer.phone} placeholder={this.state.lawyer.phone} id="phone" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="email" name="email" value={this.state.lawyer.email || ''} placeholder={this.state.lawyer.email} id="email" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="phone" value={this.state.lawyer.phone || ''} placeholder={this.state.lawyer.phone} id="phone" onChange={this.UpdateField} />
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-parameters' type="text" name="cabinet" value={this.state.lawyer.cabinet} placeholder={this.state.lawyer.cabinet} id="cabinet" onChange={this.UpdateField} />
-                    <input className='form-input-parameters' type="text" name="toque" value={this.state.lawyer.toque} placeholder={this.state.lawyer.toque} id="toque" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="cabinet" value={this.state.lawyer.cabinet || ''} placeholder={this.state.lawyer.cabinet} id="cabinet" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="toque" value={this.state.lawyer.toque || ''} placeholder={this.state.lawyer.toque} id="toque" onChange={this.UpdateField} />
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-parameters' type="text" name="address" value={this.state.lawyer.address} placeholder={this.state.lawyer.address} id="address" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="address" value={this.state.lawyer.address || ''} placeholder={this.state.lawyer.address} id="address" onChange={this.UpdateField} />
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-parameters' type="text" name="zipCode" value={this.state.lawyer.zipCode} placeholder={this.state.lawyer.zipCode} id="zipCode" onChange={this.UpdateField} />
-                    <input className='form-input-parameters' type="text" name="city" value={this.state.lawyer.city} placeholder={this.state.lawyer.city} id="city" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="zipCode" value={this.state.lawyer.zipCode || ''} placeholder={this.state.lawyer.zipCode} id="zipCode" onChange={this.UpdateField} />
+                    <input className='form-input-parameters' type="text" name="city" value={this.state.lawyer.city || ''} placeholder={this.state.lawyer.city} id="city" onChange={this.UpdateField} />
                   </div>
                   <div className='form-div'>
-                    <select className='form-select-parameters' name="field" value={this.state.lawyer.field} placeholder={this.state.lawyer.field} id="field" onChange={this.UpdateField} >
-                      <option value="" disabled selected>{this.state.lawyer.field}</option>
+                    <select className='form-select-parameters' name="field" value={this.state.lawyer.field || ''} placeholder={this.state.lawyer.field} id="field" onChange={this.UpdateField} >
+                      <option value={this.state.lawyer.field} disabled>{this.state.lawyer.field}</option>
                       {showEachField}
                     </select>
                   </div>

@@ -52,7 +52,7 @@ class NewMission extends React.Component {
     // Fill select fields
 
     const showEachField =
-      this.state.fields.map(field => <option value={field}>{field}</option>)
+      this.state.fields.map((field, index) => <option key={index} value={field}>{field}</option>)
 
     // Fill select subfiels
 
@@ -62,7 +62,7 @@ class NewMission extends React.Component {
 
     if (subField) {
       showEachSubField =
-        subField.map(subfield => <option value={subfield}>{subfield}</option>)
+        subField.map((subfield, index) => <option key={index} value={subfield}>{subfield}</option>)
     }
 
     return (
@@ -77,13 +77,13 @@ class NewMission extends React.Component {
                 </div>
                 <div className='form-div'>
                   <select className='form-select-new-mission ' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
-                    <option value="" disabled selected>Sélectionnez votre domaine</option>
+                    <option value="Sélectionnez votre domaine" disabled>Sélectionnez votre domaine</option>
                     {showEachField}
                   </select>
                 </div>
                 <div className='form-div'>
                   <select style={{display: this.state.newmission.field !== '' ? 'block' : 'none'}} className='form-select-new-mission ' name="subField" placeholder="Sous-domaine" id="subField" onChange={this.UpdateField} >
-                    <option value="" disabled selected>Sélectionnez votre sous-domaine</option>
+                    <option value="Sélectionnez votre sous-domaine" disabled>Sélectionnez votre sous-domaine</option>
                     {showEachSubField}
                   </select>
                 </div>

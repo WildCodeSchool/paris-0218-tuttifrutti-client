@@ -52,7 +52,7 @@ class OldMissions extends React.Component {
 
     const eachMission = mission => {
       return (
-        <div className='each-mission-container'>
+        <div key={mission._id} className='each-mission-container'>
           <MissionTitle text={mission.name} />
           <MissionId text={mission._id} />
           <MissionStudent text='Étudiant' />
