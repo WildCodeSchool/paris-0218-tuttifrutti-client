@@ -9,9 +9,11 @@ class FormUpload extends Component {
     this.state = {
       description: '',
       selectedFile: '',
-      fileUploaded: false
+      fileUploaded: false,
+      message: ''
     }
   }
+
   onChange = (e) => {
     switch (e.target.name) {
       case 'selectedFile':
@@ -34,15 +36,27 @@ class FormUpload extends Component {
     console.log(formData)
 
     axios.post('http://localhost:3030/upload', formData)
-      .then((result) => {
-
-      // access results...
+      .then(res => {console.log(res.data.result)
+        // let message = ''
+        if (res.data.result === 'fail'){
+        //  message = '<h1>Faiiiiiiil</h1>'
+        //  return message
+        this.setState({message: 'Trop lourd'})
+        }
+        // console.log(message)
+        // return message
       })
-      //.catch(err)
-
-  }
+      // .catch(err => {
+      //   console.log(err)
+      //   // if (err.code ==="fail"){
+      //   //   console.log('yaaahouuuuuuuuuuu')
+      //   //   return ("yolaaaaaa")
+      //   // }
+      //  })
+    }
 
   render () {
+
     console.log('yolo', this.state.selectedFile)
 
     const uploadFile = this.state.selectedFile === ''
@@ -56,13 +70,13 @@ class FormUpload extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         {uploadFile}
-
         <input id='file' className='formupload-input-file'
           type="file"
           name="selectedFile"
           onChange={this.onChange}
         />
         <div style={{display: this.state.selectedFile !== '' ? 'block' : 'none'}}>{sendFile}</div>
+        <div>{this.state.message}</div>
       </form>
     )
   }
