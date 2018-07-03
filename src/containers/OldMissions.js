@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-responsive-modal'
 import axios from 'axios'
+import { userInfo } from '../User.js'
 import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
 import MissionId from '../components/MissionId.js'
@@ -13,7 +14,8 @@ import './style/OldMissions.css'
 class OldMissions extends React.Component {
   state = {
     oldMissions: [],
-    open: false,
+    lawyer: {},
+    open: false
   }
 
   onOpenModal = (event) => {
@@ -26,13 +28,24 @@ class OldMissions extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3030/oldmissions`)
-      .then((res) => {
-        this.setState({ oldMissions: res.data })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    userInfo()
+    .then(res =>
+      this.setState({
+        lawyer: {
+          id: res._id
+        }
+      }))
+    .then(() => {
+      const lawyerId = this.state.lawyer.id
+      axios.post(`http://localhost:3030/oldmissionsfiltered`, { lawyerId })
+        .then((res) => {
+          this.setState({ oldMissions: res.data })
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+      }
+    )
   }
 
   render() {

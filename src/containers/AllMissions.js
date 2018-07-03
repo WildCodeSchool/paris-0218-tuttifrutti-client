@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { userInfo } from '../User.js'
 import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
 import MissionId from '../components/MissionId.js'
@@ -10,17 +11,32 @@ import './style/AllMissions.css'
 
 class AllMissions extends React.Component {
   state = {
-    allMissions: []
+    allMissions: [],
+    lawyer: {}
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3030/missions`)
-      .then((res) => {
-        this.setState({ allMissions: res.data })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    userInfo()
+    .then(res =>
+      this.setState({
+        lawyer: {
+          id: res._id
+        }
+      }))
+    .then(() => {
+      // console.log("blabla")
+      const lawyerId = this.state.lawyer.id
+      console.log(lawyerId)
+      axios.post(`http://localhost:3030/missionsfiltered`, { lawyerId })
+        .then((res) => {
+          console.log('blabla')
+          this.setState({ allMissions: res.data })
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+      }
+    )
   }
 
   render() {

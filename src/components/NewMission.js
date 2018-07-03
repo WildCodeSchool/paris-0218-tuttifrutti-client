@@ -13,19 +13,19 @@ class NewMission extends React.Component {
       deadline: '',
       price: '',
       description: '',
-      author: '',
       finished: false,
+      author: ''
     },
     fields: Fields.mainFields
   }
 
   componentDidMount () {
     userInfo().then(res =>
-      this.setState({ author: res._id }))
+      this.setState({ newmission: {...this.state.newmission, author: res._id }}))
   }
 
   UpdateField = event => {
-    this.setState({newmission: {...this.state.newmission,[event.target.name]: event.target.value }})
+    this.setState({newmission: {...this.state.newmission, [event.target.name]: event.target.value }})
   }
 
   HandleSubmit = event => {
