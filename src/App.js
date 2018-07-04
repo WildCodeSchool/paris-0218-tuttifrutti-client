@@ -9,6 +9,7 @@ import MissionPage from './containers/MissionPage.js'
 import OldMissionsPage from './containers/OldMissionsPage.js'
 import SignUpStudent from './components/SignUpStudent.js';
 import MissionConfirm from './components/MissionConfirm';
+import EmailConfirm from './components/EmailConfirm.js';
 
 class App extends Component {
   render () {
@@ -25,7 +26,8 @@ class App extends Component {
               <Route exact path="/missions/:missionId" component={MissionPage} />
               <Route exact path="/oldmissions" component={OldMissionsPage} />
               <Route exact path="/signupstudent" component={SignUpStudent} />
-              <Route path="/accept" component={MissionConfirm}  />
+              <Route path="/accept" component={MissionConfirm} />
+              <Route path="/confirmation" component={EmailConfirm} />
             </Switch>
           </div>
         </BrowserRouter>
