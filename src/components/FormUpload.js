@@ -14,6 +14,11 @@ class FormUpload extends Component {
     }
   }
 
+  resetSelectedFile = () => {
+    this.setState({selectedFile: '', fileUploaded: false, description: '', message: ''})
+    document.getElementById('file').value = ''
+    console.log('coucou', this.state)
+  }
   onChange = (e) => {
     switch (e.target.name) {
       case 'selectedFile':
@@ -42,6 +47,7 @@ class FormUpload extends Component {
         console.log(res.data.result)
         // let message = ''
         if (res.data.result === 'fail') {
+          this.resetSelectedFile()
           this.setState({
             message: (
               <div>
@@ -56,7 +62,7 @@ class FormUpload extends Component {
           this.setState({ fileUploaded: true })
         }
       }).catch(err => {
-        console.dir(err)
+        this.resetSelectedFile()
         this.setState({
           message: (
             <div>
@@ -74,15 +80,9 @@ class FormUpload extends Component {
   render () {
     console.log('yolo', this.state.selectedFile)
 
-    const resetSelectedFile = () => {
-      this.setState({selectedFile: '', fileUploaded: false, description: '', message: ''})
-      document.getElementById('file').value = ''
-      console.log('coucou', this.state)
-    }
-
     const uploadFile = this.state.selectedFile === ''
       ? <label for='file' className='formupload-label-file'>Choisir un fichier</label>
-      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block'}}>{this.state.selectedFile.name}<button onClick={() => resetSelectedFile()}>X</button></span>
+      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block'}}>{this.state.selectedFile.name}<button onClick={() => this.resetSelectedFile()}>X</button></span>
 
     const sendFile = (this.state.fileUploaded === false
       ? <Button>Envoyer le document</Button>
@@ -92,7 +92,7 @@ class FormUpload extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         {uploadFile}
-        {this.state.uploading ? 'uploading....': ''}
+        {this.state.uploading ? 'uploading....' : ''}
         <input id='file' className='formupload-input-file'
           type="file"
           name="selectedFile"
