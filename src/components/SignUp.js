@@ -21,7 +21,9 @@ class SignUp extends React.Component {
       city: '',
       zipCode: '',
       toque: '',
-      field: ''
+      field: '',
+      activated: false
+
     },
     fields: Fields.mainFields,
     displayForm: 'block',

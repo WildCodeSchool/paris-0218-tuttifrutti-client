@@ -17,7 +17,8 @@ class NewMission extends React.Component {
       price: '',
       description: '',
       finished: false,
-      author: ''
+      author: '',
+      student: ''
     },
     fields: Fields.mainFields,
     subFields: subFields,
@@ -26,7 +27,7 @@ class NewMission extends React.Component {
     missionId: ''
   }
 
-  componentDidMount() {
+  componentDidMount () {
     console.log(this.state.subFields)
     userInfo().then(res =>
       this.setState({ newmission: { ...this.state.newmission, author: res._id } }))

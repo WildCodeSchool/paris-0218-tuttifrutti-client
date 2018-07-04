@@ -17,7 +17,8 @@ class SignUpStudent extends React.Component {
       phone: '',
       levelStudy: '',
       field: '',
-      active: false
+      activated: false,
+      approved: false
     },
     fields: Fields.mainFields,
     displayForm: 'block',
