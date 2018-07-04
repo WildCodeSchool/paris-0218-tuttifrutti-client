@@ -21,9 +21,11 @@ class SignUp extends React.Component {
       city: '',
       zipCode: '',
       toque: '',
-      field: ''
+      field: '',
+      activated: false
+
     },
-    fields: Fields.mainFields,
+    fields: Fields.mainFields
   }
 
   UpdateField = event => { this.setState({ lawyer: {...this.state.lawyer, [event.target.name]: event.target.value} }) }
