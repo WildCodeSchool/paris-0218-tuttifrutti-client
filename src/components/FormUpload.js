@@ -39,10 +39,13 @@ class FormUpload extends Component {
       .then(res => {console.log(res.data.result)
         // let message = ''
         if (res.data.result === 'fail'){
-        //  message = '<h1>Faiiiiiiil</h1>'
-        //  return message
-        this.setState({message: 'Trop lourd'})
+
+        this.setState({message: 'Envoie impossible fichier pdf, doc, docx, jpg ou jpeg uniquement et inférieur à 5 mo'})
+        this.setState({selectedFile: ''})
+        this.setState({fileUploaded: false})
         }
+
+
         // console.log(message)
         // return message
       })
