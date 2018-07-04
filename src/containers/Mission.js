@@ -52,12 +52,13 @@ class Mission extends React.Component {
           description: res.data.description,
           finished: res.data.finished
         })
-        console.log(this.state)
+        console.log(new Date(this.state.deadline).toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' }))
       })
       .catch((error) => {
         console.log(error)
       })
   }
+  deadlineDate = new Date(this.state.deadline).toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' })
 
   render () {
     const changeStatus = (event) => {
@@ -71,7 +72,7 @@ class Mission extends React.Component {
     }
 
     const { open } = this.state
-
+    // let { deadlineDate } = this.state.deadline.toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' })
     return (
       <div>
         <MissionTitle text={this.state.name} />
