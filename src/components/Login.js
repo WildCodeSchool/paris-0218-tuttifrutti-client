@@ -52,6 +52,11 @@ class Login extends React.Component {
     fetch('http://localhost:3030/')
   }
 
+  componentWillMount () {
+    const token = localStorage.getItem('token')
+    if (token !== null) { window.location.replace('/profile') }
+  }
+
   render () {
     let notValid = ''
     if (this.state.hasError === true) {

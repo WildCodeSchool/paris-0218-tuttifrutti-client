@@ -53,6 +53,11 @@ class SignUp extends React.Component {
     }
   }
 
+  componentWillMount () {
+    const token = localStorage.getItem('token')
+    if (token !== null) { window.location.replace('/profile') }
+  }
+
   render () {
     const eachField = field => {
       return (
