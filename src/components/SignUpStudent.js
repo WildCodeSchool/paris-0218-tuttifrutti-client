@@ -50,14 +50,14 @@ class SignUpStudent extends React.Component {
   }
 
   render () {
-    const eachField = field => {
+    const eachField = (field, index) => {
       return (
-        <option value={field}>{field}</option>
+        <option key={index} value={field}>{field}</option>
       )
     }
 
     const showEachField =
-    this.state.fields.map(field => eachField(field))
+    this.state.fields.map(eachField)
 
     return (
       <div>
