@@ -5,40 +5,46 @@ import Button from './Button.js'
 import './style/SendMessage.css'
 
 class SendMessage extends React.Component {
-  state = {
-    objet: '',
-    message: '',
-    authorId: ''
-  }
+    state = {
+      objet: '',
+      message: '',
+      authorId: '',
+      missionId: this.props.missionId,
+      displayForm: 'block',
+      displayConfirm: 'none',
+    }
 
-  componentDidMount () {
-    userInfo().then(res =>
-      this.setState({ authorId: res._id }))
-  }
+    componentDidMount() {
+      userInfo().then(res => this.setState({ authorId: res._id }))
+      console.log(this.state.missionId)
+    }
 
-  UpdateField = event => {
-    this.setState({ [event.target.name]: event.target.value })
-  }
+    UpdateField = event => {
+      this.setState({ [event.target.name]: event.target.value })
+    }
 
-  HandleSubmit = event => {
-    event.preventDefault()
-    console.log('testest')
-    /*
-    const mission = this.state
+    HandleSubmit = event => {
+      event.preventDefault()
+      console.log('testest')
 
-    console.log(mission)
+      this.setState({ displayForm: 'none', displayConfirm: 'block' })
 
-    axios.post(`http://localhost:3030/missions`, { mission })
-      .then(res => {
-        console.log(res)
-        console.log(res.data)
-      }) */
-  }
+      /*
+      const mission = this.state
 
-  render () {
+      console.log(mission)
+
+      axios.post(`http://localhost:3030/missions`, { mission })
+        .then(res => {
+          console.log(res)
+          console.log(res.data)
+        }) */
+    }
+
+  render() {
     return (
       <div>
-        <div className='send-message-content'>
+        <div style={{ display: this.state.displayForm }} className='send-message-content'>
           <div>
             <h1 className="title-send-message">Envoyer un message</h1>
             <div className='form-send-message-container'>
@@ -52,6 +58,12 @@ class SendMessage extends React.Component {
                 <Button>Envoyer</Button>
               </form>
             </div>
+          </div>
+        </div>
+        <div style={{ display: this.state.displayConfirm }} className='send-message-content'>
+          <p>Votre message a bien été envoyé.</p>
+          <div onClick={this.props.close}>
+            <Button>Retour à la mission</Button>
           </div>
         </div>
       </div>
