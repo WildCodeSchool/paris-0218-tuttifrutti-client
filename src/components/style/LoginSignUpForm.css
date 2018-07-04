@@ -81,6 +81,19 @@
   color: #1fa792;
 }
 
+.signup-message {
+  width: 55vw;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-top: 4rem;
+  padding: 0.8rem;
+  background-color: #87DDCF;
+  padding: 0.8rem;
+  letter-spacing: .04rem;
+  color: #fff;
+}
+
 /* SIGNUP FORM */
 
 #address {
