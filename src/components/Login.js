@@ -25,6 +25,7 @@ class Login extends React.Component {
       email: this.state.email,
       password: this.state.password
     }
+
     fetch(`http://localhost:3030/login`, {
       method: 'post',
       headers: {
@@ -40,16 +41,13 @@ class Login extends React.Component {
           })
           .then(redirect => {
             if (localStorage.getItem('token') === 'undefined') {
+              localStorage.removeItem('token')
               this.setState({hasError: true})
             } else {
               window.location.replace('/profile')
             }
           })
       })
-  }
-
-  componentDidMount () {
-    fetch('http://localhost:3030/')
   }
 
   componentWillMount () {
