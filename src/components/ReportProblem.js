@@ -9,13 +9,16 @@ class ReportProblem extends React.Component {
     autre: '',
     author: '',
     authorId: '',
-    display: 'none'
+    display: 'none',
+    displayForm: 'block',
+    displayConfirm: 'none',
   }
 
   componentDidMount () {
     userInfo().then(res =>
       this.setState({ author: res.cabinet, authorId: res._id }))
       .then(res => console.log(res))
+
   }
 
   UpdateField = event => {
@@ -25,6 +28,8 @@ class ReportProblem extends React.Component {
   HandleSubmit = event => {
     event.preventDefault()
     console.log('testest')
+
+    this.setState({ displayForm: 'none', displayConfirm: 'block' })
 
     //   const mission = this.state
 
@@ -48,7 +53,7 @@ class ReportProblem extends React.Component {
   render () {
     return (
       <div>
-        <div className='report-problem-content'>
+        <div style={{ display: this.state.displayForm }}  className='report-problem-content'>
           <h1 className='title-report-problem'>Nature du problème</h1>
           <div className='form-report-problem-container'>
             <form className='form-report-problem' onSubmit={this.HandleSubmit}>
@@ -83,6 +88,12 @@ class ReportProblem extends React.Component {
                 <Button>Envoyer</Button>
               </div>
             </form>
+          </div>
+        </div>
+        <div style={{ display: this.state.displayConfirm }} className='report-problem-content'>
+          <p>Votre problème a bien été enregistré.</p>
+          <div onClick={this.props.close}>
+            <Button>Retour aux missions terminées</Button>
           </div>
         </div>
       </div >

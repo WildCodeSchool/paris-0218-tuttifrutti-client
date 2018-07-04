@@ -75,8 +75,8 @@ class OldMissions extends React.Component {
       <div className='old-missions-container'>
         {showEachMission}
         <Modal open={open} onClose={this.onCloseModal} center>
-          <ReportProblem />
-          </Modal>
+          <ReportProblem close={this.onCloseModal}/>
+        </Modal>
       </div>
     )
   }
