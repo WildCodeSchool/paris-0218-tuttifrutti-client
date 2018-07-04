@@ -6,7 +6,7 @@ import './style/ReportProblem.css'
 class ReportProblem extends React.Component {
   state = {
     problem: '',
-    autre: '',
+    text: '',
     author: '',
     authorId: '',
     display: 'none'
@@ -38,9 +38,9 @@ class ReportProblem extends React.Component {
   }
 
   componentDidUpdate () {
-    if (this.state.display !== 'block' && this.state.problem === 'Autre') {
+    if (this.state.display !== 'block' && this.state.problem.length !== 0) {
       this.setState({display: 'block'})
-    } else if (this.state.display === 'block' && this.state.problem !== 'Autre') {
+    } else if (this.state.display === 'block' && this.state.problem.lentgh === 0) {
       this.setState({display: 'none'})
     }
   }
@@ -77,7 +77,7 @@ class ReportProblem extends React.Component {
                 </label>
               </div>
               <div style={{display: this.state.display}}>
-                <textarea className='form-textarea-report-problem' name="autre" placeholder="Si autre, précisez le problème." id="autre" onChange={this.UpdateField} />
+                <textarea className='form-textarea-report-problem' name="text" placeholder="Précisez le problème." id="text" onChange={this.UpdateField} />
               </div>
               <div className='form-button-report-problem'>
                 <Button>Envoyer</Button>
