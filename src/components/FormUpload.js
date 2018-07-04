@@ -17,10 +17,10 @@ class FormUpload extends Component {
   onChange = (e) => {
     switch (e.target.name) {
       case 'selectedFile':
-        this.setState({ selectedFile: e.target.files[0] })
+        this.setState({ selectedFile: e.target.files[0], message: '' })
         break
       default:
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({ [e.target.name]: e.target.value, message: '' })
     }
   }
 
@@ -28,51 +28,71 @@ class FormUpload extends Component {
     e.preventDefault()
     const { description, selectedFile } = this.state
     let formData = new FormData()
-    this.setState({ fileUploaded: true })
 
     formData.append('description', description)
     formData.append('selectedFile', selectedFile)
 
     console.log(formData)
+    this.setState({ uploading: true })
 
     axios.post('http://localhost:3030/upload', formData)
-      .then(res => {console.log(res.data.result)
+      .then(res => {
+        this.setState({ uploading: false })
+
+        console.log(res.data.result)
         // let message = ''
-        if (res.data.result === 'fail'){
-
-        this.setState({message: 'Envoie impossible fichier pdf, doc, docx, jpg ou jpeg uniquement et inférieur à 5 mo'})
-        this.setState({selectedFile: ''})
-        this.setState({fileUploaded: false})
+        if (res.data.result === 'fail') {
+          this.setState({
+            message: (
+              <div>
+                Uniquement .pdf, .doc/docx, .jpg/jpeg
+                <br /> <b>{'Taille max<5mo'}</b>
+              </div>
+            ),
+            selectedFile: '',
+            fileUploaded: false
+          })
+        } else {
+          this.setState({ fileUploaded: true })
         }
-
-
-        // console.log(message)
-        // return message
+      }).catch(err => {
+        console.dir(err)
+        this.setState({
+          message: (
+            <div>
+              {err.response.data.split('body')[1].split('<br> &nbsp; ')[0].slice(7)}
+              <br /> {' ou Taille max<5mo'}
+            </div>
+          ),
+          selectedFile: '',
+          uploading: false,
+          fileUploaded: false
+        })
       })
-      // .catch(err => {
-      //   console.log(err)
-      //   // if (err.code ==="fail"){
-      //   //   console.log('yaaahouuuuuuuuuuu')
-      //   //   return ("yolaaaaaa")
-      //   // }
-      //  })
-    }
+  }
 
   render () {
-
     console.log('yolo', this.state.selectedFile)
+
+    const resetSelectedFile = () => {
+      this.setState({selectedFile: '', fileUploaded: false, description: '', message: ''})
+      document.getElementById('file').value = ''
+      console.log('coucou', this.state)
+    }
 
     const uploadFile = this.state.selectedFile === ''
       ? <label for='file' className='formupload-label-file'>Choisir un fichier</label>
-      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block'}}>{this.state.selectedFile.name}</span>
+      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block'}}>{this.state.selectedFile.name}<button onClick={() => resetSelectedFile()}>X</button></span>
 
     const sendFile = (this.state.fileUploaded === false
       ? <Button>Envoyer le document</Button>
       : <span>Fichier Envoyé</span>
     )
+
     return (
       <form onSubmit={this.onSubmit}>
         {uploadFile}
+        {this.state.uploading ? 'uploading....': ''}
         <input id='file' className='formupload-input-file'
           type="file"
           name="selectedFile"
@@ -80,6 +100,7 @@ class FormUpload extends Component {
         />
         <div style={{display: this.state.selectedFile !== '' ? 'block' : 'none'}}>{sendFile}</div>
         <div>{this.state.message}</div>
+
       </form>
     )
   }
