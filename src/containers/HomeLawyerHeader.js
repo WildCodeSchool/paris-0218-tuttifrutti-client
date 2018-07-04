@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import Modal from 'react-responsive-modal'
 import { userInfo } from '../User.js'
 import HeaderSite from './HeaderSite.js'
@@ -10,7 +11,13 @@ import Parameters from '../components/Parameters.js'
 class HomeLawyerHeader extends Component {
   state = {
     author: '',
-    openModal: false,
+    openModal: false
+  }
+
+  LogOut = (req, res) => {
+    localStorage.removeItem('token')
+    console.log('Logout')
+    window.location.reload()
   }
 
   onOpenModal = (e) => {
@@ -22,17 +29,17 @@ class HomeLawyerHeader extends Component {
     this.setState({ openModal: false })
   }
 
-  componentDidMount() {
+  componentDidMount () {
     userInfo().then(res =>
       this.setState({ author: res.cabinet }))
   }
 
-  render() {
+  render () {
     const { openModal } = this.state
 
     return (
       <div>
-        <HeaderSite logout='Déconnexion' redirect='/profile' />
+        <HeaderSite click={this.LogOut} logout='Déconnexion' redirect='/profile' />
         <div className='home-lawyer-header'>
           <div>
             <HeaderName text={this.state.author} />
