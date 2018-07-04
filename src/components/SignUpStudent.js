@@ -44,7 +44,6 @@ class SignUpStudent extends React.Component {
           console.log(res.data)
         })
       this.setState({ displayForm: 'none', displayMessage: 'block' })
-      // window.location.replace()
     } else {
       console.log('Les mots de passe ne sont pas identiques.')
     }
