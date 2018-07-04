@@ -93,7 +93,7 @@ class Mission extends React.Component {
         </div>
 
         <Modal open={open} onClose={this.onCloseModal} center>
-          <SendMessage />
+          <SendMessage missionId={this.state.id} close={this.onCloseModal}/>
         </Modal>
       </div>
     )

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { userInfo } from '../User.js'
 import axios from 'axios'
 import Button from './Button.js'
@@ -10,8 +11,8 @@ class NewMission extends React.Component {
   state = {
     newmission: {
       name: '',
-      field: '',
-      subField: '',
+      field: 'Sélectionnez votre domaine',
+      subField: 'Sélectionnez votre sous-domaine',
       deadline: '',
       price: '',
       description: '',
@@ -19,7 +20,10 @@ class NewMission extends React.Component {
       author: ''
     },
     fields: Fields.mainFields,
-    subFields: subFields
+    subFields: subFields,
+    displayForm: 'block',
+    displayConfirm: 'none',
+    missionId: ''
   }
 
   componentDidMount() {
@@ -42,8 +46,11 @@ class NewMission extends React.Component {
 
     axios.post(`http://localhost:3030/missions`, { mission })
       .then(res => {
-        console.log(res)
         console.log(res.data)
+        this.setState({missionId: res.data._id})
+      })
+      .then(() => {
+        this.setState({ displayForm: 'none', displayConfirm: 'block'})
       })
   }
 
@@ -67,7 +74,7 @@ class NewMission extends React.Component {
 
     return (
       <div>
-        <div className='new-mission-content'>
+        <div style={{display: this.state.displayForm}}className='new-mission-content'>
           <div>
             <h1 className="title-new-mission">Créer une nouvelle mission</h1>
             <div className='form-new-mission-container'>
@@ -76,14 +83,14 @@ class NewMission extends React.Component {
                   <input className='form-input-new-mission' type="text" name="name" placeholder="Intitulé de la mission" id="name" onChange={this.UpdateField} />
                 </div>
                 <div className='form-div'>
-                  <select className='form-select-new-mission ' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
-                    <option value="Sélectionnez votre domaine" disabled>Sélectionnez votre domaine</option>
+                  <select value={this.state.newmission.field} className='form-select-new-mission ' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                    <option disabled >Sélectionnez votre domaine</option>
                     {showEachField}
                   </select>
                 </div>
                 <div className='form-div'>
-                  <select style={{display: this.state.newmission.field !== '' ? 'block' : 'none'}} className='form-select-new-mission ' name="subField" placeholder="Sous-domaine" id="subField" onChange={this.UpdateField} >
-                    <option value="Sélectionnez votre sous-domaine" disabled>Sélectionnez votre sous-domaine</option>
+                  <select value={this.state.newmission.subField} style={{display: this.state.newmission.field !== 'Sélectionnez votre domaine' ? 'block' : 'none'}} className='form-select-new-mission ' name="subField" placeholder="Sous-domaine" id="subField" onChange={this.UpdateField} >
+                    <option disabled >Sélectionnez votre sous-domaine</option>
                     {showEachSubField}
                   </select>
                 </div>
@@ -97,6 +104,14 @@ class NewMission extends React.Component {
                 <Button>Valider</Button>
               </form>
             </div>
+          </div>
+        </div>
+        <div style={{display: this.state.displayConfirm}} className='new-mission-content'>
+          <p>Votre mission a bien été ajoutée.</p>
+          <div>
+            <Link to={`/missions/${this.state.missionId}`}>
+              <Button>Voir la mission</Button>
+            </Link>
           </div>
         </div>
       </div >
