@@ -1,0 +1,74 @@
+[{
+  "_id": {
+    "$oid": "001"
+  },
+  "subject": "Rappel échéance mission",
+  "mail_content": "Bonjour ... `Pour Rappel, il vous reste 24h pour finaliser votre mission` `Pensez à transmettre à l'avocat votre travail avant la fin du délai imparti` `` `Cordialement,",
+  "email_signature": "L'équipe Litta",
+  "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}, {
+  "_id": {
+    "$oid": "002"
+  },
+  "subject": "Mission validée par l'avocat et notation",
+  "mail_content": "Bonjour ... `La mission n°XXXX intitulée //à compléter automatiquement// a bien été validée par l'avocat.` `L'avocat vous a attibué pour cette mission une note de X/5.` `` `Cordialement,",
+  "email_signature": "L'équipe Litta",
+  "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}, {
+  "_id": {
+    "$oid": "0003"
+  },
+  "subject": "Non attribution de la mission",
+  "mail_content": "Bonjour ... ``Un autre étudiant a été plus rapide que vous. N'hésitez pas à consulter régulièrement vos mails pour vous voir attribuer une mission prochainement` `` `Cordialement,",
+  "email_signature": "L'équipe Litta",
+  "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}, {
+  "_id": {
+    "$oid": "0004"
+  },
+  " subject": "Confirmation de virement",
+  "mail_content": "Bonjour ... `Le virement de X € pour la mission n°XXXX intitulée //à compléter automatiquement// vient d'être effectué sur votre compte.",
+  "email_signature": "L'équipe Litta",
+  "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}, {
+  }, {
+  "_id": {
+    "$oid": "005"
+  },
+  " subject": "Récapitulatif de la mission",
+  "mail_content": "Bonjour ... `Vous trouverez ci-joint un récapitulatif de la mission n°XXXX intitulée xxx`ìntitulé de la mission xxx` `` `domaine du droit concerné xxx` `` `Description de la mission xxx` `` `Date d'échéance de la mission xxx` `` `Montant brut* de la mission xxx` `` `*le montant brut de la mission est le montant avec le prélèvement de la commission de 20% pa LITTA` `` `Nous vous invitons à aller télécharger votre facture directement sur la plateforme ",
+  "email_signature": "L'équipe Litta",
+  "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}, {
+  "_id": {
+    "$oid": "006"
+  },
+  "subject": "Proposition de mission",
+  "mail_content": "Bonjour ... `Une nouvelle mission est disponible en //insérer le domaine de droit// `La description de la mission est la suivante: //insérer un encart de l'offre// //insérer un bouton//",
+  "email_signature": "L'équipe Litta",
+  "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}, {
+  "_id": {
+    "$oid": "007"
+  },
+  " subject": "Attribution de la mission",
+  "mail_content": "Bonjour ... `Vous avez été le plus rapide à répondre, vous êtes donc sélectionné pour la mission intitulé: xxx` `` `Connectez-vous dès à présent sur votre espace personnel pour avoir la description complète de la mission` `` `Pour rappel vous avez jusqu'au XXXX pour remettre la mission au cabinet. Cordialement,",
+  "email_signature": "L'équipe Litta",
+  "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}, {
+  "_id": {
+    "$oid": "008"
+  },
+  " subject": "Pré-inscription LITTA"
+  "mail_content": "Bonjour ... `Bonjour XXXXX `Votre Pré-inscription a bien été prise en compte.` `` `Nous reviendrons vers vous dans les plus brefs délais pour vous tenir informé de la suite donnée à votre pré-inscription ",
+  "email_signature": "L'équipe Litta",
+    "email_footer": "Contact : contact@litta.fr `Legal Intern to Take Away` `Tous droits réservés` `Vous recevez cet email car vous êtes inscrit sur le site LITTA"
+}]
+
+
+
+
+
+
+
+
