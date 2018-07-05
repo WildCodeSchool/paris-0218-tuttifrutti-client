@@ -90,7 +90,9 @@ class Mission extends React.Component {
         <MissionDeadline text={this.state.deadline} />
         <MissionPrice text={this.state.price} />
         <MissionStudent text={this.state.student} />
-        <MissionDescription text={this.state.description} />
+        <div className='mission-description'>
+					<MissionDescription text={this.state.description} />
+				</div>
         <div className='buttons-mission'>
 
           <FormUpload />

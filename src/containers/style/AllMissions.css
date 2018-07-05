@@ -1,12 +1,12 @@
 .all-missions-container {
-  /*width: 100vw;*/
+  /* min-height: 70vh; */
   display: flex;
   flex-wrap: wrap;
   padding: 0.8rem;
 }
 
 .each-mission-container {
-  /*width: 20%;*/
+  /* max-height: 15vh; */
   margin: 0.4rem;
   padding: 2rem;
   background-color: #d1f2eb;
