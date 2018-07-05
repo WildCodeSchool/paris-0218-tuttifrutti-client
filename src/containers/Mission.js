@@ -59,7 +59,7 @@ class Mission extends React.Component {
         console.log(error)
       })
     console.log('la ici', this.state.student)
-    if (this.state.student === undefined) {
+		if (this.state.student === '') {
       this.setState({ ...this.state, student: 'Mission non attribuée' })
     } else {
       axios.post(`http://localhost:3030/infostudent`, {
