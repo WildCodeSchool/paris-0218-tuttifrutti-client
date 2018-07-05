@@ -9,7 +9,6 @@ class EmailConfirm extends Component {
 
     state = {
         user: '',
-        mission: '',
         response: ''
     }
 
@@ -20,7 +19,6 @@ class EmailConfirm extends Component {
             .pathname
             .split(`/`)
         this.setState({user: queryString[3]})
-        this.setState({mission: queryString[2]})
         console.log(queryString)
     }
 
@@ -45,7 +43,7 @@ class EmailConfirm extends Component {
                 <div className='login-content'>
                     <div>
                         <div className='title-login'>
-                            <PageTitle espace='Pour confirmer son '/>
+                            <PageTitle espace='Pour confirmer son compte, cliquer sur le boutton :'/>
                         </div>
                         <div>
                             <div className='form-login-container'>
