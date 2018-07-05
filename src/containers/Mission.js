@@ -76,9 +76,8 @@ class Mission extends React.Component {
       event.preventDefault()
       this.setState({ ...this.state, finished: true })
       axios.put(`http://localhost:3030${this.missionId}`, { finished: true })
-        .then(res => {
-          console.log(res)
-          console.log(res.data)
+        .then(() => {
+					window.location.replace('/missions')
         })
     }
 
