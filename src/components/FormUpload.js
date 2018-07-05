@@ -90,7 +90,7 @@ class FormUpload extends Component {
     const sendFile = (this.state.fileUploaded === false
       ? <Button>Envoyer le document</Button>
       : <div> <span>Le fichier {this.state.selectedFile.name} a bien été envoyé</span>
-        <div onClick={()=>(this.resetSelectedFile())}> <button>Envoyer un autre document</button></div></div>
+        <div onClick={()=>(this.resetSelectedFile())}><Button>Envoyer un autre document</Button></div></div>
     )
 
     return (
