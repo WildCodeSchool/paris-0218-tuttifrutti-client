@@ -9,3 +9,12 @@ export const userInfo = () => {
       return res.data
     })
 }
+
+export const userInfoAdmin = () => {
+  const token = localStorage.getItem('token')
+  const decoded = jwt_decode(token)
+  return axios.post(`http://localhost:3030/infoadmin`, { decoded })
+    .then(res => {
+      return res.data
+    })
+}
