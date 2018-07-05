@@ -27,10 +27,12 @@ class SignUp extends React.Component {
     },
     fields: Fields.mainFields,
     displayForm: 'block',
-    displayMessage: 'none'
+    displayMessage: 'none',
+    hasErrorNotIdentic: false,
+    hasErrorTooShort: false
   }
 
-  UpdateField = event => { this.setState({ lawyer: {...this.state.lawyer, [event.target.name]: event.target.value} }) }
+  UpdateField = event => { this.setState({ lawyer: { ...this.state.lawyer, [event.target.name]: event.target.value } }) }
 
   HandleSubmit = event => {
     event.preventDefault()
@@ -43,24 +45,36 @@ class SignUp extends React.Component {
     const password = document.getElementById('password').value
     const passwordConfirm = document.getElementById('passwordConfirm').value
 
-    if (password === passwordConfirm) {
+    if (password.length < 6) {
+      this.setState({ hasErrorNotIdentic: false, hasErrorTooShort: true })
+    } else if (password !== passwordConfirm) {
+      this.setState({ hasErrorNotIdentic: true, hasErrorTooShort: false })
+    } else {
       axios.post(`http://localhost:3030/reg`, { user })
         .then(res => {
           console.log(res)
           console.log(res.data)
         })
       this.setState({ displayForm: 'none', displayMessage: 'block' })
-    } else {
-      console.log('Les mots de passe ne sont pas identiques.')
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     const token = localStorage.getItem('token')
     if (token !== null) { window.location.replace('/profile') }
   }
 
-  render () {
+  render() {
+    let notIdentic = ''
+    if (this.state.hasErrorNotIdentic === true) {
+      notIdentic = `Attention, les mots de passe ne sont pas identiques.`
+    }
+
+    let tooShort = ''
+    if (this.state.hasErrorTooShort === true) {
+      tooShort = `Attention, le mot de passe doit contenir au moins 6 caractères.`
+    }
+
     const eachField = (field, index) => {
       return (
         <option key={index} value={field}>{field}</option>
@@ -68,11 +82,11 @@ class SignUp extends React.Component {
     }
 
     const showEachField =
-    this.state.fields.map(eachField)
+      this.state.fields.map(eachField)
 
     return (
       <div>
-        <HeaderSite redirect='/'/>
+        <HeaderSite redirect='/' />
         <div className='signup-content'>
           <div>
             <div className='title-signup'>
@@ -82,34 +96,36 @@ class SignUp extends React.Component {
               <div className='form-signup-container'>
                 <form className="form-signup" onSubmit={this.HandleSubmit}>
                   <div className='form-div'>
-                    <input className='form-input-signup' type="text" name="firstName" placeholder="Prénom" id="firstName" onChange={this.UpdateField} />
-                    <input className='form-input-signup' type="text" name="lastName" placeholder="Nom" id="lastName" onChange={this.UpdateField} />
+                    <input className='form-input-signup' type="text" name="firstName" placeholder="Prénom" id="firstName" onChange={this.UpdateField} required/>
+                    <input className='form-input-signup' type="text" name="lastName" placeholder="Nom" id="lastName" onChange={this.UpdateField} required/>
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} />
-                    <input className='form-input-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} />
+                    <input className='form-input-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} required/>
+                    <input className='form-input-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} required />
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-signup' type="text" name="cabinet" placeholder="Nom du cabinet (facultatif)" id="cabinet" onChange={this.UpdateField} />
-                    <input className='form-input-signup' type="text" name="toque" placeholder="N° de toque (facultatif)" id="toque" onChange={this.UpdateField} />
+                    <input className='form-input-signup' type="text" name="cabinet" placeholder="Nom du cabinet" id="cabinet" onChange={this.UpdateField} required/>
+                    <input className='form-input-signup' type="text" name="toque" placeholder="N° de toque" id="toque" onChange={this.UpdateField} required/>
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-signup' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} />
+                    <input className='form-input-signup' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} required/>
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-signup' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} />
-                    <input className='form-input-signup' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} />
+                    <input className='form-input-signup' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} required/>
+                    <input className='form-input-signup' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} required/>
                   </div>
                   <div className='form-div'>
-                    <select className='form-select-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} >
+                    <select className='form-select-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} required>
                       <option value="" disabled selected>Sélectionnez votre domaine</option>
                       {showEachField}
                     </select>
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-signup'type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} />
-                    <input className='form-input-signup' type="password" name="passwordConfirm" placeholder="Confimer le mot de passe" id="passwordConfirm" />
+                    <input className='form-input-signup' type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} required/>
+                    <input className='form-input-signup' type="password" name="passwordConfirm" placeholder="Confimer le mot de passe" id="passwordConfirm" required/>
                   </div>
+                  <div className='identic'><p>{notIdentic}</p></div>
+                  <div className='identic'><p>{tooShort}</p></div>
                   <Button>S'inscrire</Button>
                 </form>
               </div>
