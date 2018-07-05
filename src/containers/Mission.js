@@ -60,16 +60,17 @@ class Mission extends React.Component {
         console.log(error)
       })
     console.log('la ici', this.state.student)
-
-    axios.post(`http://localhost:3030/infostudent`, {
-      studentId: this.state.student
-    })
-      .then(stud =>
-        this.setState({ ...this.state, student: stud.data })
-      )
+    if (this.state.student === undefined) {
+      this.setState({ ...this.state, student: 'Mission non attribuée' })
+    } else {
+      axios.post(`http://localhost:3030/infostudent`, {
+        studentId: this.state.student
+      })
+        .then(stud =>
+          this.setState({ ...this.state, student: stud.data })
+        )
+    }
   }
-
-  deadlineDate = new Date(this.state.deadline).toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' })
 
   render () {
     const changeStatus = (event) => {
@@ -83,7 +84,6 @@ class Mission extends React.Component {
     }
 
     const { open } = this.state
-    // let { deadlineDate } = this.state.deadline.toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' })
     return (
       <div>
         <MissionTitle text={this.state.name} />
