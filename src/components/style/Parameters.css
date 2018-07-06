@@ -1,5 +1,5 @@
 .parameters-content {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   text-align: center;
 }
@@ -12,14 +12,24 @@
   font-weight: bold;
 }
 
+.parameters-id {
+  display: flex;
+  text-align: left;
+}
+
+.parameters-id p {
+  width: 50%;
+}
+
 .parameters-p {
     font-size: 0.8rem;
+
 }
 
 .parameters-profile h2 {
    color: black;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
   font-weight: bold; 
 }
@@ -53,7 +63,7 @@
 
 .form-input-parameters:focus {
   border: none;
-  border-bottom: solid 0.1rem green;
+  border-bottom: solid 0.1rem #1fa792;
   appearance: none;
   -webkit-appearance: none;
 }
@@ -74,7 +84,15 @@
 }
 
 .form-select-parameters:focus {
-  border-bottom: solid 0.1rem green;
+  border-bottom: solid 0.1rem #1fa792;
+}
+
+.form-button-cancel button {
+  background-color: #9CE5D9;
+}
+
+.form-button-cancel button:hover {
+  background-color: #72CCBD;
 }
 
 /* SIGNUP FORM */
