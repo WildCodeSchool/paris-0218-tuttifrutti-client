@@ -18,7 +18,8 @@ class EmailConfirm extends Component {
             .location
             .pathname
             .split(`/`)
-        this.setState({user: queryString[3]})
+            this.setState({user: queryString[2]})
+            this.setState({mission: queryString[3]})
         console.log(queryString)
     }
 
