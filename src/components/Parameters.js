@@ -81,10 +81,10 @@ class Parameters extends React.Component {
 
     return (
       <div>
-        <div className='parameters-content'>
+        <div className="parameters-content">
           <div>
             <div>
-              <h1 className='title-parameters'>Paramètres du compte</h1>
+              <h1 className="title-parameters">Paramètres du compte</h1>
             </div>
             <div className="parameters-profile" style={{ display: this.state.displayInfo }}>
               <div>
@@ -92,24 +92,34 @@ class Parameters extends React.Component {
               </div>
               <div>
                 <h2>Identifiants</h2>
-                <div className='parameters-id'>
-                  <p className="parameters-p">Email&nbsp;: {this.state.lawyer.email}</p>
-                  <p className="parameters-p">Mot de passe&nbsp;: ******</p>
+                <div className="parameters-id">
+                  <p className="parameters-p">Email&nbsp;:&emsp;{this.state.lawyer.email}</p>
+                  <p className="parameters-p">Mot de passe&nbsp;:&emsp;******</p>
                 </div>
               </div>
               <div>
                 <h2>Informations personnelles</h2>
-                <p className="parameters-p">Prénom&nbsp;: {this.state.lawyer.firstName}</p>
-                <p className="parameters-p">Nom&nbsp;: {this.state.lawyer.lastName}</p>
-                <p className="parameters-p">Cabinet&nbsp;: {this.state.lawyer.cabinet}</p>
-                <p className="parameters-p">Numéro de téléphone&nbsp;: {this.state.lawyer.phone}</p>
-                <p className="parameters-p">Adresse&nbsp;: {this.state.lawyer.address}</p>
-                <p className="parameters-p">Ville&nbsp;: {this.state.lawyer.city}</p>
-                <p className="parameters-p">Code Postal&nbsp;: {this.state.lawyer.zipCode}</p>
-                <p className="parameters-p">Numéro de toque&nbsp;: {this.state.lawyer.toque}</p>
-                <p className="parameters-p">Spécialité en droit&nbsp;: {this.state.lawyer.field}</p>
+                <div className="parameters-info-half">
+                  <p className="parameters-p">Prénom&nbsp;:&emsp;{this.state.lawyer.firstName}</p>
+                  <p className="parameters-p">Nom&nbsp;:&emsp;{this.state.lawyer.lastName}</p>
+                </div>
+                <div className="parameters-info-half">
+                  <p className="parameters-p">Cabinet&nbsp;:&emsp;{this.state.lawyer.cabinet}</p>
+                  <p className="parameters-p">Numéro de toque&nbsp;:&emsp;{this.state.lawyer.toque}</p>
+                </div>
+                <div className="parameters-info">
+                  <p className="parameters-p">Spécialité en droit&nbsp;:&emsp;{this.state.lawyer.field}</p>
+                </div>
+                <div className="parameters-info-half">
+                  <p className="parameters-p">Adresse&nbsp;:&emsp;{this.state.lawyer.address}</p>
+                  <p className="parameters-p">Numéro de téléphone&nbsp;:&emsp;{this.state.lawyer.phone}</p>
+                </div>
+                <div className="parameters-info-half">
+                  <p className="parameters-p">Code Postal&nbsp;:&emsp;{this.state.lawyer.zipCode}</p>
+                  <p className="parameters-p">Ville&nbsp;:&emsp;{this.state.lawyer.city}</p>
+                </div>
               </div>
-              <div onClick={this.showUpdateForm}>
+              <div onClick={this.showUpdateForm} className="parameters-button">
                 <Button>Modifier</Button>
               </div>
             </div>

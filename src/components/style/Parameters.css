@@ -1,15 +1,18 @@
 .parameters-content {
-  /* display: flex; */
   justify-content: center;
   text-align: center;
 }
 
 .title-parameters {
-  color: black;
+  color: #1fa792;
   text-transform: uppercase;
   text-align: center;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 400;
+}
+
+.parameters-profile {
+  margin: 0 2rem;
 }
 
 .parameters-id {
@@ -22,16 +25,36 @@
 }
 
 .parameters-p {
-    font-size: 0.8rem;
-
+  font-size: 0.87rem;
+  margin: 0.4rem 0;
+  font-weight: 300;
 }
 
 .parameters-profile h2 {
-   color: black;
+  margin: 1.4rem 0 0.6rem;
+  color: #1fa792;
   text-transform: uppercase;
   text-align: left;
   font-size: 1rem;
-  font-weight: bold; 
+  font-weight: 300; 
+}
+
+.parameters-info {
+  display: flex;
+  text-align: left;
+}
+
+.parameters-info-half {
+  display: flex;
+  text-align: left;
+}
+
+.parameters-info-half p {
+  width: 50%;
+}
+
+.parameters-button {
+  margin: 0.8rem 0 0.8rem;
 }
 
 .form-parameters-container {
@@ -109,4 +132,31 @@
 #toque,
 #zipCode {
   width: 30%;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1024px)  {
+  .parameters-id {
+    display: block;
+    text-align: left;
+  }
+
+  .parameters-id p {
+    width: 100%;
+  }
+
+  .parameters-info {
+    display: block;
+    text-align: left;
+  }
+
+  .parameters-info-half {
+    display: block;
+    text-align: left;
+  }
+
+  .parameters-info-half p {
+    width: 100%;
+  }
 }
