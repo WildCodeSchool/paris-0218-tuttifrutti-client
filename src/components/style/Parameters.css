@@ -111,11 +111,11 @@
 }
 
 .form-button-cancel button {
-  background-color: #9CE5D9;
+  background-color: #add;
 }
 
 .form-button-cancel button:hover {
-  background-color: #72CCBD;
+  background-color: #1fa792;
 }
 
 /* SIGNUP FORM */
