@@ -10,3 +10,8 @@
 .buttons-mission :last-child {
   margin: 8px;
 }
+
+.mission-description {
+  display: flex;
+  justify-content: center;
+}

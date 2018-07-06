@@ -82,7 +82,7 @@ class ReportProblem extends React.Component {
                 </label>
               </div>
               <div style={{display: this.state.display}}>
-                <textarea className='form-textarea-report-problem' name="text" placeholder="Précisez le problème." id="text" onChange={this.UpdateField} />
+                <textarea className='form-textarea-report-problem' name="text" placeholder="Précisez le problème." id="text" onChange={this.UpdateField} required />
               </div>
               <div className='form-button-report-problem'>
                 <Button>Envoyer</Button>

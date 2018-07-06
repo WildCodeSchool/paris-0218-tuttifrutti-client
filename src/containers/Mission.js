@@ -21,6 +21,7 @@ class Mission extends React.Component {
     subField: '',
     deadline: '',
     price: '',
+    student: '',
     description: '',
     finished: '',
     open: false
@@ -37,9 +38,9 @@ class Mission extends React.Component {
 
   missionId = window.location.pathname
 
-  componentDidMount () {
+  async componentDidMount () {
     console.log(window.location.pathname)
-    axios.get(`http://localhost:3030${this.missionId}`)
+    await axios.get(`http://localhost:3030${this.missionId}`)
       .then(console.log('ok'))
       .then((res) => {
         this.setState({
@@ -49,30 +50,38 @@ class Mission extends React.Component {
           subField: res.data.subField,
           deadline: res.data.deadline,
           price: res.data.price,
+          student: res.data.student,
           description: res.data.description,
           finished: res.data.finished
         })
-        console.log(new Date(this.state.deadline).toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' }))
       })
       .catch((error) => {
         console.log(error)
       })
+    console.log('la ici', this.state.student)
+		if (this.state.student === '') {
+      this.setState({ ...this.state, student: 'Mission non attribuée' })
+    } else {
+      axios.post(`http://localhost:3030/infostudent`, {
+        studentId: this.state.student
+      })
+        .then(stud =>
+          this.setState({ ...this.state, student: stud.data })
+        )
+    }
   }
-  deadlineDate = new Date(this.state.deadline).toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' })
 
   render () {
     const changeStatus = (event) => {
       event.preventDefault()
       this.setState({ ...this.state, finished: true })
       axios.put(`http://localhost:3030${this.missionId}`, { finished: true })
-        .then(res => {
-          console.log(res)
-          console.log(res.data)
+        .then(() => {
+					window.location.replace('/missions')
         })
     }
 
     const { open } = this.state
-    // let { deadlineDate } = this.state.deadline.toLocaleString('fr-FR', { year: 'numeric', month: 'numeric', day: 'numeric' })
     return (
       <div>
         <MissionTitle text={this.state.name} />
@@ -80,8 +89,10 @@ class Mission extends React.Component {
         <MissionField field={this.state.field} subfield={this.state.subField}/>
         <MissionDeadline text={this.state.deadline} />
         <MissionPrice text={this.state.price} />
-        <MissionStudent text='Non attribué' /> {/* {this.state.student} */}
-        <MissionDescription text={this.state.description} />
+        <MissionStudent text={this.state.student} />
+        <div className='mission-description'>
+					<MissionDescription text={this.state.description} />
+				</div>
         <div className='buttons-mission'>
 
           <FormUpload />

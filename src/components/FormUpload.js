@@ -10,7 +10,8 @@ class FormUpload extends Component {
       description: '',
       selectedFile: '',
       fileUploaded: false,
-      message: ''
+      message: '',
+      fileSended: ''
     }
   }
 
@@ -19,6 +20,7 @@ class FormUpload extends Component {
     document.getElementById('file').value = ''
     console.log('coucou', this.state)
   }
+
   onChange = (e) => {
     switch (e.target.name) {
       case 'selectedFile':
@@ -33,7 +35,6 @@ class FormUpload extends Component {
     e.preventDefault()
     const { description, selectedFile } = this.state
     let formData = new FormData()
-
     formData.append('description', description)
     formData.append('selectedFile', selectedFile)
 
@@ -59,7 +60,9 @@ class FormUpload extends Component {
             fileUploaded: false
           })
         } else {
-          this.setState({ fileUploaded: true })
+          this.setState({
+            fileUploaded: true
+          })
         }
       }).catch(err => {
         this.resetSelectedFile()
@@ -78,7 +81,7 @@ class FormUpload extends Component {
   }
 
   render () {
-    console.log('yolo', this.state.selectedFile)
+    console.log('yolo', this.state.selectedFile, this.state.sendOtherFile)
 
     const uploadFile = this.state.selectedFile === ''
       ? <label for='file' className='formupload-label-file'>Choisir un fichier</label>
@@ -86,7 +89,8 @@ class FormUpload extends Component {
 
     const sendFile = (this.state.fileUploaded === false
       ? <Button>Envoyer le document</Button>
-      : <span>Fichier Envoyé</span>
+      : <div> <span>Le fichier {this.state.selectedFile.name} a bien été envoyé</span>
+        <div onClick={()=>(this.resetSelectedFile())}><Button>Envoyer un autre document</Button></div></div>
     )
 
     return (

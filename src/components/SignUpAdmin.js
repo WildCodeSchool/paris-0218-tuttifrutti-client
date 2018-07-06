@@ -6,39 +6,30 @@ import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
-import Fields from '../fields/fields.json'
 
 class SignUp extends React.Component {
   state = {
-    lawyer: {
+    admin: {
       email: '',
       password: '',
       firstName: '',
       lastName: '',
-      cabinet: '',
-      phone: '',
-      address: '',
-      city: '',
-      zipCode: '',
-      toque: '',
-      field: '',
       activated: false
 
     },
-    fields: Fields.mainFields,
     displayForm: 'block',
     displayMessage: 'none',
     hasErrorNotIdentic: false,
     hasErrorTooShort: false
   }
 
-  UpdateField = event => { this.setState({ lawyer: { ...this.state.lawyer, [event.target.name]: event.target.value } }) }
+  UpdateField = event => { this.setState({ admin: { ...this.state.admin, [event.target.name]: event.target.value } }) }
 
   HandleSubmit = event => {
     event.preventDefault()
     console.log('testest')
 
-    const user = this.state.lawyer
+    const user = this.state.admin
 
     console.log(user)
 
@@ -50,7 +41,7 @@ class SignUp extends React.Component {
     } else if (password !== passwordConfirm) {
       this.setState({ hasErrorNotIdentic: true, hasErrorTooShort: false })
     } else {
-      axios.post(`http://localhost:3030/reg`, { user })
+      axios.post(`http://localhost:3030/signupadmin`, { user })
         .then(res => {
           console.log(res)
           console.log(res.data)
@@ -61,7 +52,7 @@ class SignUp extends React.Component {
 
   componentWillMount() {
     const token = localStorage.getItem('token')
-    if (token !== null) { window.location.replace('/profile') }
+    if (token !== null) { window.location.replace('/admin') }
   }
 
   render() {
@@ -75,22 +66,13 @@ class SignUp extends React.Component {
       tooShort = `Attention, le mot de passe doit contenir au moins 6 caractères.`
     }
 
-    const eachField = (field, index) => {
-      return (
-        <option key={index} value={field}>{field}</option>
-      )
-    }
-
-    const showEachField =
-      this.state.fields.map(eachField)
-
     return (
       <div>
         <HeaderSite redirect='/' />
         <div className='signup-content'>
           <div>
             <div className='title-signup'>
-              <PageTitle espace='Espace avocat' title='Inscription' />
+              <PageTitle espace='Espace Admin' title='Inscription' />
             </div>
             <div style={{ display: this.state.displayForm }}>
               <div className='form-signup-container'>
@@ -101,24 +83,8 @@ class SignUp extends React.Component {
                   </div>
                   <div className='form-div'>
                     <input className='form-input-signup' type="email" name="email" placeholder="Email" id="email" onChange={this.UpdateField} required/>
-                    <input className='form-input-signup' type="text" name="phone" placeholder="Téléphone" id="phone" onChange={this.UpdateField} required />
                   </div>
                   <div className='form-div'>
-                    <input className='form-input-signup' type="text" name="cabinet" placeholder="Nom du cabinet" id="cabinet" onChange={this.UpdateField} required/>
-                    <input className='form-input-signup' type="text" name="toque" placeholder="N° de toque" id="toque" onChange={this.UpdateField} required/>
-                  </div>
-                  <div className='form-div'>
-                    <input className='form-input-signup' type="text" name="address" placeholder="Adresse" id="address" onChange={this.UpdateField} required/>
-                  </div>
-                  <div className='form-div'>
-                    <input className='form-input-signup' type="text" name="zipCode" placeholder="Code postal" id="zipCode" onChange={this.UpdateField} required/>
-                    <input className='form-input-signup' type="text" name="city" placeholder="Ville" id="city" onChange={this.UpdateField} required/>
-                  </div>
-                  <div className='form-div'>
-                    <select className='form-select-signup' name="field" placeholder="Domaine" id="field" onChange={this.UpdateField} required>
-                      <option value="" disabled selected>Sélectionnez votre domaine</option>
-                      {showEachField}
-                    </select>
                   </div>
                   <div className='form-div'>
                     <input className='form-input-signup' type="password" name="password" placeholder="Mot de passe" id="password" onChange={this.UpdateField} required/>
@@ -129,7 +95,7 @@ class SignUp extends React.Component {
                   <Button>S'inscrire</Button>
                 </form>
               </div>
-              <div className='link-signup-connect'><LinkSignUpConnect text1='Déjà inscrit ?' text2='Connectez-vous' linkRoute='/login' />
+              <div className='link-signup-connect'><LinkSignUpConnect text1='Déjà inscrit ?' text2='Connectez-vous' linkRoute='/loginadmin' />
               </div>
             </div>
             <div style={{ display: this.state.displayMessage }}>
