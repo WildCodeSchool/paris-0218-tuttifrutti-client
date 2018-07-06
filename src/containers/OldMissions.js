@@ -12,74 +12,76 @@ import ReportProblem from '../components/ReportProblem.js'
 import './style/OldMissions.css'
 
 class OldMissions extends React.Component {
-  state = {
-    oldMissions: [],
-    lawyer: {},
-    open: false
-  }
+	state = {
+		oldMissions: [],
+		lawyer: {},
+		open: false
+	}
 
-  onOpenModal = (event) => {
-    event.preventDefault()
-    this.setState({ open: true })
-  }
+	onOpenModal = (event) => {
+		event.preventDefault()
+		this.setState({ open: true })
+	}
 
-  onCloseModal = () => {
-    this.setState({ open: false })
-  }
+	onCloseModal = () => {
+		this.setState({ open: false })
+	}
 
-  componentDidMount() {
-    userInfo()
-    .then(res =>
-      this.setState({
-        lawyer: {
-          id: res._id
-        }
-      }))
-    .then(() => {
-      const lawyerId = this.state.lawyer.id
-      axios.post(`http://localhost:3030/oldmissionsfiltered`, { lawyerId })
-        .then((res) => {
-          this.setState({ oldMissions: res.data })
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-      }
-    )
-  }
+	componentDidMount() {
+		userInfo()
+			.then(res =>
+				this.setState({
+					lawyer: {
+						id: res._id
+					}
+				}))
+			.then(() => {
+				const lawyerId = this.state.lawyer.id
+				axios.post(`http://localhost:3030/oldmissionsfiltered`, { lawyerId })
+					.then((res) => {
+						this.setState({ oldMissions: res.data })
+					})
+					.catch((error) => {
+						console.log(error);
+					})
+			}
+			)
+	}
 
-  render() {
+	render() {
 
-    const eachMission = mission => {
-      return (
-        <div key={mission._id} className='each-mission-container'>
-          <MissionTitle text={mission.name} />
-          <MissionId text={mission._id} />
-          <MissionStudent text='Étudiant' />
-          <MissionDeadline text={mission.deadline} />
-          <MissionPrice text={mission.price} />
-          <div className='old-missions-button'>
-            <Button>Télécharger la facture</Button>
-            <div onClick={this.onOpenModal}><Button>Signaler un problème</Button></div>
-          </div>
-        </div>
-      )
-    }
+		const eachMission = mission => {
+			return (
+				<div key={mission._id} className='each-mission-container'>
+					<div className='old-mission-block-title'>
+						<MissionTitle text={mission.name} />
+						<MissionId text={mission._id} />
+					</div>
+					<MissionDeadline text={mission.deadline} />
+					<MissionPrice text={mission.price} />
+					<MissionStudent text='La mission a été réalisée par Daniel.' />
+					<div className='old-missions-button'>
+						<Button>Télécharger la facture</Button>
+						<div onClick={this.onOpenModal}><Button>Signaler un problème</Button></div>
+					</div>
+				</div>
+			)
+		}
 
 
-    const showEachMission = this.state.oldMissions.map(mission => eachMission(mission))
+		const showEachMission = this.state.oldMissions.map(mission => eachMission(mission))
 
-    const { open } = this.state
+		const { open } = this.state
 
-    return (
-      <div className='old-missions-container'>
-        {showEachMission}
-        <Modal open={open} onClose={this.onCloseModal} center>
-          <ReportProblem close={this.onCloseModal}/>
-        </Modal>
-      </div>
-    )
-  }
+		return (
+			<div className='old-missions-container'>
+				{showEachMission}
+				<Modal open={open} onClose={this.onCloseModal} center>
+					<ReportProblem close={this.onCloseModal} />
+				</Modal>
+			</div>
+		)
+	}
 }
 
 export default OldMissions

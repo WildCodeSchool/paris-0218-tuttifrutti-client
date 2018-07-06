@@ -51,6 +51,7 @@ class AllMissions extends React.Component {
         <div key={mission._id} className='each-mission-container'>
           <MissionTitle text={mission.name} />
           <MissionId text={mission._id} />
+					<br />
           <MissionField text={mission.field} />
           <MissionDeadline text={mission.deadline} />
           <div className='button-mission-more' onClick={() => showDetailedMission(mission._id)}>

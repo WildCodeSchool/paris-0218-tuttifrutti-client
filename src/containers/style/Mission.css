@@ -1,15 +1,18 @@
 .buttons-mission {
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-content: center;
+  padding-bottom: 2rem;
 }
 
-.buttons-mission :first-child {
+/* .buttons-mission :first-child {
   margin: 8px;
 }
 
 .buttons-mission :last-child {
   margin: 8px;
-}
+} */
 
 .mission-container {
   display: flex;
@@ -36,11 +39,11 @@
   justify-content: center;
   width: 50%;
   height: 5rem;
-  background: #a1e5d8;
+  background: #8eddce;
   color: white;
   padding: 1rem;
   text-align: center;
-
+  margin: 0.035rem;
 }
 
 .mission-block2 {
@@ -53,8 +56,60 @@
   color: white;
   padding: 1rem;
   text-align: center;
+  margin: 0.035rem;
+
 }
 
 .mission-deadline-price {
   display: flex;
 }
+
+.mission-student-block {
+  display: flex;
+  width: 100%;
+  align-content: center;
+  padding: 1rem 0;
+}
+
+.mission-student-name {
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  text-align: center;
+  margin: 0;
+  /* padding: 0.3rem 0;
+  background-color: #8eddce; */
+  /* color: white; */
+}
+
+.mission-student-message {
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mission-student-doc-upload {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+.mission-student-finished {
+  width: 33%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.separator {
+  border: none;
+  height: 0.1rem;
+  background-color: #8eddce;
+}
+
+/* .separator2 {
+  border: none;
+  height: 0.1rem;
+  background-color: #8eddce;
+} */

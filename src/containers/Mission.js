@@ -60,13 +60,13 @@ class Mission extends React.Component {
 			})
 		console.log('la ici', this.state.student)
 		if (this.state.student === '') {
-			this.setState({ ...this.state, student: 'Mission non attribuée' })
+			this.setState({ ...this.state, student: `La mission n'a pas encore été attribuée.` })
 		} else {
 			axios.post(`http://localhost:3030/infostudent`, {
 				studentId: this.state.student
 			})
 				.then(stud =>
-					this.setState({ ...this.state, student: stud.data })
+					this.setState({ ...this.state, student: 'La mission a été attribuée à ' + stud.data +'.' })
 				)
 		}
 	}
@@ -85,33 +85,39 @@ class Mission extends React.Component {
 		return (
 			<div className='mission-container'>
 				<div className='mission-content'>
+				<br />
 					<div className='mission-title-id'>
 						<MissionTitle text={this.state.name} />
 						<MissionId text={this.state.id} />
 					</div>
+					<br />
 					<div class='mission-infos-block'>
 						<div className='mission-block1'>
 							<MissionField field={this.state.field} subfield={this.state.subField} />
 						</div>
 						<div className='mission-block2'>
-						<div>
-							<MissionDeadline text={this.state.deadline} />
-							<MissionPrice text={this.state.price} />
+							<div>
+								<MissionDeadline text={this.state.deadline} />
+								<MissionPrice text={this.state.price} />
 							</div>
 						</div>
 					</div>
-					<MissionStudent text={this.state.student} />
+					<br />
 					<div className='mission-description'>
 						<MissionDescription text={this.state.description} />
 					</div>
+							<div className='mission-student-name'><MissionStudent text={this.state.student} /></div>
+					{/* <hr className='separator' /> */}
 					<div className='buttons-mission'>
-
-						<FormUpload />
-						<div onClick={this.onOpenModal}><Button>Envoyer un message</Button></div>
-					</div>
-					<div onClick={changeStatus}>
+						<div className='mission-student-block'>
+							<div onClick={this.onOpenModal} className='mission-student-message'><Button>Envoyer un message</Button></div>
+					<div className='mission-student-doc-upload'><FormUpload /></div>
+					<div onClick={changeStatus} className='mission-student-finished'>
 						<Button>Mission terminée</Button>
 					</div>
+						</div>
+					</div>
+					{/* <hr className='separator' /> */}
 
 					<Modal open={open} onClose={this.onCloseModal} center>
 						<SendMessage missionId={this.state.id} close={this.onCloseModal} />

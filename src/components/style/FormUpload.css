@@ -1,13 +1,37 @@
 .formupload-label-file {
     cursor: pointer;
-    color: #7accbc;
+    width: 8rem;
+    height: 2rem;
+    margin-top: 1rem;
+    background-color: #7accbc;
+    color: white;
+    border: none;
+    border-radius: 0%;
+    text-transform: uppercase;
+    outline: none;
+    box-shadow: none;
+    font-size: 0.8rem;
+    text-align: center;
 }
 
-.label-file:hover {
-    color: #1fa792;
+.formupload-label-file:hover {
+    background-color: #1fa792;
     font-weight: 600;
 }
 
 .formupload-input-file {
     display: none;
+}
+
+.delete-file {
+    cursor: pointer;
+    color: #1fa792;
+    font-size: 1.1rem;
+    padding-left: 0.5rem;
+}
+
+.error-upload {
+    color: red;
+    padding-top: 0.2rem;
+    font-size: 0.8rem;
 }

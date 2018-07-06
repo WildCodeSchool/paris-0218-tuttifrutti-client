@@ -1,16 +1,16 @@
 .old-missions-container {
-  width: 100vw;
   display: flex;
   flex-wrap: wrap;
 }
 
 .each-mission-container {
   width: 20%;
-  margin: 0.1rem;
+  margin: 0.07rem;
   padding: 2rem;
   background-color: #d1f2eb;
   color: black;
   flex-grow: 1;
+  text-align: center;
 }
 
 .old-missions-button {
@@ -25,6 +25,11 @@
 
 .old-missions-button :last-child {
   margin: 0 0.4rem;
+}
+
+.old-mission-block-title {
+  line-height: 0.5;
+  margin-bottom: 1rem;
 }
 
 .styles_modal__gNwvD {
