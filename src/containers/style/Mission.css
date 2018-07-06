@@ -11,7 +11,50 @@
   margin: 8px;
 }
 
-.mission-description {
+.mission-container {
   display: flex;
   justify-content: center;
+}
+.mission-content{
+  width: 40%;
+}
+
+.mission-infos-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission-title-id {
+  padding: 1rem;
+  line-height: 0.5;
+}
+
+.mission-block1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 5rem;
+  background: #a1e5d8;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+
+}
+
+.mission-block2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 5rem;
+  background: #8eddce;  
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.mission-deadline-price {
+  display: flex;
 }

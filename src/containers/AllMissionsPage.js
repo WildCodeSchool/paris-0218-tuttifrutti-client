@@ -30,7 +30,7 @@ class AllMissionsPage extends React.Component {
     return (
       <div>
         <HomeLawyerHeader />
-        <MissionPageHeader to='/profile' text='< Retour au profil'/>
+        <MissionPageHeader to='/profile' text='< Retour au profil' title='Missions en cours'/>
         <AllMissions />
         <Footer />
       </div>

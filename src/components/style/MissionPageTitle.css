@@ -1,0 +1,16 @@
+.mission-page {
+    width: 100vw;
+    height: 4vh;
+    background-color: #7accbc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mission-page-title {
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

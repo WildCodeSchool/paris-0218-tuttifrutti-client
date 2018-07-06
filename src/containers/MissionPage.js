@@ -28,7 +28,7 @@ class MissionPage extends React.Component {
     return (
       <div>
         <HomeLawyerHeader />
-        <MissionPageHeader to='/missions' text='< Retour à la liste des missions'/>
+        <MissionPageHeader to='/missions' text='< Retour à la liste des missions' title='Mission en cours'/>
         <Mission />
         <Footer />
       </div>
