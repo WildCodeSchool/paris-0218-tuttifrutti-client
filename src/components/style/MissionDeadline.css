@@ -1,3 +1,14 @@
-.mission-deadline {
+.mission-deadline, .mission-deadline-date {
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.mission-deadline-date {
+  font-weight: 400;
+  text-transform: none;
+  font-style: italic;
 }

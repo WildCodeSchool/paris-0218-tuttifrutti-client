@@ -1,0 +1,10 @@
+.header-goback {
+  z-index: 10;
+  position: relative;
+}
+
+.header-title {
+  z-index: 1;
+  position: relative;
+  margin-top: -2.85rem;
+}

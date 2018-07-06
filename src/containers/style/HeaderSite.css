@@ -2,7 +2,7 @@
   background: transparent;
   z-index: 100;
   color: #1fa792;
-  width: 100vw;
+  /* width: 100vw; */
   height: 20vh;
   display: flex;
 }
@@ -30,5 +30,6 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 2rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
 }

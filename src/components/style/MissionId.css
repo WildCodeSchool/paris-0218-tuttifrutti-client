@@ -1,3 +1,8 @@
 .mission-id {
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.6;
 }

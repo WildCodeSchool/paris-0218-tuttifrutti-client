@@ -52,8 +52,8 @@ class FormUpload extends Component {
           this.setState({
             message: (
               <div>
-                Uniquement .pdf, .doc/docx, .jpg/jpeg
-                <br /> <b>{'Taille max<5mo'}</b>
+                .pdf, .doc/docx, .jpg/jpeg uniquement
+                <br /> <b> {'/ max 5mo'}</b>
               </div>
             ),
             selectedFile: '',
@@ -68,9 +68,10 @@ class FormUpload extends Component {
         this.resetSelectedFile()
         this.setState({
           message: (
-            <div>
+            <div className='error-upload'>
               {err.response.data.split('body')[1].split('<br> &nbsp; ')[0].slice(7)}
-              <br /> {' ou Taille max<5mo'}
+							{/* <br />  */}
+							 {' / max 5mo'}
             </div>
           ),
           selectedFile: '',
@@ -84,8 +85,8 @@ class FormUpload extends Component {
     console.log('yolo', this.state.selectedFile, this.state.sendOtherFile)
 
     const uploadFile = this.state.selectedFile === ''
-      ? <label for='file' className='formupload-label-file'>Choisir un fichier</label>
-      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block'}}>{this.state.selectedFile.name}<button onClick={() => this.resetSelectedFile()}>X</button></span>
+      ? <label for='file'><div className='formupload-label-file'>Ajouter un fichier</div></label>
+      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block', textAlign: 'center'}}>{this.state.selectedFile.name} <span className='delete-file' onClick={() => this.resetSelectedFile()}> x</span></span>
 
     const sendFile = (this.state.fileUploaded === false
       ? <Button>Envoyer le document</Button>
@@ -94,9 +95,9 @@ class FormUpload extends Component {
     )
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <center><form onSubmit={this.onSubmit}>
         {uploadFile}
-        {this.state.uploading ? 'uploading....' : ''}
+        {this.state.uploading ? 'Envoi en cours...' : ''}
         <input id='file' className='formupload-input-file'
           type="file"
           name="selectedFile"
@@ -105,7 +106,7 @@ class FormUpload extends Component {
         <div style={{display: this.state.selectedFile !== '' ? 'block' : 'none'}}>{sendFile}</div>
         <div>{this.state.message}</div>
 
-      </form>
+      </form></center>
     )
   }
 }
