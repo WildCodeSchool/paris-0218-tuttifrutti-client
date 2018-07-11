@@ -5,7 +5,7 @@ import { userInfoAdmin } from '../User.js'
 import HeaderSite from './HeaderSite.js'
 import HeaderName from '../components/HeaderName.js'
 import HeaderParameters from '../components/HeaderParameters.js'
-import './style/HomeLawyerHeader.css'
+import './style/HomeAdminHeader.css'
 import ParametersAdmin from '../components/ParametersAdmin.js'
 
 class HomeAdminHeader extends Component {
@@ -40,7 +40,7 @@ class HomeAdminHeader extends Component {
     return (
       <div>
         <HeaderSite click={this.LogOut} logout='Déconnexion' redirect='/loginadmin' />
-        <div className='home-lawyer-header'>
+        <div className='home-admin-header'>
           <div>
 						<HeaderName text=
 						{this.state.admin}
