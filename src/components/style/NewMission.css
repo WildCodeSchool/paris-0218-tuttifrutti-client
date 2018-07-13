@@ -28,6 +28,17 @@
   display: flex;
 }
 
+.form-div label {
+  width: 10%;
+  height: 0.6rem;
+  padding: 0.7rem;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  border-bottom: solid 0.07rem black;
+  outline: none;
+  font-size: 0.8rem;
+  color: #777777;
+}
+
 .form-input-new-mission {
   width: 100%;
   height: 0.6rem;
@@ -44,6 +55,11 @@
   border-bottom: solid 0.07rem green;
   appearance: none;
   -webkit-appearance: none;
+}
+
+.form-date-new-mission {
+  margin-left: 0;
+  width: 75%;
 }
 
 .form-textarea-new-mission {

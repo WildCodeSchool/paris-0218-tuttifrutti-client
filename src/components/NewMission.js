@@ -51,12 +51,11 @@ class NewMission extends React.Component {
         this.setState({missionId: res.data._id})
       })
       .then(() => {
-        this.setState({ displayForm: 'none', displayConfirm: 'block'})
+        this.setState({ displayForm: 'none', displayConfirm: 'block' })
       })
   }
 
-  render() {
-
+  render () {
     // Fill select fields
 
     const showEachField =
@@ -96,8 +95,8 @@ class NewMission extends React.Component {
                   </select>
                 </div>
                 <div className='form-div'>
-                  <label>Deadline</label>
-                  <input className='form-input-new-mission' type="date" name="deadline" placeholder="Deadline" id="deadline" onChange={this.UpdateField} required />
+                  <label>Deadline&nbsp;:</label>
+                  <input className='form-input-new-mission form-date-new-mission' type="date" name="deadline" placeholder="Deadline" id="deadline" onChange={this.UpdateField} required />
                   <input className='form-input-new-mission' type="text" name="price" placeholder="Rémunération" id="price" onChange={this.UpdateField} required />
                 </div>
                 <div className='form-div'>
