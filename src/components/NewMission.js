@@ -96,11 +96,12 @@ class NewMission extends React.Component {
                   </select>
                 </div>
                 <div className='form-div'>
-                  <input className='form-input-new-mission' type="text" name="deadline" placeholder="Deadline" id="deadline" onChange={this.UpdateField} required />
+                  <label>Deadline</label>
+                  <input className='form-input-new-mission' type="date" name="deadline" placeholder="Deadline" id="deadline" onChange={this.UpdateField} required />
                   <input className='form-input-new-mission' type="text" name="price" placeholder="Rémunération" id="price" onChange={this.UpdateField} required />
                 </div>
                 <div className='form-div'>
-                  <textarea className='form-textarea-new-mission' name="description" placeholder="Description de la mission" id="description" onChange={this.UpdateField} required />
+                  <textarea className='form-textarea-new-mission' name="description" id="description" onChange={this.UpdateField} required>Description de la mission</textarea>
                 </div>
                 <Button>Valider</Button>
               </form>
