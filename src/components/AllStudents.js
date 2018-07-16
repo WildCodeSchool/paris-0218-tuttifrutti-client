@@ -51,15 +51,22 @@ class AllStudents extends React.Component {
 					<div>
 						<p>
 							{student.firstName} {student.lastName}
-							</p>
-					</div>
-					<div>
-					<div>
-						<p>{student.email}</p>
-					</div>
-						<p>{student.activated === true ? "Email vérifié" : "Email non vérifié"}
-            <br />
-						{student.approved === true ? "Compte actif" : "Compte inactif"}</p>
+						</p>
+						<p>
+							{student.field}
+							<br />
+							{student.levelStudy}
+						</p>
+						<p>
+							{student.email}
+							<br />
+							{student.phone}
+						</p>
+						<p>
+							{student.activated === true ? "Email vérifié" : "Email non vérifié"}
+							<br />
+							{student.approved === true ? "Compte actif" : "Compte inactif"}
+						</p>
 					</div>
 					<div className='button-student-more' onClick={() => this.Submit(student)}>
 					<Button>{student.approved === true ? "Désactiver" : "Activer"}</Button></div>
