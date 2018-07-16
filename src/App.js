@@ -14,6 +14,7 @@ import SignUpAdmin from './components/SignUpAdmin.js'
 import MissionConfirm from './components/MissionConfirm.js'
 import EmailConfirm from './components/EmailConfirm.js'
 import AllStudentsPage from './containers/AllStudentsPage.js'
+import AllLawyersPage from './containers/AllLawyersPage.js'
 
 class App extends Component {
   render () {
@@ -27,8 +28,8 @@ class App extends Component {
               <Route exact path="/login" component={Login}/>
 							<Route exact path="/loginadmin" component={LoginAdmin}/>
 							<Route exact path="/admin" component={HomeAdmin}/>
-              <Route exact path="/admin/studentlist" component={AllStudentsPage} />
-							{/* <Route exact path="/admin/lawyerlist" component={AllLawyers} /> */}
+              <Route exact path="/admin/studentslist" component={AllStudentsPage} />
+							<Route exact path="/admin/lawyerslist" component={AllLawyersPage} />
               <Route exact path="/profile" component={HomeLawyer}/>
               <Route exact path="/missions" component={AllMissionsPage} />
               <Route exact path="/missions/:missionId" component={MissionPage} />
