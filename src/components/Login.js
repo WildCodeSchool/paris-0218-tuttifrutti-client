@@ -10,7 +10,7 @@ class Login extends React.Component {
   state = {
     email: '',
     password: '',
-    hasError: false
+    error: ''
   }
 
   UpdateField = event => {
@@ -35,14 +35,17 @@ class Login extends React.Component {
       body: JSON.stringify({ creds })
     })
       .then(response => {
-				response.json()
+				return response.json()
 				.then(responseJson => {
+					console.log(responseJson)
 					localStorage.setItem('token', responseJson.token)
+					return responseJson
 				})
 				.then(redirect => {
+					console.log(redirect)
 					if (localStorage.getItem('token') === 'undefined') {
 						localStorage.removeItem('token')
-						this.setState({hasError: true})
+						this.setState({error: redirect})
 					} else {
 						window.location.replace('/profile')
 					}
@@ -57,8 +60,10 @@ class Login extends React.Component {
 
   render () {
     let notValid = ''
-    if (this.state.hasError === true) {
-      notValid = `Votre identifiant est inconnu ou votre mot de passe est faux. Veuillez réessayer en corrigeant votre saisie.`
+    if (this.state.error === 'not verified') {
+      notValid = `Vous n'avez pas encore confirmé votre adresse email.`
+    } else if (this.state.error === 'auth failed') {
+      notValid = 'Votre identifiant est inconnu ou votre mot de passe est faux. Veuillez réessayer en corrigeant votre saisie.'
     } else {
       notValid = ''
     }
