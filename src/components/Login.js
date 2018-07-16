@@ -35,19 +35,19 @@ class Login extends React.Component {
       body: JSON.stringify({ creds })
     })
       .then(response => {
-        response.json()
-          .then(responseJson => {
-            localStorage.setItem('token', responseJson.token)
-          })
-          .then(redirect => {
-            if (localStorage.getItem('token') === 'undefined') {
-              localStorage.removeItem('token')
-              this.setState({hasError: true})
-            } else {
-              window.location.replace('/profile')
-            }
-          })
-      })
+				response.json()
+				.then(responseJson => {
+					localStorage.setItem('token', responseJson.token)
+				})
+				.then(redirect => {
+					if (localStorage.getItem('token') === 'undefined') {
+						localStorage.removeItem('token')
+						this.setState({hasError: true})
+					} else {
+						window.location.replace('/profile')
+					}
+				})
+			})
   }
 
   componentWillMount () {

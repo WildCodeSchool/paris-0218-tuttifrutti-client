@@ -26,7 +26,7 @@ class EmailConfirm extends Component {
     submit = () => {
         console.log('trigger')
         axios
-            .get(`http://localhost:3030/confirmation/${this.state.user}`)
+            .get(`http://localhost:3030/confirmationlawyer/${this.state.user}`)
             .then((response) => {
                 this.setState({response: response.data})
 						})

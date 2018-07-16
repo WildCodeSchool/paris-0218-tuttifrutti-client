@@ -12,7 +12,9 @@ import OldMissionsPage from './containers/OldMissionsPage.js'
 import SignUpStudent from './components/SignUpStudent.js'
 import SignUpAdmin from './components/SignUpAdmin.js'
 import MissionConfirm from './components/MissionConfirm.js'
-import EmailConfirm from './components/EmailConfirm.js'
+import EmailConfirmLawyer from './components/EmailConfirmLawyer.js'
+import EmailConfirmStudent from './components/EmailConfirmStudent.js'
+import EmailConfirmAdmin from './components/EmailConfirmAdmin.js'
 import AllStudentsPage from './containers/AllStudentsPage.js'
 import AllLawyersPage from './containers/AllLawyersPage.js'
 
@@ -37,7 +39,9 @@ class App extends Component {
               <Route exact path="/signupstudent" component={SignUpStudent} />
 							<Route exact path="/signupadmin" component={SignUpAdmin} />
               <Route path="/accept" component={MissionConfirm} />
-              <Route path="/confirmation" component={EmailConfirm} />
+              <Route path="/confirmationlawyer" component={EmailConfirmLawyer} />
+							<Route path="/confirmationstudent" component={EmailConfirmStudent} />
+							<Route path="/confirmationadmin" component={EmailConfirmAdmin} />
             </Switch>
           </div>
         </BrowserRouter>
