@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import HomeAdminHeader from './HomeAdminHeader.js'
 import Footer from './Footer.js'
+import HomeAdminMenu from './HomeAdminMenu.js'
 import './style/HomeAdmin.css'
 
 class HomeAdmin extends Component {
@@ -30,7 +31,7 @@ class HomeAdmin extends Component {
     return (
       <div className='home-admin'>
         <div><HomeAdminHeader /></div>
-				<p>Interface admin</p>
+				<div><HomeAdminMenu /></div>
         <div><Footer /></div>
       </div>
     )
