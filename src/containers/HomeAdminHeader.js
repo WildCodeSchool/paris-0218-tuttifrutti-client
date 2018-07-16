@@ -32,7 +32,13 @@ class HomeAdminHeader extends Component {
   componentDidMount () {
     userInfoAdmin().then(res =>
       this.setState({ admin: res.firstName + ' ' + res.lastName }))
-  }
+	}
+
+	parametersUpdated = (firstname, lastname) => {
+      this.setState({ admin: firstname + ' ' + lastname })
+		// userInfoAdmin().then(res =>
+    //   this.setState({ admin: res.firstName + ' ' + res.lastName }))
+	}
 
   render () {
     const { openModal } = this.state
@@ -54,7 +60,7 @@ class HomeAdminHeader extends Component {
         {/* Modal */}
 
         <Modal open={openModal} onClose={this.onCloseModal} center>
-          <ParametersAdmin />
+          <ParametersAdmin update={this.parametersUpdated}/>
         </Modal>
       </div>
     )

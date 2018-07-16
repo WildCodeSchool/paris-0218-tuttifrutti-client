@@ -28,12 +28,13 @@ class ParametersAdmin extends React.Component {
 	UpdateField = event => { this.setState({ admin: { ...this.state.admin, [event.target.name]: event.target.value } }) }
 
 	showUpdateForm = () => {
-		this.setState({ displayInfo: 'none', displayForm: 'block' })
+
+		this.setState({ displayInfo: 'none', displayForm: 'block', confirmUpdate: this.state.confirmUpdate ? false : false })
 		console.log('youhou!!')
 	}
 
 	hideUpdateForm = () => {
-		this.setState({ displayInfo: 'block', displayForm: 'none', confirmUpdate: true })
+		this.setState({ displayInfo: 'block', displayForm: 'none' })
 	}
 
 	updateOk = () => <div>Vos informations ont bien été mise à jour.</div>
@@ -50,10 +51,9 @@ class ParametersAdmin extends React.Component {
 
 		if (password === passwordConfirm) {
 			axios.put(`http://localhost:3030/infoadmin`, { user })
-				.then(res => {
-					console.log('ok')
-				})
-
+				.then(res => console.log('ok'))
+			this.setState({ confirmUpdate: true })
+			this.props.update(this.state.admin.firstName, this.state.admin.lastName)
 			this.hideUpdateForm()
 		} else {
 			console.log('Les mots de passe ne sont pas identiques.')
