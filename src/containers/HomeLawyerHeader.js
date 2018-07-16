@@ -6,7 +6,7 @@ import HeaderSite from './HeaderSite.js'
 import HeaderName from '../components/HeaderName.js'
 import HeaderParameters from '../components/HeaderParameters.js'
 import './style/HomeLawyerHeader.css'
-import Parameters from '../components/Parameters.js'
+import ParametersLawyer from '../components/ParametersLawyer.js'
 
 class HomeLawyerHeader extends Component {
   state = {
@@ -32,7 +32,11 @@ class HomeLawyerHeader extends Component {
   componentDidMount () {
     userInfo().then(res =>
       this.setState({ author: res.cabinet }))
-  }
+	}
+
+	parametersUpdated = (cabinet) => {
+		this.setState({ author: cabinet })
+}
 
   render () {
     const { openModal } = this.state
@@ -50,7 +54,7 @@ class HomeLawyerHeader extends Component {
         {/* Modal */}
 
         <Modal open={openModal} onClose={this.onCloseModal} center>
-          <Parameters />
+          <ParametersLawyer update={this.parametersUpdated}/>
         </Modal>
       </div>
     )

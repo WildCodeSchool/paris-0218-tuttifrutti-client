@@ -3,7 +3,6 @@ import { userInfoAdmin } from '../User.js'
 import axios from 'axios'
 import Button from './Button.js'
 import './style/Parameters.css'
-import Fields from '../fields/fields.json'
 
 class ParametersAdmin extends React.Component {
 	state = {

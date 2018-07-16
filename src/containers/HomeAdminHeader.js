@@ -36,8 +36,6 @@ class HomeAdminHeader extends Component {
 
 	parametersUpdated = (firstname, lastname) => {
       this.setState({ admin: firstname + ' ' + lastname })
-		// userInfoAdmin().then(res =>
-    //   this.setState({ admin: res.firstName + ' ' + res.lastName }))
 	}
 
   render () {

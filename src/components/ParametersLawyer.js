@@ -5,7 +5,7 @@ import Button from './Button.js'
 import './style/Parameters.css'
 import Fields from '../fields/fields.json'
 
-class Parameters extends React.Component {
+class ParametersLawyer extends React.Component {
   state = {
     lawyer: {},
     fields: Fields.mainFields,
@@ -37,12 +37,13 @@ class Parameters extends React.Component {
   UpdateField = event => { this.setState({ lawyer: { ...this.state.lawyer, [event.target.name]: event.target.value } }) }
 
   showUpdateForm = () => {
-    this.setState({ displayInfo: 'none', displayForm: 'block' })
+		this.setState({ displayInfo: 'none', displayForm: 'block',
+		confirmUpdate: this.state.confirmUpdate ? false : false })
     console.log('youhou!!')
   }
 
   hideUpdateForm = () => {
-    this.setState({ displayInfo: 'block', displayForm: 'none', confirmUpdate: true })
+    this.setState({ displayInfo: 'block', displayForm: 'none' })
   }
 
   updateOk = () => <div>Vos informations ont bien été mise à jour.</div>
@@ -60,7 +61,10 @@ class Parameters extends React.Component {
     if (password === passwordConfirm) {
       axios.put(`http://localhost:3030/infolawyer`, { user })
         .then(res => {
-          console.log('ok')
+					console.log('ok')
+				this.setState({ confirmUpdate: true })
+				this.props.update(this.state.lawyer.cabinet)
+				this.hideUpdateForm()
         })
 
       this.hideUpdateForm()
@@ -171,4 +175,4 @@ class Parameters extends React.Component {
   }
 }
 
-export default Parameters
+export default ParametersLawyer
