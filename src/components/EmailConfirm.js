@@ -13,7 +13,7 @@ class EmailConfirm extends Component {
     }
 
     componentWillMount() {
-      
+
         const queryString = window
             .location
             .pathname
@@ -29,7 +29,8 @@ class EmailConfirm extends Component {
             .get(`http://localhost:3030/confirmation/${this.state.user}`)
             .then((response) => {
                 this.setState({response: response.data})
-            })
+						})
+						.then(console.log(this.state))
     }
 
     Blop = () => {
@@ -37,7 +38,7 @@ class EmailConfirm extends Component {
     }
 
     render() {
-        console.log(this.state)
+				console.log(this.state)
         return (
             <div>
                 <HeaderSite redirect='/'/>
@@ -51,7 +52,7 @@ class EmailConfirm extends Component {
                                 <button type="button" className='button' onClick={this.submit}>Je confirme</button>
                             </div>
                         </div>
-                        <this.Blop />
+                        {this.Blop}
                     </div>
                 </div>
                 <Footer/>

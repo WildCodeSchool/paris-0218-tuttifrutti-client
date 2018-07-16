@@ -5,7 +5,8 @@ import './style/AllStudents.css'
 
 class AllStudents extends React.Component {
 	state = {
-		allUsers: []
+		allUsers: [],
+		blabla: ''
 	}
 
 	componentWillMount() {
@@ -23,8 +24,16 @@ class AllStudents extends React.Component {
 	}
 
 	Submit = async (student) => {
+		const clickedStudent = this.state.allUsers.indexOf(student)
+		const status = student.approved === false ? true : false
+		let allUsersCopy = this.state.allUsers
+		allUsersCopy[clickedStudent] = {...allUsersCopy[clickedStudent], approved: status}
+		this.setState({allUsers: allUsersCopy})
+
+		const user = this.state.allUsers[clickedStudent]
+
 		axios
-			.post(`http://localhost:3030/allstudents`, { student })
+			.post(`http://localhost:3030/allstudents`, { user })
 			.then((res) => {
 				console.log(res)
 			})
