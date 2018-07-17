@@ -9,7 +9,8 @@ class MissionConfirm extends Component {
 
     state = {
         user: '',
-        mission: '',
+				missionId: '',
+				mission: '',
         response: ''
     }
 
@@ -19,14 +20,21 @@ class MissionConfirm extends Component {
             .pathname
             .split(`/`)
         this.setState({user: queryString[3]})
-        this.setState({mission: queryString[2]})
+        this.setState({missionId: queryString[2]})
 
-    }
+		}
+
+		componentDidMount() {
+			axios
+			.get(`http://localhost:3030/missions/${this.state.missionId}`)
+			.then((res) => {
+				this.setState({mission: res.data})
+			})
+		}
 
     submit = () => {
-        console.log('trigger')
         axios
-            .get(`http://localhost:3030/accept/${this.state.mission}/${this.state.user}`)
+            .get(`http://localhost:3030/accept/${this.state.missionId}/${this.state.user}`)
             .then((response) => {
                 this.setState({response: response.data})
             })
