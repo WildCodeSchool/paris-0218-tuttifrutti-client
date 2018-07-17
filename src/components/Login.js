@@ -61,9 +61,9 @@ class Login extends React.Component {
   render () {
     let notValid = ''
     if (this.state.error === 'not verified') {
-      notValid = `Vous n'avez pas encore confirmé votre adresse email.`
+      notValid = `Votre compte n'est pas encore actif. Vérifiez votre boîte mail.`
     } else if (this.state.error === 'auth failed') {
-      notValid = 'Votre identifiant est inconnu ou votre mot de passe est faux. Veuillez réessayer en corrigeant votre saisie.'
+      notValid = 'Votre identifiant est inconnu ou votre mot de passe est incorrect.'
     } else {
       notValid = ''
     }
