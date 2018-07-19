@@ -5,6 +5,7 @@ import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
 import MissionId from '../components/MissionId.js'
 import MissionField from '../components/MissionField.js'
+import MissionFiles from '../components/MissionFiles.js'
 import MissionDeadline from '../components/MissionDeadline.js'
 import MissionPrice from '../components/MissionPrice.js'
 import MissionStudent from '../components/MissionStudent.js'
@@ -71,6 +72,10 @@ class Mission extends React.Component {
 		}
 	}
 
+	getFileName = (fileName) => {
+		console.log("yeahhhhhh", fileName)
+	}
+
 	render() {
 		const changeStatus = (event) => {
 			event.preventDefault()
@@ -106,12 +111,15 @@ class Mission extends React.Component {
 					<div className='mission-description'>
 						<MissionDescription text={this.state.description} />
 					</div>
+					<div>
+						<MissionFiles />
+					</div>
 							<div className='mission-student-name'><MissionStudent text={this.state.student} /></div>
 					{/* <hr className='separator' /> */}
 					<div className='buttons-mission'>
 						<div className='mission-student-block'>
 							<div onClick={this.onOpenModal} className='mission-student-message'><Button>Envoyer un message</Button></div>
-					<div className='mission-student-doc-upload'><FormUpload /></div>
+					<div className='mission-student-doc-upload'><FormUpload showFileName={this.getFileName}/></div>
 					<div onClick={changeStatus} className='mission-student-finished'>
 						<Button>Mission terminée</Button>
 					</div>
