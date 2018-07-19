@@ -20,15 +20,14 @@
   margin-top: -3.6rem;
 }
 
-.mission-container {
+.mission-confirm-container {
   display: flex;
   justify-content: center;
   margin-top: -6rem;
   margin-bottom: 3rem;
-
 }
 
-.mission-content{
+.mission-confirm-content{
   width: 40%;
 }
 

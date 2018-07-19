@@ -92,10 +92,10 @@ class MissionConfirm extends Component {
 				<div className='title-mission-confirm'>
 					<MissionPageHeader to='' text='' title={`Nouvelle mission en ${this.state.mission.field}`}/>
 				</div>
-				<div className='mission-confirm-content'>
+				<div>
 					<div>
 						<div>
-							<div className='mission-container'>
+							<div className='mission-confirm-container'>
 								<div className='mission-content'>
 									<br />
 									<div className='mission-title-id'>
