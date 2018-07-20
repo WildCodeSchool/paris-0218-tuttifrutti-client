@@ -4,19 +4,17 @@ import Button from './Button.js'
 import './style/FormUpload.css'
 
 class FormUpload extends Component {
-  constructor () {
-    super()
-    this.state = {
+    state = {
+      missionId: this.props.missionId,
       description: '',
       selectedFile: '',
       fileUploaded: false,
       message: '',
       fileSended: ''
     }
-  }
 
   resetSelectedFile = () => {
-    this.setState({selectedFile: '', fileUploaded: false, description: '', message: ''})
+    this.setState({ selectedFile: '', fileUploaded: false, description: '', message: '' })
     document.getElementById('file').value = ''
     console.log('coucou', this.state)
   }
@@ -61,17 +59,26 @@ class FormUpload extends Component {
           })
         } else {
           this.setState({
-            fileUploaded: true
-          })
-        }
+            fileUploaded: true,
+            fileSended : this.state.selectedFile.name
+          }, 
+          () => {const fileName = this.state.fileSended 
+            axios.put(`http://localhost:3030${this.state.missionId}`, {fileName})
+            .then(() => {
+              window.location.reload()
+            })
+            
+          }
+      )
+}
       }).catch(err => {
         this.resetSelectedFile()
         this.setState({
           message: (
             <div className='error-upload'>
               {err.response.data.split('body')[1].split('<br> &nbsp; ')[0].slice(7)}
-							{/* <br />  */}
-							 {' / max 5mo'}
+              {/* <br />  */}
+              {' / max 5mo'}
             </div>
           ),
           selectedFile: '',
@@ -81,17 +88,18 @@ class FormUpload extends Component {
       })
   }
 
-  render () {
+  render() {
     console.log('yolo', this.state.selectedFile, this.state.sendOtherFile)
+    console.log('medhiteryiaki', this.state.missionId)
 
     const uploadFile = this.state.selectedFile === ''
       ? <label for='file'><div className='formupload-label-file'>Ajouter un fichier</div></label>
-      : <span style={{display: this.state.fileUploaded === true ? 'none' : 'block', textAlign: 'center'}}>{this.state.selectedFile.name} <span className='delete-file' onClick={() => this.resetSelectedFile()}> x</span></span>
+      : <span style={{ display: this.state.fileUploaded === true ? 'none' : 'block', textAlign: 'center' }}>{this.state.selectedFile.name} <span className='delete-file' onClick={() => this.resetSelectedFile()}> x</span></span>
 
     const sendFile = (this.state.fileUploaded === false
       ? <Button>Envoyer le document</Button>
       : <div> <span>Le fichier {this.state.selectedFile.name} a bien été envoyé</span>
-        <div onClick={()=>(this.resetSelectedFile())}><Button>Envoyer un autre document</Button></div></div>
+        <div onClick={() => (this.resetSelectedFile())}><Button>Envoyer un autre document</Button></div></div>
     )
 
     return (
@@ -103,11 +111,12 @@ class FormUpload extends Component {
           name="selectedFile"
           onChange={this.onChange}
         />
-        <div style={{display: this.state.selectedFile !== '' ? 'block' : 'none'}}>{sendFile}</div>
+        <div style={{ display: this.state.selectedFile !== '' ? 'block' : 'none' }}>{sendFile}</div>
         <div>{this.state.message}</div>
 
       </form></center>
     )
+
   }
 }
 

@@ -5,6 +5,7 @@ import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
 import MissionId from '../components/MissionId.js'
 import MissionField from '../components/MissionField.js'
+import MissionFiles from '../components/MissionFiles.js'
 import MissionDeadline from '../components/MissionDeadline.js'
 import MissionPrice from '../components/MissionPrice.js'
 import MissionStudent from '../components/MissionStudent.js'
@@ -25,6 +26,7 @@ class Mission extends React.Component {
 		studentName: '',
 		description: '',
 		finished: '',
+		filesSended: [],
 		open: false
 	}
 
@@ -53,7 +55,8 @@ class Mission extends React.Component {
 					price: res.data.price,
 					student: res.data.student,
 					description: res.data.description,
-					finished: res.data.finished
+					finished: res.data.finished,
+					filesSended: res.data.filesSended
 				})
 			})
 			.catch((error) => {
@@ -70,6 +73,10 @@ class Mission extends React.Component {
 					this.setState({ ...this.state, studentName: stud.data })
 				)
 		}
+	}
+
+	getFileName = (fileName) => {
+		console.log("yeahhhhhh", fileName)
 	}
 
 	render() {
@@ -121,6 +128,11 @@ class Mission extends React.Component {
 					<br />
 					<div className='mission-description'>
 						<MissionDescription text={this.state.description} />
+					</div>
+
+					<div>
+					<p>Fichiers envoyés à l'étudiant :</p>
+					<MissionFiles names={this.state.filesSended}/>
 					</div>
 					<div className='mission-student-name'><MissionStudent text={studentText} /></div>
 					{/* <hr className='separator' /> */}
