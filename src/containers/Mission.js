@@ -129,7 +129,6 @@ class Mission extends React.Component {
 					<div className='mission-description'>
 						<MissionDescription text={this.state.description} />
 					</div>
-
 					<div>
 					<p>Fichiers envoyés à l'étudiant :</p>
 					<MissionFiles names={this.state.filesSended}/>
@@ -146,7 +145,7 @@ class Mission extends React.Component {
 										fontWeight: noStudent ? '400' : undefined
 									}}
 								>Envoyer un message</Button></div>
-							<div className='mission-student-doc-upload'><FormUpload /></div>
+							<div className='mission-student-doc-upload'><FormUpload missionId={this.missionId}/></div>
 							<div onClick={changeStatus} className='mission-student-finished'>
 								<Button>Mission terminée</Button>
 							</div>

@@ -30,7 +30,8 @@ class FormUpload extends Component {
   }
 
   onSubmit = (e) => {
-    e.preventDefault()
+		e.preventDefault()
+		console.log('blaaaa', this.state.missionId)
     const { description, selectedFile } = this.state
     let formData = new FormData()
     formData.append('description', description)
@@ -61,13 +62,13 @@ class FormUpload extends Component {
           this.setState({
             fileUploaded: true,
             fileSended : this.state.selectedFile.name
-          }, 
-          () => {const fileName = this.state.fileSended 
+          },
+          () => {const fileName = this.state.fileSended
             axios.put(`http://localhost:3030${this.state.missionId}`, {fileName})
             .then(() => {
               window.location.reload()
             })
-            
+
           }
       )
 }
