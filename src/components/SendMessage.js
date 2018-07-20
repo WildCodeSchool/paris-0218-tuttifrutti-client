@@ -1,6 +1,6 @@
 import React from 'react'
 import { userInfo } from '../User.js'
-/* import axios from 'axios' */
+import axios from 'axios'
 import Button from './Button.js'
 import './style/SendMessage.css'
 
@@ -8,14 +8,16 @@ class SendMessage extends React.Component {
     state = {
       objet: '',
       message: '',
-      authorId: '',
-      missionId: this.props.missionId,
+			authorId: '',
+			author: '',
+			missionId: this.props.missionId,
+			studentId: this.props.studentId,
       displayForm: 'block',
       displayConfirm: 'none',
     }
 
     componentDidMount() {
-      userInfo().then(res => this.setState({ authorId: res._id }))
+      userInfo().then(res => this.setState({ authorId: res._id, author: res.cabinet }))
       console.log(this.state.missionId)
     }
 
@@ -27,18 +29,24 @@ class SendMessage extends React.Component {
       event.preventDefault()
       console.log('testest')
 
-      this.setState({ displayForm: 'none', displayConfirm: 'block' })
+			this.setState({ displayForm: 'none', displayConfirm: 'block' })
 
-      /*
-      const mission = this.state
+			const messageContent = {
+				author: this.state.author,
+				objet: this.state.objet,
+      	message: this.state.message,
+      	authorId: this.state.authorId,
+				missionId: this.state.missionId,
+				studentId: this.state.studentId}
 
-      console.log(mission)
+			console.log(messageContent)
 
-      axios.post(`http://localhost:3030/missions`, { mission })
+			axios.post(`http://localhost:3030/missions/${this.state.missionId}/sendmessage`,
+			{ messageContent })
         .then(res => {
           console.log(res)
           console.log(res.data)
-        }) */
+        })
     }
 
   render() {

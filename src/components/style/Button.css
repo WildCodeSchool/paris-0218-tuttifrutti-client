@@ -16,3 +16,9 @@
   background-color: #1fa792;
   font-weight: 600;
 }
+
+/* .button:disabled {
+  cursor: initial;
+  background-color: initial;
+  font-weight: initial;
+} */

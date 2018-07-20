@@ -21,7 +21,8 @@ class Mission extends React.Component {
 		subField: '',
 		deadline: '',
 		price: '',
-		student: '',
+		student: ``,
+		studentName: '',
 		description: '',
 		finished: '',
 		open: false
@@ -66,7 +67,7 @@ class Mission extends React.Component {
 				studentId: this.state.student
 			})
 				.then(stud =>
-					this.setState({ ...this.state, student: 'La mission a été attribuée à ' + stud.data +'.' })
+					this.setState({ ...this.state, studentName: stud.data })
 				)
 		}
 	}
@@ -82,10 +83,25 @@ class Mission extends React.Component {
 		}
 
 		const { open } = this.state
+
+		const noStudent = this.state.student === `La mission n'a pas encore été attribuée.`
+
+		const styleSendMessage = {
+			cursor: 'auto',
+			backgroundColor: '#add',
+			fontWeight: '400'
+		}
+
+		const studentText = this.state.student !== `La mission n'a pas encore été attribuée.`
+			?
+			`La mission a été attribuée à ${this.state.studentName}.`
+			:
+			this.state.student
+
 		return (
 			<div className='mission-container'>
 				<div className='mission-content'>
-				<br />
+					<br />
 					<div className='mission-title-id'>
 						<MissionTitle text={this.state.name} />
 						<MissionId text={this.state.id} />
@@ -106,21 +122,28 @@ class Mission extends React.Component {
 					<div className='mission-description'>
 						<MissionDescription text={this.state.description} />
 					</div>
-							<div className='mission-student-name'><MissionStudent text={this.state.student} /></div>
+					<div className='mission-student-name'><MissionStudent text={studentText} /></div>
 					{/* <hr className='separator' /> */}
 					<div className='buttons-mission'>
 						<div className='mission-student-block'>
-							<div onClick={this.onOpenModal} className='mission-student-message'><Button>Envoyer un message</Button></div>
-					<div className='mission-student-doc-upload'><FormUpload /></div>
-					<div onClick={changeStatus} className='mission-student-finished'>
-						<Button>Mission terminée</Button>
-					</div>
+							<div onClick={noStudent ? undefined : this.onOpenModal} className='mission-student-message'>
+								<Button
+									style={{
+										cursor: noStudent ? 'auto' : undefined,
+										backgroundColor: noStudent ? '#add' : undefined,
+										fontWeight: noStudent ? '400' : undefined
+									}}
+								>Envoyer un message</Button></div>
+							<div className='mission-student-doc-upload'><FormUpload /></div>
+							<div onClick={changeStatus} className='mission-student-finished'>
+								<Button>Mission terminée</Button>
+							</div>
 						</div>
 					</div>
 					{/* <hr className='separator' /> */}
 
 					<Modal open={open} onClose={this.onCloseModal} center>
-						<SendMessage missionId={this.state.id} close={this.onCloseModal} />
+						<SendMessage missionId={this.state.id} studentId={this.state.student} close={this.onCloseModal} />
 					</Modal>
 				</div>
 			</div>
