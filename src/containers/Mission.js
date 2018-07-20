@@ -25,6 +25,7 @@ class Mission extends React.Component {
 		student: '',
 		description: '',
 		finished: '',
+		filesSended: [],
 		open: false
 	}
 
@@ -53,7 +54,8 @@ class Mission extends React.Component {
 					price: res.data.price,
 					student: res.data.student,
 					description: res.data.description,
-					finished: res.data.finished
+					finished: res.data.finished,
+					filesSended: res.data.filesSended
 				})
 			})
 			.catch((error) => {
@@ -112,14 +114,15 @@ class Mission extends React.Component {
 						<MissionDescription text={this.state.description} />
 					</div>
 					<div>
-						<MissionFiles />
+					<p>Fichiers envoyés à l'étudiant :</p>
+					<MissionFiles names={this.state.filesSended}/>
 					</div>
 							<div className='mission-student-name'><MissionStudent text={this.state.student} /></div>
 					{/* <hr className='separator' /> */}
 					<div className='buttons-mission'>
 						<div className='mission-student-block'>
 							<div onClick={this.onOpenModal} className='mission-student-message'><Button>Envoyer un message</Button></div>
-					<div className='mission-student-doc-upload'><FormUpload showFileName={this.getFileName}/></div>
+					<div className='mission-student-doc-upload'><FormUpload missionId={this.missionId}/></div>
 					<div onClick={changeStatus} className='mission-student-finished'>
 						<Button>Mission terminée</Button>
 					</div>
