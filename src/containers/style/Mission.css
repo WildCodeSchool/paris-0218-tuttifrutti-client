@@ -6,14 +6,6 @@
   padding-bottom: 2rem;
 }
 
-/* .buttons-mission :first-child {
-  margin: 8px;
-}
-
-.buttons-mission :last-child {
-  margin: 8px;
-} */
-
 .mission-container {
   display: flex;
   justify-content: center;
@@ -87,6 +79,14 @@
   display: flex;
   justify-content: flex-end;
 }
+
+/* .mission-student-message button {
+  background-color: #add;
+}
+
+.mission-student-message button:hover {
+  background-color: #1fa792;
+} */
 
 .mission-student-doc-upload {
   width: 33%;

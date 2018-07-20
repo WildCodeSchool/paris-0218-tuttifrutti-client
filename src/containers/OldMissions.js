@@ -15,12 +15,18 @@ class OldMissions extends React.Component {
 	state = {
 		oldMissions: [],
 		lawyer: {},
-		open: false
+		open: false,
+		clickedMission: ''
 	}
 
 	onOpenModal = (event) => {
 		event.preventDefault()
-		this.setState({ open: true })
+		this.setState({ open: true})
+	}
+
+	addIdAndOpenModal = (mission,event) => {
+			this.setState({clickedMission: mission})
+			this.onOpenModal(event)
 	}
 
 	onCloseModal = () => {
@@ -51,21 +57,22 @@ class OldMissions extends React.Component {
 	render() {
 
 		const eachMission = mission => {
-			return (
-				<div key={mission._id} className='each-mission-container'>
-					<div className='old-mission-block-title'>
-						<MissionTitle text={mission.name} />
-						<MissionId text={mission._id} />
+				return (
+					<div key={mission._id} className='each-mission-container'>
+						<div className='old-mission-block-title'>
+							<MissionTitle text={mission.name} />
+							<MissionId text={mission._id} />
+						</div>
+						<MissionDeadline text={mission.deadline} />
+						<MissionPrice text={mission.price} />
+						<MissionStudent text='La mission a été réalisée par Daniel.' />
+						<div className='old-missions-button'>
+							<Button>Télécharger la facture</Button>
+							<div onClick={(event) => this.addIdAndOpenModal(mission._id, event)
+							}><Button>Signaler un problème</Button></div>
+						</div>
 					</div>
-					<MissionDeadline text={mission.deadline} />
-					<MissionPrice text={mission.price} />
-					<MissionStudent text='La mission a été réalisée par Daniel.' />
-					<div className='old-missions-button'>
-						<Button>Télécharger la facture</Button>
-						<div onClick={this.onOpenModal}><Button>Signaler un problème</Button></div>
-					</div>
-				</div>
-			)
+				)
 		}
 
 
@@ -77,7 +84,7 @@ class OldMissions extends React.Component {
 			<div className='old-missions-container'>
 				{showEachMission}
 				<Modal open={open} onClose={this.onCloseModal} center>
-					<ReportProblem close={this.onCloseModal} />
+					<ReportProblem close={this.onCloseModal} missionId={this.state.clickedMission}/>
 				</Modal>
 			</div>
 		)

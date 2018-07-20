@@ -8,7 +8,8 @@ class ReportProblem extends React.Component {
     problem: '',
     text: '',
     author: '',
-    authorId: '',
+		authorId: '',
+		missionId: this.props.missionId,
     display: 'none',
     displayForm: 'block',
     displayConfirm: 'none',
@@ -17,7 +18,8 @@ class ReportProblem extends React.Component {
   componentDidMount () {
     userInfo().then(res =>
       this.setState({ author: res.cabinet, authorId: res._id }))
-      .then(res => console.log(res))
+			.then(res => console.log(res))
+			.then(console.log(this.state.missionId))
 
   }
 

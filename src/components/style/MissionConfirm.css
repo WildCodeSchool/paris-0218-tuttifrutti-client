@@ -1,0 +1,85 @@
+.mission-confirm-header {
+  z-index: 0;
+  margin-top: -20vh;
+  width: 100vw;
+  height: 20vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-mission-confirm {
+  width: 100%;
+  height: 20vh;
+  background-color: #fff;
+  color: #1fa792;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3.6rem;
+}
+
+.mission-confirm-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -6rem;
+  margin-bottom: 3rem;
+}
+
+.mission-confirm-content{
+  width: 40%;
+}
+
+.mission-infos-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission-title-id {
+  padding: 1rem;
+  /* line-height: 0.5; */
+}
+
+.mission-block1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 5rem;
+  background: #8eddce;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin: 0.035rem;
+}
+
+.mission-block2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 5rem;
+  background: #8eddce;  
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin: 0.035rem;
+
+}
+
+.mission-deadline-price {
+  display: flex;
+}
+
+.mission-confirm-info {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.mission-confirm-button {
+  display: flex;
+  justify-content: center;
+}
