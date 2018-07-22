@@ -37,14 +37,14 @@ class SendMessage extends React.Component {
       	message: this.state.message,
       	authorId: this.state.authorId,
 				missionId: this.state.missionId,
-				studentId: this.state.studentId}
+				studentId: this.state.studentId
+			}
 
 			console.log(messageContent)
 
 			axios.post(`http://localhost:3030/missions/${this.state.missionId}/sendmessage`,
 			{ messageContent })
         .then(res => {
-          console.log(res)
           console.log(res.data)
         })
     }

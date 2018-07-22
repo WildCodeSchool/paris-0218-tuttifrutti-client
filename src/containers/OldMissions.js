@@ -16,7 +16,8 @@ class OldMissions extends React.Component {
 		oldMissions: [],
 		lawyer: {},
 		open: false,
-		clickedMission: ''
+		clickedMission: '',
+		studentId: ''
 	}
 
 	onOpenModal = (event) => {
@@ -24,8 +25,9 @@ class OldMissions extends React.Component {
 		this.setState({ open: true})
 	}
 
-	addIdAndOpenModal = (mission,event) => {
-			this.setState({clickedMission: mission})
+	addIdAndOpenModal = (mission, event) => {
+		console.log(mission)
+			this.setState({clickedMission: mission._id, studentId: mission.student})
 			this.onOpenModal(event)
 	}
 
@@ -50,13 +52,23 @@ class OldMissions extends React.Component {
 					.catch((error) => {
 						console.log(error);
 					})
-			}
-			)
+			})
+	}
+
+	getStudentInfo = id => {
+		return axios.post(`http://localhost:3030/infostudent`, {
+			studentId: id
+		})
+			.then (stud => stud.data)
 	}
 
 	render() {
 
 		const eachMission = mission => {
+			console.log(mission.student)
+			const studentName = this.getStudentInfo(mission.student)
+			console.log(studentName)
+			const studentText = `La mission a été réalisée par ${studentName}`
 				return (
 					<div key={mission._id} className='each-mission-container'>
 						<div className='old-mission-block-title'>
@@ -65,10 +77,10 @@ class OldMissions extends React.Component {
 						</div>
 						<MissionDeadline text={mission.deadline} />
 						<MissionPrice text={mission.price} />
-						<MissionStudent text='La mission a été réalisée par Daniel.' />
+						<MissionStudent text={studentText} />
 						<div className='old-missions-button'>
 							<Button>Télécharger la facture</Button>
-							<div onClick={(event) => this.addIdAndOpenModal(mission._id, event)
+							<div onClick={event => this.addIdAndOpenModal(mission, event)
 							}><Button>Signaler un problème</Button></div>
 						</div>
 					</div>
@@ -84,7 +96,7 @@ class OldMissions extends React.Component {
 			<div className='old-missions-container'>
 				{showEachMission}
 				<Modal open={open} onClose={this.onCloseModal} center>
-					<ReportProblem close={this.onCloseModal} missionId={this.state.clickedMission}/>
+					<ReportProblem close={this.onCloseModal} missionId={this.state.clickedMission} studentId={this.state.studentId}/>
 				</Modal>
 			</div>
 		)

@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { userInfo } from '../User.js'
 import Button from './Button.js'
 import './style/ReportProblem.css'
@@ -6,10 +7,11 @@ import './style/ReportProblem.css'
 class ReportProblem extends React.Component {
   state = {
     problem: '',
-    text: '',
+    description: '',
     author: '',
 		authorId: '',
 		missionId: this.props.missionId,
+		studentId: this.props.studentId,
     display: 'none',
     displayForm: 'block',
     displayConfirm: 'none',
@@ -31,17 +33,25 @@ class ReportProblem extends React.Component {
     event.preventDefault()
     console.log('testest')
 
-    this.setState({ displayForm: 'none', displayConfirm: 'block' })
+		this.setState({ displayForm: 'none', displayConfirm: 'block' })
 
-    //   const mission = this.state
+		const messageContent = {
+			author: this.state.author,
+			authorId: this.state.authorId,
+			missionId: this.state.missionId,
+			studentId: this.state.studentId,
+			problem: this.state.problem,
+			description: this.state.description
+		}
 
-    //   console.log(mission)
+		console.log(messageContent)
 
-    //   axios.post(`http://localhost:3030/missions`, { mission })
-    //     .then(res => {
-    //       console.log(res)
-    //       console.log(res.data)
-    //     })
+		axios.post(`http://localhost:3030/missions/${this.state.missionId}/reportproblem`,
+		{ messageContent })
+			.then(res => {
+				console.log(res.data)
+			})
+
   }
 
   componentDidUpdate () {
@@ -84,7 +94,7 @@ class ReportProblem extends React.Component {
                 </label>
               </div>
               <div style={{display: this.state.display}}>
-                <textarea className='form-textarea-report-problem' name="text" placeholder="Précisez le problème." id="text" onChange={this.UpdateField} required />
+                <textarea className='form-textarea-report-problem' name="description" placeholder="Précisez le problème." id="description" onChange={this.UpdateField} required />
               </div>
               <div className='form-button-report-problem'>
                 <Button>Envoyer</Button>
