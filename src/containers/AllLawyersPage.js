@@ -3,6 +3,7 @@ import HomeAdminHeader from './HomeAdminHeader.js'
 import AllLawyers from '../components/AllLawyers.js'
 import MissionPageHeader from '../containers/MissionPageHeader.js'
 import Footer from '../containers/Footer.js'
+import { verifToken } from '../api.js'
 
 class AllLawyersPage extends React.Component {
   componentWillMount () {
@@ -10,15 +11,15 @@ class AllLawyersPage extends React.Component {
     if (token === null) {
       window.location.replace('/loginadmin')
     } else {
-      fetch(`http://localhost:3030/secure`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then(response => {
+      // fetch(`http://localhost:3030/secure`, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`
+      //   }
+			// })
+			verifToken(token)
+			.then(response => {
         response.json().then(responseJson => {
-          console.log(responseJson)
           if (responseJson === 'not logged') {
-            console.log('test')
             window.location.replace('/loginadmin')
           }
         })

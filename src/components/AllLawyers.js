@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import './style/AllLawyers.css'
+import { getAllLawyers } from '../api.js'
 
 class AllLawyers extends React.Component {
 	state = {
@@ -9,12 +10,9 @@ class AllLawyers extends React.Component {
 
 	componentWillMount() {
 
-		axios
-			.get(`http://localhost:3030/alllawyers`)
+		getAllLawyers()
 			.then((res) => {
-				console.log('blabla')
-				this.setState({ allUsers: res.data })
-				console.log(this.state)
+				this.setState({ allUsers: res })
 			})
 			.catch((error) => {
 				console.log(error);

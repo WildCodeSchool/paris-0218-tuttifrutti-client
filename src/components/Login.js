@@ -5,6 +5,7 @@ import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginForm.css'
+import { loginLawyer } from '../api.js';
 
 class Login extends React.Component {
   state = {
@@ -25,24 +26,21 @@ class Login extends React.Component {
       email: this.state.email,
       password: this.state.password
     }
-
-    fetch(`http://localhost:3030/login`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      // credentials: 'include',
-      body: JSON.stringify({ creds })
-    })
+    // fetch(`http://localhost:3030/login`, {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ creds })
+		// })
+		loginLawyer(creds)
       .then(response => {
 				return response.json()
 				.then(responseJson => {
-					console.log(responseJson)
 					localStorage.setItem('token', responseJson.token)
 					return responseJson
 				})
 				.then(redirect => {
-					console.log(redirect)
 					if (localStorage.getItem('token') === 'undefined') {
 						localStorage.removeItem('token')
 						this.setState({error: redirect})

@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { getAllStudents, approvedStudent } from '../api.js'
 import Button from '../components/Button.js'
 import './style/AllStudents.css'
 
@@ -11,12 +12,9 @@ class AllStudents extends React.Component {
 
 	componentWillMount() {
 
-		axios
-			.get(`http://localhost:3030/allstudents`)
+		getAllStudents()
 			.then((res) => {
-				console.log('blabla')
 				this.setState({ allUsers: res.data })
-				console.log(this.state)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -32,8 +30,7 @@ class AllStudents extends React.Component {
 
 		const user = this.state.allUsers[clickedStudent]
 
-		axios
-			.post(`http://localhost:3030/allstudents`, { user })
+		approvedStudent(user)
 			.then((res) => {
 				console.log(res)
 			})

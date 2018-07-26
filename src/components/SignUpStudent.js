@@ -6,6 +6,7 @@ import PageTitle from './PageTitle.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 import Fields from '../fields/fields.json'
+import { signUpStudent } from '../api.js';
 
 class SignUpStudent extends React.Component {
   state = {
@@ -31,11 +32,8 @@ class SignUpStudent extends React.Component {
 
   HandleSubmit = event => {
     event.preventDefault()
-    console.log('testest')
 
     const user = this.state.student
-
-    console.log(user)
 
     const password = document.getElementById('password').value
     const passwordConfirm = document.getElementById('passwordConfirm').value
@@ -45,11 +43,12 @@ class SignUpStudent extends React.Component {
     } else if (password !== passwordConfirm) {
       this.setState({ hasErrorNotIdentic: true, hasErrorTooShort: false })
     } else {
-      axios.post(`http://localhost:3030/regstudent`, { user })
-        .then(res => {
-          console.log(res)
-          console.log(res.data)
-        })
+      // axios.post(`http://localhost:3030/regstudent`, { user })
+      //   .then(res => {
+      //     console.log(res)
+      //     console.log(res.data)
+			//   })
+			signUpStudent(user)
       this.setState({ displayForm: 'none', displayMessage: 'block' })
     }
   }

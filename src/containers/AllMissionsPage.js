@@ -3,6 +3,7 @@ import HomeLawyerHeader from './HomeLawyerHeader.js'
 import AllMissions from '../containers/AllMissions.js'
 import MissionPageHeader from '../containers/MissionPageHeader.js'
 import Footer from '../containers/Footer.js'
+import { verifToken } from '../api.js'
 
 class AllMissionsPage extends React.Component {
   componentWillMount () {
@@ -10,16 +11,10 @@ class AllMissionsPage extends React.Component {
     if (token === null) {
       window.location.replace('/login')
     } else {
-      fetch(`http://localhost:3030/secure`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-			})
+      verifToken(token)
 			.then(response => {
         response.json().then(responseJson => {
-          console.log(responseJson)
           if (responseJson === 'not logged') {
-            console.log('test')
             window.location.replace('/login')
           }
         })

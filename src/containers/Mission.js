@@ -13,7 +13,7 @@ import MissionDescription from '../components/MissionDescription.js'
 import SendMessage from '../components/SendMessage.js'
 import './style/Mission.css'
 import FormUpload from '../components/FormUpload.js'
-import { getOneMission } from '../api.js';
+import { getOneMission, infoStudent } from '../api.js';
 
 class Mission extends React.Component {
 	state = {
@@ -62,21 +62,15 @@ class Mission extends React.Component {
 			.catch((error) => {
 				console.log(error)
 			})
-		console.log('la ici', this.state.student)
 		if (this.state.student === '') {
 			this.setState({ ...this.state, student: `La mission n'a pas encore été attribuée.` })
 		} else {
-			axios.post(`http://localhost:3030/infostudent`, {
-				studentId: this.state.student
-			})
+			const id = this.state.student
+			infoStudent(id)
 				.then(stud =>
-					this.setState({ ...this.state, studentName: stud.data })
+					this.setState({ ...this.state, studentName: stud })
 				)
 		}
-	}
-
-	getFileName = (fileName) => {
-		console.log("yeahhhhhh", fileName)
 	}
 
 	render() {

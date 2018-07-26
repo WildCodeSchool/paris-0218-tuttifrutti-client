@@ -16,7 +16,6 @@ class HomeLawyerHeader extends Component {
 
   LogOut = (req, res) => {
     localStorage.removeItem('token')
-    console.log('Logout')
     window.location.replace('http://localhost:3000/login')
   }
 

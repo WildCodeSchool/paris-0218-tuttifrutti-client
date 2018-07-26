@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { getStudentInfoConfirmMail } from '../api.js'
 import HeaderSite from '../containers/HeaderSite.js'
 import PageTitle from './PageTitle.js'
 import axios from 'axios'
@@ -18,10 +19,9 @@ class EmailConfirm extends Component {
 	}
 
 	componentDidMount() {
-		axios
-			.get(`http://localhost:3030/confirmationstudent/${this.state.user}`)
+		const user = this.state.user
+		getStudentInfoConfirmMail(user)
 			.then((response) => {
-				console.log(response)
 				this.setState({ response: response.data })
 			})
 	}
@@ -54,7 +54,6 @@ class EmailConfirm extends Component {
 	}
 
 	render() {
-		console.log(this.state)
 		return (
 			<div>
 				<HeaderSite redirect='/' />

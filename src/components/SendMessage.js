@@ -1,6 +1,5 @@
 import React from 'react'
-import { userInfo } from '../api.js'
-import axios from 'axios'
+import { userInfo, missionSendMessage } from '../api.js'
 import Button from './Button.js'
 import './style/SendMessage.css'
 
@@ -18,7 +17,6 @@ class SendMessage extends React.Component {
 
     componentDidMount() {
       userInfo().then(res => this.setState({ authorId: res._id, author: res.cabinet }))
-      console.log(this.state.missionId)
     }
 
     UpdateField = event => {
@@ -27,7 +25,6 @@ class SendMessage extends React.Component {
 
     HandleSubmit = event => {
       event.preventDefault()
-      console.log('testest')
 
 			this.setState({ displayForm: 'none', displayConfirm: 'block' })
 
@@ -40,13 +37,8 @@ class SendMessage extends React.Component {
 				studentId: this.state.studentId
 			}
 
-			console.log(messageContent)
-
-			axios.post(`http://localhost:3030/missions/${this.state.missionId}/sendmessage`,
-			{ messageContent })
-        .then(res => {
-          console.log(res.data)
-        })
+			const id = this.state.missionId
+			missionSendMessage(id, messageContent)
     }
 
   render() {

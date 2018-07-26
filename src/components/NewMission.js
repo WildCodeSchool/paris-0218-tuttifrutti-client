@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { userInfo } from '../api.js'
-import axios from 'axios'
+import { userInfo, createNewMission } from '../api.js'
 import Button from './Button.js'
 import './style/NewMission.css'
 import Fields from '../fields/fields.json'
@@ -28,7 +27,6 @@ class NewMission extends React.Component {
   }
 
   componentDidMount () {
-    console.log(this.state.subFields)
     userInfo().then(res =>
       this.setState({ newmission: { ...this.state.newmission, author: res._id } }))
   }
@@ -39,15 +37,11 @@ class NewMission extends React.Component {
 
   HandleSubmit = event => {
     event.preventDefault()
-    console.log('testest')
 
     const mission = this.state.newmission
 
-    console.log(mission)
-
-    axios.post(`http://localhost:3030/missions`, { mission })
+		createNewMission(mission)
       .then(res => {
-        console.log(res.data)
         this.setState({missionId: res.data._id})
       })
       .then(() => {
@@ -57,12 +51,8 @@ class NewMission extends React.Component {
 
   render() {
 
-    // Fill select fields
-
     const showEachField =
       this.state.fields.map((field, index) => <option key={index} value={field}>{field}</option>)
-
-    // Fill select subfiels
 
     const choosenField = this.state.newmission.field
     const subField = this.state.subFields[choosenField]

@@ -12,6 +12,7 @@ import MissionPageHeader from '../containers/MissionPageHeader.js'
 import Button from '../components/Button.js'
 import Footer from '../containers/Footer.js'
 import './style/MissionConfirm.css'
+import { getMissionInfoConfirmPage, getStudentInfoConfirmPage } from '../api.js';
 
 class MissionConfirm extends Component {
 
@@ -33,20 +34,20 @@ class MissionConfirm extends Component {
 	}
 
 	componentDidMount() {
-		axios
-			.get(`http://localhost:3030/missions/${this.state.missionId}`)
+		const id = this.state.missionId
+		getMissionInfoConfirmPage(id)
 			.then((res) => {
 				this.setState({ mission: res.data })
 			})
-		console.log(this.state.mission)
 	}
 
 	submit = () => {
 		this.setState({
 			mission: {...this.state.mission, student: this.state.user }
 		}, () => {
-			axios
-				.get(`http://localhost:3030/accept/${this.state.missionId}/${this.state.mission.student}`)
+			const id = this.state.missionId
+			const student = this.state.mission.student
+			getStudentInfoConfirmPage(id, student)
 				.then(res => {
 					this.setState({ response: res.data })
 				})
@@ -79,7 +80,6 @@ class MissionConfirm extends Component {
 	}
 
 	render() {
-		console.log(this.state)
 		return (
 			<div>
 				<HeaderSite redirect={window

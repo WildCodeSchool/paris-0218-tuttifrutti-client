@@ -6,6 +6,7 @@ import PageTitle from './PageTitle.js'
 import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
+import { signUpAdmin } from '../api.js';
 
 class SignUp extends React.Component {
   state = {
@@ -27,11 +28,8 @@ class SignUp extends React.Component {
 
   HandleSubmit = event => {
     event.preventDefault()
-    console.log('testest')
 
     const user = this.state.admin
-
-    console.log(user)
 
     const password = document.getElementById('password').value
     const passwordConfirm = document.getElementById('passwordConfirm').value
@@ -41,11 +39,12 @@ class SignUp extends React.Component {
     } else if (password !== passwordConfirm) {
       this.setState({ hasErrorNotIdentic: true, hasErrorTooShort: false })
     } else {
-      axios.post(`http://localhost:3030/signupadmin`, { user })
-        .then(res => {
-          console.log(res)
-          console.log(res.data)
-        })
+			signUpAdmin(user)
+      // axios.post(`http://localhost:3030/signupadmin`, { user })
+      //   .then(res => {
+      //     console.log(res)
+      //     console.log(res.data)
+      //   })
       this.setState({ displayForm: 'none', displayMessage: 'block' })
     }
   }

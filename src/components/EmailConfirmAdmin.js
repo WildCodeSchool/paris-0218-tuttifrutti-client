@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import { getAdminInfoConfirmMail } from '../api.js'
 import HeaderSite from '../containers/HeaderSite.js'
 import PageTitle from './PageTitle.js'
-import axios from 'axios'
 import Footer from '../containers/Footer.js'
 import './style/LoginForm.css'
 
@@ -18,10 +18,9 @@ class EmailConfirm extends Component {
 	}
 
 	componentDidMount() {
-		axios
-			.get(`http://localhost:3030/confirmationadmin/${this.state.user}`)
+		const user = this.state.user
+		getAdminInfoConfirmMail(user)
 			.then((response) => {
-				console.log(response)
 				this.setState({ response: response.data })
 			})
 	}

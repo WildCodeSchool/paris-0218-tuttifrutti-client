@@ -1,6 +1,5 @@
 import React from 'react'
-import { userInfoAdmin } from '../api.js'
-import axios from 'axios'
+import { userInfoAdmin, updateInfoAdmin } from '../api.js'
 import Button from './Button.js'
 import './style/Parameters.css'
 
@@ -29,7 +28,6 @@ class ParametersAdmin extends React.Component {
 	showUpdateForm = () => {
 
 		this.setState({ displayInfo: 'none', displayForm: 'block', confirmUpdate: this.state.confirmUpdate ? false : false })
-		console.log('youhou!!')
 	}
 
 	hideUpdateForm = () => {
@@ -43,14 +41,11 @@ class ParametersAdmin extends React.Component {
 
 		const user = this.state.admin
 
-		console.log(user)
-
 		const password = document.getElementById("password").value;
 		const passwordConfirm = document.getElementById("passwordConfirm").value;
 
 		if (password === passwordConfirm) {
-			axios.put(`http://localhost:3030/infoadmin`, { user })
-				.then(res => console.log('ok'))
+			updateInfoAdmin(user)
 			this.setState({ confirmUpdate: true })
 			this.props.update(this.state.admin.firstName, this.state.admin.lastName)
 			this.hideUpdateForm()

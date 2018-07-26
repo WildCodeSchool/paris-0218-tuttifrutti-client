@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Button from './Button.js'
 import './style/FormUpload.css'
+import { missionUploadFile, missionStockUploadedFilesName } from '../api.js'
 
 class FormUpload extends Component {
     state = {
@@ -16,7 +17,6 @@ class FormUpload extends Component {
   resetSelectedFile = () => {
     this.setState({ selectedFile: '', fileUploaded: false, description: '', message: '' })
     document.getElementById('file').value = ''
-    console.log('coucou', this.state)
   }
 
   onChange = (e) => {
@@ -31,21 +31,17 @@ class FormUpload extends Component {
 
   onSubmit = (e) => {
 		e.preventDefault()
-		console.log('blaaaa', this.state.missionId)
     const { description, selectedFile } = this.state
     let formData = new FormData()
     formData.append('description', description)
     formData.append('selectedFile', selectedFile)
 
-    console.log(formData)
     this.setState({ uploading: true })
 
-    axios.post('http://localhost:3030/upload', formData)
+		missionUploadFile(formData)
       .then(res => {
         this.setState({ uploading: false })
 
-        console.log(res.data.result)
-        // let message = ''
         if (res.data.result === 'fail') {
           this.resetSelectedFile()
           this.setState({
@@ -63,8 +59,10 @@ class FormUpload extends Component {
             fileUploaded: true,
             fileSended : this.state.selectedFile.name
           },
-          () => {const fileName = this.state.fileSended
-            axios.put(`http://localhost:3030${this.state.missionId}`, {fileName})
+          async () => {
+						const fileName = await this.state.fileSended
+						const mission = await this.state.missionId
+						missionStockUploadedFilesName(mission, fileName)
             .then(() => {
               window.location.reload()
             })
@@ -90,9 +88,6 @@ class FormUpload extends Component {
   }
 
   render() {
-    console.log('yolo', this.state.selectedFile, this.state.sendOtherFile)
-    console.log('medhiteryiaki', this.state.missionId)
-
     const uploadFile = this.state.selectedFile === ''
       ? <label for='file'><div className='formupload-label-file'>Ajouter un fichier</div></label>
       : <span style={{ display: this.state.fileUploaded === true ? 'none' : 'block', textAlign: 'center' }}>{this.state.selectedFile.name} <span className='delete-file' onClick={() => this.resetSelectedFile()}> x</span></span>

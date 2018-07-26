@@ -7,6 +7,7 @@ import LinkSignUpConnect from './LinkSignUpConnect.js'
 import Footer from '../containers/Footer.js'
 import './style/LoginSignUpForm.css'
 import Fields from '../fields/fields.json'
+import { signUpLawyer } from '../api.js';
 
 class SignUp extends React.Component {
   state = {
@@ -36,11 +37,9 @@ class SignUp extends React.Component {
 
   HandleSubmit = event => {
     event.preventDefault()
-    console.log('testest')
 
     const user = this.state.lawyer
 
-    console.log(user)
 
     const password = document.getElementById('password').value
     const passwordConfirm = document.getElementById('passwordConfirm').value
@@ -50,11 +49,7 @@ class SignUp extends React.Component {
     } else if (password !== passwordConfirm) {
       this.setState({ hasErrorNotIdentic: true, hasErrorTooShort: false })
     } else {
-      axios.post(`http://localhost:3030/reg`, { user })
-        .then(res => {
-          console.log(res)
-          console.log(res.data)
-        })
+			signUpLawyer(user)
       this.setState({ displayForm: 'none', displayMessage: 'block' })
     }
   }

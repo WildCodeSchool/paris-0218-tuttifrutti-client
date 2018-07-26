@@ -1,6 +1,5 @@
 import React from 'react'
-import { userInfo } from '../api.js'
-import axios from 'axios'
+import { userInfo, updateInfoLawyer } from '../api.js'
 import Button from './Button.js'
 import './style/Parameters.css'
 import Fields from '../fields/fields.json'
@@ -15,7 +14,6 @@ class ParametersLawyer extends React.Component {
   }
 
   componentDidMount () {
-    console.log(this.state.fields)
     userInfo().then(res =>
       this.setState({
         lawyer: {
@@ -39,7 +37,6 @@ class ParametersLawyer extends React.Component {
   showUpdateForm = () => {
 		this.setState({ displayInfo: 'none', displayForm: 'block',
 		confirmUpdate: this.state.confirmUpdate ? false : false })
-    console.log('youhou!!')
   }
 
   hideUpdateForm = () => {
@@ -53,21 +50,14 @@ class ParametersLawyer extends React.Component {
 
     const user = this.state.lawyer
 
-    console.log(user)
-
     const password = document.getElementById('password').value
     const passwordConfirm = document.getElementById('passwordConfirm').value
 
     if (password === passwordConfirm) {
-      axios.put(`http://localhost:3030/infolawyer`, { user })
-        .then(res => {
-					console.log('ok')
-				this.setState({ confirmUpdate: true })
-				this.props.update(this.state.lawyer.cabinet)
-				this.hideUpdateForm()
-        })
-
-      this.hideUpdateForm()
+			updateInfoLawyer(user)
+			this.setState({ confirmUpdate: true })
+			this.props.update(this.state.lawyer.cabinet)
+			this.hideUpdateForm()
     } else {
       console.log('Les mots de passe ne sont pas identiques.')
     }

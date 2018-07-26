@@ -3,6 +3,7 @@ import HomeAdminHeader from './HomeAdminHeader.js'
 import AllStudents from '../components/AllStudents.js'
 import MissionPageHeader from '../containers/MissionPageHeader.js'
 import Footer from '../containers/Footer.js'
+import { verifToken } from '../api.js';
 
 class AllStudentsPage extends React.Component {
   componentWillMount () {
@@ -10,15 +11,10 @@ class AllStudentsPage extends React.Component {
     if (token === null) {
       window.location.replace('/loginadmin')
     } else {
-      fetch(`http://localhost:3030/secure`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then(response => {
+			verifToken(token)
+			.then(response => {
         response.json().then(responseJson => {
-          console.log(responseJson)
           if (responseJson === 'not logged') {
-            console.log('test')
             window.location.replace('/loginadmin')
           }
         })
