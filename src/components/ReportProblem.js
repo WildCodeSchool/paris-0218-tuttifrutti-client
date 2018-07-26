@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { userInfo } from '../User.js'
+import { userInfo } from '../api.js'
 import Button from './Button.js'
 import './style/ReportProblem.css'
 

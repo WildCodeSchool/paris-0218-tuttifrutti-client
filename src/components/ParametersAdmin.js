@@ -1,5 +1,5 @@
 import React from 'react'
-import { userInfoAdmin } from '../User.js'
+import { userInfoAdmin } from '../api.js'
 import axios from 'axios'
 import Button from './Button.js'
 import './style/Parameters.css'

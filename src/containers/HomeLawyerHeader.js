@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Modal from 'react-responsive-modal'
-import { userInfo } from '../User.js'
+import { userInfo } from '../api.js'
 import HeaderSite from './HeaderSite.js'
 import HeaderName from '../components/HeaderName.js'
 import HeaderParameters from '../components/HeaderParameters.js'

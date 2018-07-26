@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { userInfo } from '../User.js'
+import { userInfo } from '../api.js'
 import axios from 'axios'
 import Button from './Button.js'
 import './style/NewMission.css'

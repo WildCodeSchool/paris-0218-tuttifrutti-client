@@ -13,6 +13,7 @@ import MissionDescription from '../components/MissionDescription.js'
 import SendMessage from '../components/SendMessage.js'
 import './style/Mission.css'
 import FormUpload from '../components/FormUpload.js'
+import { getOneMission } from '../api.js';
 
 class Mission extends React.Component {
 	state = {
@@ -42,10 +43,9 @@ class Mission extends React.Component {
 	missionId = window.location.pathname
 
 	async componentDidMount() {
-		console.log(window.location.pathname)
-		await axios.get(`http://localhost:3030${this.missionId}`)
-			.then(console.log('ok'))
-			.then((res) => {
+		await getOneMission(this.missionId)
+		// axios.get(`http://localhost:3030${this.missionId}`)
+			.then(res => {
 				this.setState({
 					id: res.data._id,
 					name: res.data.name,

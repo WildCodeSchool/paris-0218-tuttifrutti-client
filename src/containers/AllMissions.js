@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { userInfo } from '../User.js'
+import { userInfo, getAllMissions } from '../api.js'
 import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
 import MissionId from '../components/MissionId.js'
@@ -24,13 +23,10 @@ class AllMissions extends React.Component {
         }
       }))
     .then(() => {
-      // console.log("blabla")
       const lawyerId = this.state.lawyer.id
-      console.log(lawyerId)
-      axios.post(`http://localhost:3030/missionsfiltered`, { lawyerId })
-        .then((res) => {
-          console.log('blabla')
-          this.setState({ allMissions: res.data })
+			getAllMissions(lawyerId)
+        .then(res => {
+          this.setState({ allMissions: res })
         })
         .catch((error) => {
           console.log(error);
@@ -41,11 +37,6 @@ class AllMissions extends React.Component {
 
   render() {
 
-    const showDetailedMission = (id) => {
-      const missionId = id
-      console.log(missionId)
-    }
-
     const eachMission = mission => {
       return (
         <div key={mission._id} className='each-mission-container'>
@@ -54,7 +45,7 @@ class AllMissions extends React.Component {
 					<br />
           <MissionField text={mission.field} />
           <MissionDeadline text={mission.deadline} />
-          <div className='button-mission-more' onClick={() => showDetailedMission(mission._id)}>
+					<div className='button-mission-more'>
             <Link to={`/missions/${mission._id}`}><Button>Voir le détail</Button></Link>
           </div>
         </div>

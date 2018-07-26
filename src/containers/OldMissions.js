@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-responsive-modal'
 import axios from 'axios'
-import { userInfo } from '../User.js'
+import { userInfo, getOldMissions } from '../api.js'
 import Button from '../components/Button.js'
 import MissionTitle from '../components/MissionTitle.js'
 import MissionId from '../components/MissionId.js'
@@ -45,9 +45,10 @@ class OldMissions extends React.Component {
 				}))
 			.then(() => {
 				const lawyerId = this.state.lawyer.id
-				axios.post(`http://localhost:3030/oldmissionsfiltered`, { lawyerId })
-					.then((res) => {
-						this.setState({ oldMissions: res.data })
+				// axios.post(`http://localhost:3030/oldmissionsfiltered`, { lawyerId })
+				getOldMissions(lawyerId)
+					.then(res => {
+						this.setState({ oldMissions: res })
 					})
 					.catch((error) => {
 						console.log(error);
@@ -55,20 +56,21 @@ class OldMissions extends React.Component {
 			})
 	}
 
-	getStudentInfo = id => {
-		return axios.post(`http://localhost:3030/infostudent`, {
-			studentId: id
-		})
-			.then (stud => stud.data)
-	}
+	// getStudentInfo = id => {
+	// 	return axios.post(`http://localhost:3030/infostudent`, {
+	// 		studentId: id
+	// 	})
+	// 		.then (stud => stud.data)
+	// }
 
 	render() {
 
 		const eachMission = mission => {
+			console.log(mission)
 			console.log(mission.student)
-			const studentName = this.getStudentInfo(mission.student)
-			console.log(studentName)
-			const studentText = `La mission a été réalisée par ${studentName}`
+			// const studentName = this.getStudentInfo(mission.student)
+			console.log(mission.studentName)
+			const studentText = `La mission a été réalisée par ${mission.studentName}`
 				return (
 					<div key={mission._id} className='each-mission-container'>
 						<div className='old-mission-block-title'>

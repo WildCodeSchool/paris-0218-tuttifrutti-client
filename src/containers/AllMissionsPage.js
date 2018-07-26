@@ -14,7 +14,8 @@ class AllMissionsPage extends React.Component {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }).then(response => {
+			})
+			.then(response => {
         response.json().then(responseJson => {
           console.log(responseJson)
           if (responseJson === 'not logged') {
@@ -22,8 +23,8 @@ class AllMissionsPage extends React.Component {
             window.location.replace('/login')
           }
         })
-      })
-    }
+			})
+		}
   }
 
   render () {
