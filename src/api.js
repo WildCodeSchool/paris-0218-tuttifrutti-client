@@ -51,7 +51,7 @@ export const signUpAdmin = user => {
 }
 
 export const signUpStudent = user => {
-  return axios.post(`http://localhost:3030/signupstudent`, { user })
+  return axios.post(`http://localhost:3030/regstudent`, { user })
     .then(res => {
       return res
     })
@@ -143,8 +143,8 @@ export const missionUploadFile = file => {
 	})
 }
 
-export const missionStockUploadedFilesName = (mission, name) => {
-	return axios.put(`http://localhost:3030${mission}`,{name})
+export const missionStockUploadedFilesName = (mission, fileName) => {
+	return axios.put(`http://localhost:3030${mission}`,{fileName})
 	.then(res => {
 		console.log(res)
 		return res

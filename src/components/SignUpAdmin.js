@@ -67,7 +67,7 @@ class SignUp extends React.Component {
 
     return (
       <div>
-        <HeaderSite redirect='/' />
+        <HeaderSite redirect='/signupadmin' />
         <div className='signup-content'>
           <div>
             <div className='title-signup'>

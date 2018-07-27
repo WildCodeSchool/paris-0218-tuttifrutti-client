@@ -43,11 +43,6 @@ class SignUpStudent extends React.Component {
     } else if (password !== passwordConfirm) {
       this.setState({ hasErrorNotIdentic: true, hasErrorTooShort: false })
     } else {
-      // axios.post(`http://localhost:3030/regstudent`, { user })
-      //   .then(res => {
-      //     console.log(res)
-      //     console.log(res.data)
-			//   })
 			signUpStudent(user)
       this.setState({ displayForm: 'none', displayMessage: 'block' })
     }

@@ -68,7 +68,7 @@ class Login extends React.Component {
 
     return (
       <div>
-        <HeaderSite redirect='/' />
+        <HeaderSite redirect='/loginadmin' />
         <div className='login-content'>
           <div>
             <div className='title-login'>
