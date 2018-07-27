@@ -13,7 +13,7 @@ import MissionDescription from '../components/MissionDescription.js'
 import SendMessage from '../components/SendMessage.js'
 import './style/Mission.css'
 import FormUpload from '../components/FormUpload.js'
-import { getOneMission, infoStudent } from '../api.js';
+import { changeStatusMission, getOneMission, infoStudent } from '../api.js';
 
 class Mission extends React.Component {
 	state = {
@@ -77,7 +77,7 @@ class Mission extends React.Component {
 		const changeStatus = (event) => {
 			event.preventDefault()
 			this.setState({ ...this.state, finished: true })
-			axios.put(`http://localhost:3030${this.missionId}`, { finished: true })
+			changeStatusMission(this.missionId)
 				.then(() => {
 					window.location.replace('/missions')
 				})
