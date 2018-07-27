@@ -7,7 +7,6 @@ import HeaderName from '../components/HeaderName.js'
 import HeaderParameters from '../components/HeaderParameters.js'
 import './style/HomeAdminHeader.css'
 import ParametersAdmin from '../components/ParametersAdmin.js'
-import { apiUrl } from '../api.js'
 
 class HomeAdminHeader extends Component {
 	state = {
@@ -17,7 +16,7 @@ class HomeAdminHeader extends Component {
 
   LogOut = (req, res) => {
     localStorage.removeItem('token')
-    window.location.replace(`${apiUrl}/loginadmin`)
+    window.location.replace(`${window.location.origin}/loginadmin`)
   }
 
   onOpenModal = (e) => {

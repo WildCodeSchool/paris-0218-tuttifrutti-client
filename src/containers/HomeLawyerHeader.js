@@ -7,7 +7,6 @@ import HeaderName from '../components/HeaderName.js'
 import HeaderParameters from '../components/HeaderParameters.js'
 import './style/HomeLawyerHeader.css'
 import ParametersLawyer from '../components/ParametersLawyer.js'
-import { apiUrl } from '../api.js'
 
 class HomeLawyerHeader extends Component {
   state = {
@@ -17,7 +16,7 @@ class HomeLawyerHeader extends Component {
 
   LogOut = (req, res) => {
     localStorage.removeItem('token')
-    window.location.replace(`${apiUrl}/login`)
+    window.location.replace(`${window.location.origin}/login`)
   }
 
   onOpenModal = (e) => {
