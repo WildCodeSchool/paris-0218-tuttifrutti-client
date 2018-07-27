@@ -2,6 +2,7 @@ import jwt_decode from 'jwt-decode'
 import axios from 'axios'
 
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000'
+console.log(`API url: '${apiUrl}'`)
 
 // LOGIN
 
